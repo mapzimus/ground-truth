@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ground Truth — Lidar Test Projects</title>
+<meta name="description" content="A series of lidar terrain-analysis test projects on real Massachusetts parcels: earthwork, buildable land, drainage, sightlines from public laser data.">
+<meta property="og:title" content="Ground Truth — Lidar Test Projects">
+<meta property="og:description" content="What laser data shows about real development parcels that drone photos cannot.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://mapzimus.github.io/ground-truth/assets/hs_dtm.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12130f; --ground:#1a1b16; --paper:#f2efe6; --amber:#ffb400; --line:#3a3b33;
+  --mono:'IBM Plex Mono',monospace; --disp:'Archivo Black',sans-serif; --body:'Archivo',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ground);color:var(--paper);font-family:var(--body);line-height:1.55;min-height:100vh;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 39px,rgba(255,180,0,.05) 39px 40px),
+    repeating-linear-gradient(90deg,transparent 0 39px,rgba(255,180,0,.05) 39px 40px),
+    var(--ground);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{padding:88px 0 40px}
+.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
+h1{font-family:var(--disp);font-size:clamp(40px,7vw,84px);line-height:1.02;margin:18px 0 22px;text-transform:uppercase}
+h1 span{color:var(--amber)}
+.lede{max-width:56ch;font-size:19px;color:#cfcaba}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;margin:56px 0 80px}
+.card{display:block;border:1px solid var(--line);text-decoration:none;color:var(--paper);
+  background:#20211b;transition:border-color .2s, transform .2s}
+.card:hover{border-color:var(--amber);transform:translateY(-3px)}
+.card img{width:100%;height:230px;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+.card .body{padding:18px 18px 22px}
+.card .num{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.18em}
+.card h2{font-family:var(--disp);font-size:22px;text-transform:uppercase;margin:8px 0 8px;line-height:1.1}
+.card p{font-size:14.5px;color:#a49f8e}
+.card .stat{font-family:var(--mono);font-size:13px;color:var(--paper);margin-top:12px}
+.card.soon{opacity:.65;pointer-events:none}
+.card.soon .num::after{content:'  ·  IN PROGRESS';color:#a49f8e}
+footer{padding:24px 0 60px;font-family:var(--mono);font-size:14px;color:#a49f8e}
+footer a{color:var(--amber)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kicker">Lidar terrain analysis · test-project series</div>
+    <h1>Ground <span>truth.</span></h1>
+    <p class="lede">Drone photos can't see through trees; laser pulses can. Each project below
+    takes free public lidar over a real Massachusetts development parcel and turns it into the
+    numbers that decide a project: earthwork, buildable land, drainage, road access, clearing,
+    sightlines. Same pipeline every time — that's the point.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="cards">
+    <a class="card" href="devens.html">
+      <img src="assets/hs_dtm.jpg" alt="Devens bare-earth hillshade">
+      <div class="body">
+        <div class="num">PROJECT 01 · DEVENS, MA</div>
+        <h2>The pad under the forest</h2>
+        <p>Public lidar landed 17 days after a 47-acre campus was announced — catching the
+        parcel in its last weeks as forest. Earthwork priced three ways on the pad where the
+        largest building actually went.</p>
+        <div class="stat">282,158 yd³ of phantom earthwork in the photo surface ≈ $5.6M</div>
+      </div>
+    </a>
+    <a class="card" href="middleboro.html">
+      <img src="assets/mb_hs_dtm.jpg" alt="Middleborough bare-earth hillshade">
+      <div class="body">
+        <div class="num">PROJECT 02 · MIDDLEBOROUGH, MA</div>
+        <h2>The warehouse that wasn't</h2>
+        <p>150 wooded acres at the Route 44 / I-495 interchange. A 673,000 sq ft warehouse
+        proposal was withdrawn in 2024 — the parcel is still forest. More than half the
+        surrounding land sits in wetland setbacks, and the pad had to be found, not drawn.</p>
+        <div class="stat">705,016 yd³ of phantom earthwork in the photo surface ≈ $14.1M</div>
+      </div>
+    </a>
+    <a class="card" href="hopkinton.html">
+      <img src="assets/hk_hs_dtm.jpg" alt="Hopkinton bare-earth hillshade">
+      <div class="body">
+        <div class="num">PROJECT 03 · HOPKINTON–MILFORD LINE, MA</div>
+        <h2>Three pads, three price tags</h2>
+        <p>Rolling glacial forest on the I-495 logistics belt. Every possible 16-acre pad
+        position screened and the three best priced — the cheapest dirt sits closest to the
+        wetlands, and the grading bill swings by $2.5M depending on where the building lands.</p>
+        <div class="stat">Same warehouse: $3.96M, $6.34M, or $6.50M of earthwork</div>
+      </div>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Max Howe · MS, Geographic Information Science ·
+    <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a> ·
+    all data public (USGS 3DEP / MassGIS)
+  </div>
+</footer>
+</body>
+</html>
