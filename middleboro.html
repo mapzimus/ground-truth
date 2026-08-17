@@ -118,8 +118,7 @@ figure img{cursor:zoom-in}
     anyone walks the site. One more thing: no high-resolution public elevation data existed here
     at all before the 2021 flight.</p>
     <img class="locus" src="assets/middleboro_locus.png" alt="Site location in Massachusetts">
-    <p class="whofor">If you're underwriting wooded land in Massachusetts, this is the
-    analysis to run before the offer. <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
+    <p class="whofor">If you're looking at wooded land in Massachusetts, this is the kind of homework you can do before an offer — happy to walk through any of it. <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
     <div class="bignum">246 acres
       <small>of this square kilometer sit inside wetland and stream setbacks — more than half
       the land is spoken for before the first site plan is drawn.</small>
@@ -208,14 +207,12 @@ figure img{cursor:zoom-in}
         <figcaption><b>Where does the map disagree with the terrain?</b> Cells whose
         wetness signature matches the mapped wetlands, but that the state map calls dry:
         112 acres here — including 10 of the pad's 16.3. Sandy ground drains, so this is
-        a screening flag, not a delineation; it says exactly where the wetland scientist
-        goes before an offer is priced.</figcaption>
+        a screening flag, not a delineation; it shows where a wetland scientist should look first.</figcaption>
       </figure>
       <figure>
         <img src="assets/mb_buildable_map.jpg" alt="Buildable land screen" loading="lazy">
         <figcaption><b>Where can you build?</b> Slope and wetland/stream setback screens on
-        true ground: only 175 buildable acres out of 441 here — the constraint map IS the
-        story on this parcel, and it's also how the pad found its spot.</figcaption>
+        true ground: only 175 buildable acres out of 441 here — the constraint map is most of the story on this parcel, and it's also how the pad found its spot.</figcaption>
       </figure>
       <figure>
         <img src="assets/mb_road_profile.png" alt="Access road grade profile" loading="lazy">
@@ -241,8 +238,7 @@ figure img{cursor:zoom-in}
         <figcaption><b>Who will see it?</b> From the pad today: nothing — 0.0% of the
         surrounding area is visible through the forest. After clearing: 18.2%, reaching
         the Route 44 frontage and the homes south of the parcel. A retained tree buffer
-        on those edges is the mitigation to price, and this map is where that
-        conversation starts.</figcaption>
+        on those edges would soften most of it — easier to plan for now than to argue about later.</figcaption>
       </figure>
     </div>
   </div>
@@ -251,7 +247,7 @@ figure img{cursor:zoom-in}
 <section class="paper">
   <div class="wrap">
     <div class="kicker">Why this parcel</div>
-    <h2>The analysis nobody had in the hearing room</h2>
+    <h2>The analysis that wasn't in the hearing room</h2>
     <p class="prose">When the warehouse proposal was argued in 2023–24, the developer had
     paid consultants; the town and neighbors mostly had opinions. Everything on this page
     comes from free public data and could have been on the table for either side: how much
@@ -288,11 +284,8 @@ figure img{cursor:zoom-in}
     <ol class="method">
       <li><b>Wetland delineation before the offer is priced</b> — the pad clears the
         state's wetland map, but 10 of its 16.3 acres share the terrain-wetness signature
-        of the mapped wetlands. If the field delineation moves the line, the pad moves;
-        make the offer contingent on it.</li>
-      <li><b>Don't underwrite on old elevation data</b> — the pre-2021 public DEM
-        invents a 17,700 yd³ haul-off on a site that actually balances. Any pro forma
-        built before 2021 has phantom numbers in it.</li>
+        of the mapped wetlands. If the field delineation moves the line, the pad moves — worth making the offer contingent on the delineation.</li>
+      <li><b>Check the vintage of any elevation data in the pro forma</b> — the pre-2021 public DEM shows a 17,700 yd³ haul-off that isn't really there, and older underwriting may still be carrying it.</li>
       <li><b>Vernal pools</b> — depression screen found no candidates in or near the pad;
         5 state-mapped potential pools sit elsewhere in the study area. "Screened, clear"
         at the pad, field confirmation at permitting.</li>
@@ -309,8 +302,7 @@ figure img{cursor:zoom-in}
         published accuracy 10 cm RMSE). 49.5 million points for this site. Wetlands and
         streams: MassGIS DEP layers with 100 ft / 200 ft buffers.</li>
       <li><b>Processing</b> — same PDAL pipeline as Project 01: ground/vegetation separation,
-        0.5 m ground model, treetop model, canopy heights. Same scripts, different
-        coordinates — repeatability is the product.</li>
+        0.5 m ground model, treetop model, canopy heights. Same scripts, different coordinates — which is most of what I wanted to prove.</li>
       <li><b>Verification</b> — my ground model against the state's independently published
         DEM: 1 mm average difference, 2.0 cm RMSE over open ground. The pre-2021 baseline
         was pulled from the archived 2019 national DEM after finding the "current" one had
