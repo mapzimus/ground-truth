@@ -59,7 +59,7 @@ section.paper figcaption{color:#6d6753}
 .swipe .stage>img,.swipe .top img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%)}
 .fsbtn{position:absolute;bottom:12px;right:12px;z-index:5;font-size:17px;line-height:1;background:rgba(18,19,15,.85);color:#f2efe6;border:1px solid #3a3b33;padding:9px 12px;cursor:pointer;font-family:'IBM Plex Mono',monospace}
 .swipe.fs{position:fixed;inset:0;z-index:98;aspect-ratio:auto;height:100dvh;margin:0;background:#000}
-@media(max-width:640px){.swipe{aspect-ratio:auto;height:64vh}}
+@media(max-width:640px){.swipe{aspect-ratio:auto;height:64vh}.swipe .bar::after{font-size:15px;padding:13px 15px}}
 .swipe .top{position:absolute;inset:0;overflow:hidden}
 
 .swipe .bar{position:absolute;top:0;bottom:0;width:2px;background:var(--amber);pointer-events:none}
@@ -320,7 +320,7 @@ figure img{cursor:zoom-in}
     if (ptrs.size === 1){
       const r = stage.getBoundingClientRect();
       const barX = r.left + frac * r.width;
-      onBar = scale === 1 || Math.abs(e.clientX - barX) < 30;
+      onBar = scale === 1 || Math.abs(e.clientX - barX) < 48;
       if (onBar){ setFrac(e); apply(); }
       const now = Date.now();                       // double-tap zoom toggle
       if (now - lastTap < 300){
