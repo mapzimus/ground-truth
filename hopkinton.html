@@ -82,6 +82,8 @@ ol.method{margin:26px 0 0 20px;max-width:66ch;font-size:16px}
 ol.method li{margin-bottom:12px;padding-left:6px}
 ol.method b{font-family:var(--mono);font-weight:700}
 .note{font-family:var(--mono);font-size:13px;color:#a49f8e;border-left:3px solid var(--amber);padding:10px 14px;margin-top:28px;max-width:70ch}
+.locus{max-width:300px;margin-top:26px;border:1px solid var(--line);display:block}
+.whofor{font-family:var(--mono);font-size:14px;color:var(--amber);margin-top:18px;max-width:60ch}
 section.paper .note{color:#6d6753}
 footer{padding:72px 0 96px;border-top:1px solid var(--line)}
 footer .cta{font-family:var(--disp);font-size:clamp(24px,3.4vw,38px);text-transform:uppercase;max-width:22ch;line-height:1.12}
@@ -115,6 +117,9 @@ figure img{cursor:zoom-in}
     you build" — it's "where does the dirt math hurt least." I screened every possible
     16-acre pad position in this square kilometer and priced the grading for the three
     best candidates.</p>
+    <img class="locus" src="assets/hopkinton_locus.png" alt="Site location in Massachusetts">
+    <p class="whofor">If you're underwriting wooded land in Massachusetts, this is the
+    analysis to run before the offer. <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
     <div class="bignum">$2.5M
       <small>is the spread in earthwork cost between the three best pad locations —
       same building, same parcel-sized search area, different dirt.</small>
@@ -177,6 +182,10 @@ figure img{cursor:zoom-in}
     a 66,900 yd³ surplus to haul away from a site that actually balances to within 250 yd³.
     At $20 a yard, that's a $1.3M phantom line item — and the error grows with every hill
     the parcel has.</p>
+    <p class="prose" style="margin-top:14px;font-size:15px">The lidar estimate carries a
+    grading contingency of <b>±8,628 yd³ ≈ ±$173k (±2.7%)</b> — the band implied by the
+    data's published 10 cm vertical accuracy over this pad (our verified accuracy here was
+    7.6 cm). That's the range a grading contingency should cover.</p>
     <figure>
       <img src="assets/hk_cutfill_map.jpg" alt="Cut and fill map of the pad" loading="lazy">
       <figcaption>Where the dirt moves: cut in red, fill in blue, against the balanced
@@ -201,6 +210,14 @@ figure img{cursor:zoom-in}
         trade-off you can only price with real ground data.</figcaption>
       </figure>
       <figure>
+        <img src="assets/hk_roughness_map.jpg" alt="Rock and till risk indicator" loading="lazy">
+        <figcaption><b>Is the cheap dirt hiding rock?</b> Micro-relief under the canopy
+        flags boulder fields and shallow ledge — a screen that can <i>raise</i> the
+        estimate. Verdict here: all three pads are clean at the surface (under 1%
+        flagged; the open-field control reads 1 cm). Subsurface ledge stays invisible to
+        lidar, so test pits remain on the diligence list.</figcaption>
+      </figure>
+      <figure>
         <img src="assets/hk_buildable_map.jpg" alt="Buildable land screen" loading="lazy">
         <figcaption><b>Where can you build?</b> Slope and wetland/stream setback screens on
         true ground: 176 buildable acres out of 443. Even the logistics belt is half
@@ -223,13 +240,17 @@ figure img{cursor:zoom-in}
         <img src="assets/hk_chm_map.jpg" alt="Canopy height model" loading="lazy">
         <figcaption><b>What does clearing cost?</b> Tree heights for every cell. The
         recommended pad carries 15.1 acres of forest — roughly $45–91k to clear at
-        typical rates.</figcaption>
+        typical rates. Stumpage revenue can offset part of that — species- and
+        market-dependent (UMass/DCR Southern New England Stumpage Price Survey); not
+        netted here.</figcaption>
       </figure>
       <figure>
         <img src="assets/hk_viewshed_map.jpg" alt="Viewshed before and after clearing" loading="lazy">
         <figcaption><b>Who will see it?</b> From the pad today: 0.0% of the surrounding
         area is visible through the forest. After clearing: 17.8% — including homes across
-        I-495 that currently can't see the site at all.</figcaption>
+        I-495 that currently can't see the site at all. A retained tree buffer along the
+        west edge is the mitigation to price, and this map is where that conversation
+        starts.</figcaption>
       </figure>
     </div>
   </div>
@@ -251,6 +272,38 @@ figure img{cursor:zoom-in}
       <figcaption>The same ground today: subdivision west of I-495, the wooded block east
       of it where the candidate pads sit. (Esri World Imagery)</figcaption>
     </figure>
+  </div>
+</section>
+
+<section class="paper">
+  <div class="wrap">
+    <div class="kicker">The bottom line</div>
+    <h2>What this means for the deal</h2>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Sitework item</th><th>Estimate</th></tr></thead>
+      <tbody>
+        <tr><td>Earthwork at the recommended pad, graded to balance</td><td>$6.34M ± $173k</td></tr>
+        <tr><td>Clearing, 15.1 forested acres</td><td>$45–91k</td></tr>
+        <tr><td>Access</td><td>361 m route climbs 16 m, peaks at 11% — contour or regrade</td></tr>
+        <tr><td>Stormwater basin land take (pre-design screening)</td><td>a natural low 300 m east stores the first-flush volume at 1 m stage — ~2.3 ac consumed</td></tr>
+        <tr class="ours"><td>Sitework baseline for the pro forma</td><td>≈ $6.41M + access work</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="prose" style="margin-top:20px">On rolling till, the earthwork line IS the
+    deal. What goes in the P&S:</p>
+    <ol class="method">
+      <li><b>Siting flexibility</b> — the grading bill swings $2.5M across the three
+        viable pad positions; an offer that locks the building location before the dirt
+        math is run gives that money away.</li>
+      <li><b>Geotech before reliance</b> — the surface rock screen is clean, but
+        subsurface ledge is invisible to lidar; price the test-pit program, not hope.</li>
+      <li><b>Vernal pools</b> — depression screen found no candidates in or near any pad;
+        3 state-mapped potential pools elsewhere in the study area. "Screened, clear"
+        with field confirmation at permitting. Basin sizing above is screening-level —
+        design belongs to the civil engineer.</li>
+    </ol>
   </div>
 </section>
 
@@ -277,8 +330,10 @@ figure img{cursor:zoom-in}
         weighted-average bids, $10–$40 sensitivity.</li>
     </ol>
     <p class="note">Public lidar ships with published accuracy specs. Commercial work gets
-    tied to survey control before any number is delivered. Scripts and pipeline files
-    available on request.</p>
+    tied to survey control before any number is delivered. Screens run for every project:
+    terrain-wetness discrepancy, closed-depression / vernal-pool candidates, surface
+    roughness. Also available: intensity analysis, contours to CAD, per-tree inventory.
+    Scripts and pipeline files available on request.</p>
   </div>
 </section>
 

@@ -44,6 +44,18 @@ h1 span{color:var(--amber)}
 .card.soon .num::after{content:'  ·  IN PROGRESS';color:#a49f8e}
 footer{padding:24px 0 60px;font-family:var(--mono);font-size:14px;color:#a49f8e}
 footer a{color:var(--amber)}
+.whofor{font-family:var(--mono);font-size:14px;color:var(--amber);margin-top:18px;max-width:60ch}
+.compare{margin:0 0 80px}
+.compare h2{font-family:var(--disp);font-size:clamp(22px,3vw,32px);text-transform:uppercase;margin-bottom:8px}
+.compare p{max-width:64ch;color:#cfcaba;margin-bottom:22px}
+.tablewrap{overflow-x:auto}
+.compare table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:640px}
+.compare th,.compare td{padding:11px 13px;text-align:right;border-bottom:1px solid var(--line)}
+.compare th:first-child,.compare td:first-child{text-align:left}
+.compare thead th{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a49f8e}
+.compare td{font-family:var(--mono)}
+.compare td.hot{color:var(--amber);font-weight:700}
+.compare .foot{font-family:var(--mono);font-size:12.5px;color:#a49f8e;margin-top:12px;max-width:80ch}
 </style>
 </head>
 <body>
@@ -55,6 +67,8 @@ footer a{color:var(--amber)}
     takes free public lidar over a real Massachusetts development parcel and turns it into the
     numbers that decide a project: earthwork, buildable land, drainage, road access, clearing,
     sightlines. Same pipeline every time — that's the point.</p>
+    <p class="whofor">If you're underwriting wooded land in Massachusetts, this is the
+    analysis to run before the offer. <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
   </div>
 </header>
 
@@ -93,6 +107,28 @@ footer a{color:var(--amber)}
         <div class="stat">Same warehouse: $3.96M, $6.34M, or $6.50M of earthwork</div>
       </div>
     </a>
+  </div>
+
+  <div class="compare">
+    <h2>Three sites, one pipeline</h2>
+    <p>Because every project runs the identical workflow, the results are directly
+    comparable — which is the point: sitework cost is a property of the parcel, and it
+    varies more than most buyers assume. Across these three, the same analysis produced a
+    <b>4× spread in sitework cost per square foot of pad</b>.</p>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Site</th><th>Pad</th><th>Earthwork @ $20/yd³</th><th>Clearing (mid)</th><th>Access</th><th>Sitework $/SF of pad</th></tr></thead>
+      <tbody>
+        <tr><td>01 Devens</td><td>5.3 ac / 232,600 SF</td><td>$0.49M ± $57k</td><td>$16k</td><td>regrade a 21% bank</td><td class="hot">$2.2</td></tr>
+        <tr><td>02 Middleborough</td><td>16.3 ac / 710,000 SF</td><td>$1.69M ± $173k</td><td>$50k</td><td>flat, no penalty</td><td class="hot">$2.5</td></tr>
+        <tr><td>03 Hopkinton</td><td>16.3 ac / 710,000 SF</td><td>$6.34M ± $173k</td><td>$68k</td><td>11% grade, must contour</td><td class="hot">$9.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="foot">± ranges are grading contingencies derived from the lidar's published
+    10 cm vertical accuracy over each pad (conservative — verified accuracy on these sites
+    was 2–7.6 cm). $/SF uses the measured pad area; per-building-SF ≈ 2× these figures at
+    a 50%-coverage single-story assumption. Access penalties are not dollarized.</p>
   </div>
 </main>
 
