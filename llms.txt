@@ -6,12 +6,12 @@ Lidar Site Studies is a service concept and public-data portfolio demonstration 
 
 ## Primary pages
 
-- [Home and service concept](https://mapzimus.github.io/ground-truth/): Offer, team model, workflow, cases, and professional boundaries.
-- [Method, sources, and limitations](https://mapzimus.github.io/ground-truth/methodology.html): How to interpret the data, quantities, costs, and licensing boundaries.
-- [Devens case](https://mapzimus.github.io/ground-truth/devens.html): Camera surface versus lidar bare earth under forest.
-- [Middleborough case](https://mapzimus.github.io/ground-truth/middleboro.html): Terrain, mapped wetness, access, and conceptual earthwork.
-- [Hopkinton case](https://mapzimus.github.io/ground-truth/hopkinton.html): Three conceptual pad positions with different modeled earthwork.
-- [I-495 corridor case](https://mapzimus.github.io/ground-truth/p04.html): A 54-parcel first-pass screen and 14-parcel shortlist.
+- [Home and service concept](https://maxwellhowegis.com/lidar-test/): Offer, team model, workflow, cases, and professional boundaries.
+- [Method, sources, and limitations](https://maxwellhowegis.com/lidar-test/methodology.html): How to interpret the data, quantities, costs, and licensing boundaries.
+- [Devens case](https://maxwellhowegis.com/lidar-test/devens.html): Camera surface versus lidar bare earth under forest.
+- [Middleborough case](https://maxwellhowegis.com/lidar-test/middleboro.html): Terrain, mapped wetness, access, and conceptual earthwork.
+- [Hopkinton case](https://maxwellhowegis.com/lidar-test/hopkinton.html): Three conceptual pad positions with different modeled earthwork.
+- [I-495 corridor case](https://maxwellhowegis.com/lidar-test/p04.html): A 54-parcel first-pass screen and 14-parcel shortlist.
 
 ## Interpretation rule
 
