@@ -2,7 +2,7 @@
 
 Planning-level terrain intelligence for wooded land in Massachusetts.
 
-[View the live site](https://mapzimus.github.io/ground-truth/)
+[View the live site](https://maxwellhowegis.com/lidar-test/)
 
 ![Bare-earth lidar hillshade from the Lidar Site Studies demonstration](assets/hs_dtm.jpg)
 
@@ -22,10 +22,10 @@ This repository is a portfolio and client-conversation demo by **Max Howe, MS, G
 
 | Study | Question | Main lesson |
 | --- | --- | --- |
-| [Devens](https://mapzimus.github.io/ground-truth/devens.html) | Can a camera surface stand in for ground under trees? | Canopy can overwhelm an early grading comparison. |
-| [Middleborough](https://mapzimus.github.io/ground-truth/middleboro.html) | What does flat-looking wooded land hide? | Small terrain differences can affect drainage and conceptual earthwork. |
-| [Hopkinton](https://mapzimus.github.io/ground-truth/hopkinton.html) | Where should one warehouse concept sit? | Moving the same pad can change modeled earthwork by millions. |
-| [I-495 corridor](https://mapzimus.github.io/ground-truth/p04.html) | Which parcels deserve deeper diligence? | A consistent first screen can reduce a long list to a manageable shortlist. |
+| [Devens](https://maxwellhowegis.com/lidar-test/devens.html) | Can a camera surface stand in for ground under trees? | Canopy can overwhelm an early grading comparison. |
+| [Middleborough](https://maxwellhowegis.com/lidar-test/middleboro.html) | What does flat-looking wooded land hide? | Small terrain differences can affect drainage and conceptual earthwork. |
+| [Hopkinton](https://maxwellhowegis.com/lidar-test/hopkinton.html) | Where should one warehouse concept sit? | Moving the same pad can change modeled earthwork by millions. |
+| [I-495 corridor](https://maxwellhowegis.com/lidar-test/p04.html) | Which parcels deserve deeper diligence? | A consistent first screen can reduce a long list to a manageable shortlist. |
 
 ## Important limits
 
@@ -38,7 +38,7 @@ The case studies are planning-level demonstrations from public data. They are us
 - construction quantities, estimates, or bids;
 - findings that a parcel is legally buildable, permitted, or accessible.
 
-The modeled costs use an illustrative unit rate for comparison. A real project needs current contractor or estimator input. Read the [full method, sources, and limitations](https://mapzimus.github.io/ground-truth/methodology.html) before relying on a number.
+The modeled costs use an illustrative unit rate for comparison. A real project needs current contractor or estimator input. Read the [full method, sources, and limitations](https://maxwellhowegis.com/lidar-test/methodology.html) before relying on a number.
 
 ## Repository guide
 

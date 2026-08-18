@@ -1,6 +1,6 @@
 # Methodology and interpretation guide
 
-This document records the shared logic behind the Lidar Site Studies demonstrations. The [public methodology page](https://mapzimus.github.io/ground-truth/methodology.html) is the most readable version for a client or collaborator.
+This document records the shared logic behind the Lidar Site Studies demonstrations. The [public methodology page](https://maxwellhowegis.com/lidar-test/methodology.html) is the most readable version for a client or collaborator.
 
 ## Purpose
 
