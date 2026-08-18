@@ -1,14 +1,14 @@
-# Ground Truth
+# Lidar Site Studies
 
 Planning-level terrain intelligence for wooded land in Massachusetts.
 
 [View the live site](https://mapzimus.github.io/ground-truth/)
 
-![Bare-earth lidar hillshade from the Ground Truth demonstration](assets/hs_dtm.jpg)
+![Bare-earth lidar hillshade from the Lidar Site Studies demonstration](assets/hs_dtm.jpg)
 
 ## What this demonstrates
 
-Ground Truth combines lidar, aerial imagery, and GIS analysis to help answer early land questions before a buyer, owner, or project team commits to full design work.
+Lidar Site Studies combines lidar, aerial imagery, and GIS analysis to help answer early land questions before a buyer, owner, or project team commits to full design work.
 
 The service concept has three levels:
 
