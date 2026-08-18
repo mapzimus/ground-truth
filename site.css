@@ -138,11 +138,20 @@ a:hover {
   font-size: 12px;
   letter-spacing: 0.04em;
   text-decoration: none;
+  padding: 0 10px;
+  border: 1px solid var(--line);
 }
 
-.projnav .links a:hover,
+.projnav .links a:hover {
+  color: var(--paper);
+  border-color: var(--amber);
+}
+
 .projnav .links a.on {
-  color: var(--amber);
+  color: var(--ink);
+  background: var(--amber);
+  border-color: var(--amber);
+  font-weight: 700;
 }
 
 .projnav .links .nav-cta {
@@ -493,6 +502,18 @@ section.paper .process-step .num {
   color: var(--paper);
   font-family: var(--mono);
   font-size: 13px;
+}
+
+.card .go {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--amber);
+}
+
+.card:hover .go {
+  text-decoration: underline;
 }
 
 figure {
@@ -964,6 +985,7 @@ footer .contact,
 
   .projnav .links a {
     min-height: 46px;
+    border: none;
     border-bottom: 1px solid rgba(58, 59, 51, 0.6);
   }
 

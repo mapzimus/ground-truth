@@ -1,8 +1,8 @@
-# Ground Truth
+# Lidar Site Studies
 
 > Planning-level terrain intelligence for wooded Massachusetts land, combining public-data screening, potential fresh drone lidar and imagery acquisition, and GIS decision reports.
 
-Ground Truth is a service concept and public-data portfolio demonstration by Max Howe, MS, Geographic Information Science. Fresh-flight work would be scoped with an FAA Part 107 remote pilot. Regulated surveying and engineering work requires appropriately licensed professionals.
+Lidar Site Studies is a service concept and public-data portfolio demonstration by Max Howe, MS, Geographic Information Science. Fresh-flight work would be scoped with an FAA Part 107 remote pilot. Regulated surveying and engineering work requires appropriately licensed professionals.
 
 ## Primary pages
 
