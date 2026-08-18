@@ -1,35 +1,67 @@
 # Lidar Site Studies
 
-Live site: **https://mapzimus.github.io/ground-truth/**
+Planning-level terrain intelligence for wooded land in Massachusetts.
 
-A series of lidar terrain-analysis test projects on real Massachusetts development
-parcels. Each project takes free public lidar and turns it into the numbers that
-decide a project — earthwork, buildable land, drainage, road access, clearing,
-sightlines — with the same pipeline run on every site so results compare directly.
+[View the live site](https://mapzimus.github.io/ground-truth/)
 
-## Projects
+![Bare-earth lidar hillshade from the Lidar Site Studies demonstration](assets/hs_dtm.jpg)
 
-| # | Page | Site | Question |
-|---|------|------|----------|
-| 01 | [devens.html](devens.html) | Devens, MA | Earthwork priced three ways on the pad where a real building went |
-| 02 | [middleboro.html](middleboro.html) | Middleborough, MA | 150 wooded acres, a withdrawn warehouse, and what the land says |
-| 03 | [hopkinton.html](hopkinton.html) | Hopkinton–Milford line, MA | Same warehouse, three pad positions, three price tags |
-| 04 | [p04.html](p04.html) | I-495 corridor, 9 towns | 54 vacant parcels screened; 14 can hold a building |
+## What this demonstrates
 
-## Data and methods
+Lidar Site Studies combines lidar, aerial imagery, and GIS analysis to help answer early land questions before a buyer, owner, or project team commits to full design work.
 
-- **Lidar:** USGS 3DEP, 2021 Central-Eastern Massachusetts (published accuracy 10 cm RMSE)
-- **Parcels, wetlands, streams:** MassGIS L3 tax parcels and DEP layers
-- **Processing:** PDAL point-cloud pipeline → ground / treetop / canopy-height models;
-  volumes by cell-wise raster math, cross-checked in QGIS
-- All data public; scripts and pipeline files available on request
+The service concept has three levels:
 
-## Structure
+1. **Public-data screen** — check terrain, mapped constraints, likely access, and data age.
+2. **Fresh flight** — acquire current lidar and imagery with an FAA Part 107 remote pilot when public data is too old or incomplete.
+3. **Decision report** — turn the terrain into a short, visual explanation of the risks, comparisons, and recommended next diligence steps.
 
-Static site, no build step: one HTML file per page, shared styles and scripts in
-`site.css` / `site.js` (the index page keeps its own inline styles), images in
-`assets/`. Deployed via GitHub Pages (`.nojekyll` disables Jekyll processing).
+This repository is a portfolio and client-conversation demo by **Max Howe, MS, Geographic Information Science**. It is not yet presented as an operating survey or engineering firm. Work requiring licensed land surveying or professional engineering would be scoped with appropriately licensed partners.
+
+## Case studies
+
+| Study | Question | Main lesson |
+| --- | --- | --- |
+| [Devens](https://mapzimus.github.io/ground-truth/devens.html) | Can a camera surface stand in for ground under trees? | Canopy can overwhelm an early grading comparison. |
+| [Middleborough](https://mapzimus.github.io/ground-truth/middleboro.html) | What does flat-looking wooded land hide? | Small terrain differences can affect drainage and conceptual earthwork. |
+| [Hopkinton](https://mapzimus.github.io/ground-truth/hopkinton.html) | Where should one warehouse concept sit? | Moving the same pad can change modeled earthwork by millions. |
+| [I-495 corridor](https://mapzimus.github.io/ground-truth/p04.html) | Which parcels deserve deeper diligence? | A consistent first screen can reduce a long list to a manageable shortlist. |
+
+## Important limits
+
+The case studies are planning-level demonstrations from public data. They are useful for comparison and diligence planning, but they are **not**:
+
+- property or boundary surveys;
+- wetland delineations;
+- grading, drainage, or civil engineering designs;
+- geotechnical investigations;
+- construction quantities, estimates, or bids;
+- findings that a parcel is legally buildable, permitted, or accessible.
+
+The modeled costs use an illustrative unit rate for comparison. A real project needs current contractor or estimator input. Read the [full method, sources, and limitations](https://mapzimus.github.io/ground-truth/methodology.html) before relying on a number.
+
+## Repository guide
+
+- `index.html` — service-focused homepage
+- `devens.html`, `middleboro.html`, `hopkinton.html`, `p04.html` — case studies
+- `methodology.html` — public-facing method, sources, and limitations
+- `site.css`, `site.js` — shared responsive design and accessible interactions
+- `assets/` — maps and imagery used by the demonstrations
+- `METHODOLOGY.md`, `DATA_SOURCES.md` — repository documentation
+- `scripts/validate-site.mjs` — dependency-free local site check
+
+Run the validation locally with Node.js:
+
+```powershell
+node scripts/validate-site.mjs
+```
+
+This is a static site, so it can also be previewed with any simple local web server.
 
 ## Contact
 
-Max Howe · MS, Geographic Information Science · mhowe.gis@gmail.com
+Max Howe · [mhowe.gis@gmail.com](mailto:mhowe.gis@gmail.com)
+
+## Rights and data credits
+
+Site copy, design, and original analysis are copyright © 2026 Max Howe. All rights reserved. Public-agency datasets and third-party basemap imagery retain their own terms and credits. See [LICENSE.md](LICENSE.md) and [DATA_SOURCES.md](DATA_SOURCES.md).

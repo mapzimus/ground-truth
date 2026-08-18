@@ -3,37 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Warehouse That Wasn't — Lidar Demo, Middleborough MA</title>
-<meta name="description" content="Lidar site analysis of the contested Route 44 warehouse parcel in Middleborough MA: earthwork, wetlands, buildable land from public laser data.">
+<title>The Warehouse That Wasn't — Planning-Level LiDAR Study, Middleborough MA</title>
+<meta name="description" content="A planning-level public-LiDAR study of terrain, mapped constraints, drainage, access, and conceptual earthwork near Route 44 and I-495.">
+<link rel="canonical" href="https://mapzimus.github.io/ground-truth/middleboro.html">
 <meta property="og:title" content="The Warehouse That Wasn't">
 <meta property="og:description" content="150 wooded acres, a withdrawn warehouse proposal, and what lidar shows about the land — before anyone clears it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mapzimus.github.io/ground-truth/middleboro.html">
-<link rel="canonical" href="https://mapzimus.github.io/ground-truth/middleboro.html">
 <meta property="og:image" content="https://mapzimus.github.io/ground-truth/assets/mb_hs_dtm.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%B0%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
-<nav class="projnav"><div class="wrap"><a class="brand" href="index.html">LIDAR SITE STUDIES</a><span class="links"><a href="devens.html">01 · Devens</a><a class="on" href="middleboro.html">02 · Middleborough</a><a href="hopkinton.html">03 · Hopkinton</a><a href="p04.html">04 · Corridor</a></span></div></nav>
+<a class="skip-link" href="#main">Skip to main content</a>
+<nav class="projnav" aria-label="Case-study navigation"><div class="wrap"><a class="brand" href="index.html">LIDAR SITE STUDIES</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-links">Menu</button><div class="links" id="case-links"><a href="index.html#cases">All work</a><a href="devens.html">01 · Devens</a><a class="on" aria-current="page" href="middleboro.html">02 · Middleborough</a><a href="hopkinton.html">03 · Hopkinton</a><a href="p04.html">04 · Corridor</a><a class="nav-cta" href="mailto:mhowe.gis@gmail.com?subject=Lidar%20Site%20Studies%20parcel%20screen">Request a screen</a></div></div></nav>
+<main id="main">
 <header>
   <div class="wrap">
     <div class="kicker">Lidar terrain analysis · Middleborough, Massachusetts</div>
     <h1>150 wooded acres.<br>A withdrawn warehouse.<br><span class="under">What does the land say?</span></h1>
-    <p class="lede">In 2023 a developer proposed 673,000 sq ft of warehouses on the forest at the
-    Route 44 / I-495 interchange. The proposal was withdrawn in 2024; the parcel is still trees.
-    This page is that analysis, run from public laser data. Worth noting: no high-resolution public elevation data existed here
-    at all before the 2021 flight.</p>
+    <p class="lede">In 2023 a developer proposed 673,000 square feet of warehouses on forest
+    near the Route 44 / I-495 interchange. The proposal was withdrawn in 2024. This
+    planning-level study uses public LiDAR to ask what terrain, mapped constraints, drainage,
+    and conceptual grading could have contributed before a final design.</p>
     <img class="locus" src="assets/middleboro_locus.png" alt="Site location in Massachusetts" width="480" height="276">
-    <p class="whofor">If you're looking at wooded land in Massachusetts, this is the kind of homework you can do before an offer — happy to walk through any of it. <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
+    <div class="hero-actions"><a class="button" href="mailto:mhowe.gis@gmail.com?subject=Lidar%20Site%20Studies%20parcel%20screen">Request a parcel screen</a><a class="button secondary" href="index.html#services">See the service concept</a></div>
+    <p class="status-note"><strong>Scope:</strong> public-data demonstration for planning and comparison. Mapped wetlands and terrain signatures are not field delineations.</p>
     <div class="bignum">246 acres
       <small>of this study area sit inside wetland and stream setbacks — over half the land here already carries regulatory constraints.</small>
     </div>
     <div class="stats">
-      <div class="stat hot"><div class="v">84,437 yd³</div><div class="l">actual earthwork for a 16-acre warehouse pad</div></div>
+      <div class="stat hot"><div class="v">84,437 yd³</div><div class="l">LiDAR-based screening estimate for the conceptual 16-acre pad</div></div>
       <div class="stat"><div class="v">789,453 yd³</div><div class="l">"earthwork" if you use the treetop surface</div></div>
       <div class="stat"><div class="v">2.0 cm</div><div class="l">how closely my model matches the state's published DEM</div></div>
       <div class="stat"><div class="v">49.5M</div><div class="l">laser points processed for this site</div></div>
@@ -45,11 +49,11 @@
   <div class="wrap">
     <div class="kicker">Start here</div>
     <h2>Drag the line</h2>
-    <p class="prose">Left of the line is the <b>treetop surface</b> — the only thing a
-    camera-based drone survey can measure over forest. Right of it is the <b>bare ground</b>,
+    <p class="prose">Left of the line is the <b>treetop surface</b> — what camera-only mapping
+    is most likely to recover over closed forest. Right of it is the <b>bare ground</b>,
     recovered from laser returns that made it through gaps in the canopy. Same flight, same
     week, same points. The yellow rectangle is the building pad analyzed below.</p>
-    <div class="swipe" id="swipe" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Surface comparison divider — left of it: treetop surface, right of it: bare ground" style="--focus:81% 13%">
+    <div class="swipe" id="swipe" style="--focus:81% 13%">
       <div class="stage" id="swipeStage">
         <img src="assets/mb_hs_dtm.jpg" alt="Bare-earth lidar hillshade" width="1530" height="1230">
         <div class="top" id="swipeTop"><img src="assets/mb_hs_dsm.jpg" alt="Canopy surface hillshade" width="1530" height="1230"></div>
@@ -73,9 +77,10 @@
     ground — my first hand-drawn attempt turned out to be half swamp, which is exactly
     what the screens are for). It's 69% forest with canopy to 23 m. Grading it to a
     level 12.82 m requires:</p>
-    <div class="tablewrap">
+    <div class="tablewrap" data-label="Comparison of conceptual Middleborough earthwork surfaces">
     <table>
-      <thead><tr><th>Surface used for the estimate</th><th>Cut</th><th>Fill</th><th>Total moved</th><th>@ $20 / yd³</th></tr></thead>
+      <caption>Conceptual level-pad earthwork sensitivity by input surface</caption>
+      <thead><tr><th scope="col">Surface used for the estimate</th><th scope="col">Cut</th><th scope="col">Fill</th><th scope="col">Total moved</th><th scope="col">@ $20 / yd³</th></tr></thead>
       <tbody>
         <tr class="ours"><td>Lidar bare earth</td><td>42,273</td><td>42,164</td><td>84,437 yd³</td><td>$1.69M</td></tr>
         <tr><td>Treetop surface (what photos give you)</td><td>775,626</td><td>13,827</td><td>789,453 yd³</td><td>$15.79M</td></tr>
@@ -91,10 +96,10 @@
     (Also a data-diligence note: the "current" national DEM has quietly been rebuilt from the
     2021 lidar — to compare against what was actually available before, you have to pull the
     archived 2019 version — worth checking where any comparison surface actually came from.)</p>
-    <p class="prose" style="margin-top:14px;font-size:15px">The lidar estimate carries a
-    grading contingency of <b>±8,628 yd³ ≈ ±$173k</b> — the band implied by the data's
-    published 10 cm vertical accuracy over this pad (our verified accuracy here was 2.0 cm,
-    so that's conservative). That's the range a grading contingency should cover.</p>
+    <p class="prose" style="margin-top:14px;font-size:15px">A uniform ±10 cm vertical shift
+    changes the modeled volume by <b>±8,628 yd³ ≈ ±$173k</b>. This is a data-accuracy
+    sensitivity—not a full construction contingency. Design, soils, water, rock, material
+    handling, and field conditions can create larger changes.</p>
     <figure>
       <img src="assets/mb_cutfill_map.jpg" alt="Cut and fill map of the pad" loading="lazy" width="1124" height="805">
       <figcaption>Where the dirt moves: cut in red, fill in blue, against the balanced
@@ -118,14 +123,16 @@
       </figure>
       <figure>
         <img src="assets/mb_buildable_map.jpg" alt="Buildable land screen" loading="lazy" width="1185" height="985">
-        <figcaption><b>Where can you build?</b> Slope and wetland/stream setback screens on
-        true ground: only 175 buildable acres out of 441 here — the constraint map is most of the story on this parcel, and it's also how the pad found its spot.</figcaption>
+        <figcaption><b>Where does the terrain screen pass?</b> Of 441 study-area acres, 175
+        remain after excluding the stated slopes and mapped wetland/stream buffers. Zoning,
+        access, utilities, habitat, soils, ownership, and field delineation are not included.</figcaption>
       </figure>
       <figure>
         <img src="assets/mb_road_profile.png" alt="Access road grade profile" loading="lazy" width="1517" height="917">
         <figcaption><b>Can you get a road in?</b> Yes — and that's worth knowing too. The
         route from Route 44 to the pad's far corner runs 333 m, climbs 3.2 m, and never
-        exceeds 5.1% grade. Access is one thing this parcel gets for free.</figcaption>
+        exceeds 5.1% grade. That route has no terrain-grade flag at this screening level;
+        final access geometry and cost still require design.</figcaption>
       </figure>
       <figure>
         <img src="assets/mb_chm_map.jpg" alt="Canopy height model" loading="lazy" width="1119" height="805">
@@ -156,14 +163,15 @@
     <h2>The analysis that wasn't in the hearing room</h2>
     <p class="prose">When the warehouse proposal was argued in 2023–24, most of the technical information in the room came from studies the developer commissioned. Everything on this page
     comes from free public data and could have been on the table for either side: how much
-    of the parcel is actually developable, where the water goes, what the neighbors would
-    see, and what the dirt work would cost. The parcel is still forest, still zoned,
+    land passes stated terrain screens, where water concentrates, what the neighbors might
+    see, and how conceptual grading compares. The parcel is still forest, still zoned,
     still on the market in practice — which makes it a live case study rather than a
     postmortem.</p>
     <figure>
       <img src="assets/mb_imagery_aoi.jpg" alt="Aerial imagery of the parcel today" loading="lazy" width="1600" height="1280">
-      <figcaption>The same ground today: still forest, with logistics buildings and trailer yards on both sides — the reason parcels like this keep drawing proposals. (Esri World
-      Imagery)</figcaption>
+      <figcaption>The same ground today: still forest, with logistics buildings and trailer
+      yards on both sides. Basemap: Esri World Imagery; provider credits are listed in
+      <a href="methodology.html#imagery">methodology and sources</a>.</figcaption>
     </figure>
   </div>
 </section>
@@ -172,18 +180,23 @@
   <div class="wrap">
     <div class="kicker">The bottom line</div>
     <h2>What this means for the deal</h2>
-    <div class="tablewrap">
+    <div class="tablewrap" data-label="Middleborough planning-level terrain subtotal">
     <table>
-      <thead><tr><th>Sitework item</th><th>Estimate</th></tr></thead>
+      <caption>Planning-level terrain subtotal for the conceptual pad</caption>
+      <thead><tr><th scope="col">Screening item</th><th scope="col">Estimate</th></tr></thead>
       <tbody>
         <tr><td>Earthwork, graded to balance</td><td>$1.69M ± $173k</td></tr>
         <tr><td>Clearing, 11.2 forested acres</td><td>$34–67k</td></tr>
-        <tr><td>Access</td><td>flat, 333 m from Route 44, max 5.1% grade — no penalty</td></tr>
-        <tr class="ours"><td>Sitework baseline for the pro forma</td><td>≈ $1.74M</td></tr>
+        <tr><td>Access terrain flag</td><td>screened route is 333 m and peaks at 5.1%; final geometry not designed</td></tr>
+        <tr class="ours"><td>Terrain-screening subtotal: modeled earthwork + clearing only</td><td>≈ $1.74M</td></tr>
       </tbody>
     </table>
     </div>
-    <p class="prose" style="margin-top:20px">The sitework math is manageable here; the open questions are regulatory. Things a purchase agreement would want to cover:</p>
+    <p class="scope-note"><strong>Not included:</strong> final grading design, topsoil,
+    shrink/swell, unsuitable soils, rock, haul/disposal, retaining walls, utilities,
+    stormwater construction, erosion control, mobilization, permitting, survey, or engineering.</p>
+    <p class="prose" style="margin-top:20px">The modeled terrain subtotal is lower than in
+    the Hopkinton case; the open questions here are regulatory and field-based. Diligence should cover:</p>
     <ol class="method">
       <li><b>Wetland delineation before the offer is priced</b> — the pad clears the
         state's wetland map, but 10 of its 16.3 acres share the terrain-wetness signature
@@ -206,22 +219,27 @@
         streams: MassGIS DEP layers with 100 ft / 200 ft buffers.</li>
       <li><b>Processing</b> — same PDAL pipeline as Project 01: ground/vegetation separation,
         0.5 m ground model, treetop model, canopy heights. Same scripts, different coordinates — which is most of what I wanted to prove.</li>
-      <li><b>Verification</b> — my ground model against the state's independently published
-        DEM: 1 mm average difference, 2.0 cm RMSE over open ground. The pre-2021 baseline
+      <li><b>Processing consistency</b> — my ground model compared with the state-published
+        DEM derived from the same flight: 1 mm average difference and 2.0 cm RMSE over open
+        ground. That checks processing agreement, not independent field accuracy. The pre-2021 baseline
         was pulled from the archived 2019 national DEM after finding the "current" one had
         been rebuilt from this same lidar.</li>
       <li><b>Volumes</b> — cell-by-cell raster math, cross-checked in QGIS: agreement to
-        five significant figures. Cost basis $20/yd³ from state DOT weighted-average bids,
-        with a $10–$40 sensitivity range.</li>
+        five significant figures. Cost basis is an illustrative $20/yd³ screening
+        assumption, with a $10–$40 sensitivity range; a real project would require current
+        contractor or estimator input.</li>
     </ol>
-    <p class="note">Public lidar ships with published accuracy specs. Commercial work gets
-    tied to survey control before any number is delivered. Screens run for every project:
+    <p class="note">Public LiDAR includes published accuracy specifications, but these case-study
+    values remain planning-level. Survey-grade or construction-facing work requires licensed
+    control and project-specific professional oversight. Screens run for every project:
     terrain-wetness discrepancy, closed-depression / vernal-pool candidates, surface
     roughness. Also available: intensity analysis, contours to CAD, per-tree inventory.
-    Scripts and pipeline files available on request.</p>
+    Scripts and pipeline files available on request. See the shared
+    <a href="methodology.html">method, sources, assumptions, and limitations</a>.</p>
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <p class="cta">The newest free lidar here was flown in <span>2021.</span><br>
@@ -230,9 +248,11 @@
       Max Howe · MS, Geographic Information Science ·
       <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a>
     </p>
+    <div class="footer-links"><a href="methodology.html">Method, sources &amp; limitations</a><a href="index.html#services">Service concept</a><a href="https://github.com/mapzimus/ground-truth">GitHub repository</a></div>
+    <p class="footer-meta">Planning-level demonstration from public data. Not a survey, wetland delineation, engineering design, construction quantity, or bid.</p>
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js" defer></script>
 </body>
 </html>

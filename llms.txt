@@ -1,0 +1,22 @@
+# Lidar Site Studies
+
+> Planning-level terrain intelligence for wooded Massachusetts land, combining public-data screening, potential fresh drone lidar and imagery acquisition, and GIS decision reports.
+
+Lidar Site Studies is a service concept and public-data portfolio demonstration by Max Howe, MS, Geographic Information Science. Fresh-flight work would be scoped with an FAA Part 107 remote pilot. Regulated surveying and engineering work requires appropriately licensed professionals.
+
+## Primary pages
+
+- [Home and service concept](https://mapzimus.github.io/ground-truth/): Offer, team model, workflow, cases, and professional boundaries.
+- [Method, sources, and limitations](https://mapzimus.github.io/ground-truth/methodology.html): How to interpret the data, quantities, costs, and licensing boundaries.
+- [Devens case](https://mapzimus.github.io/ground-truth/devens.html): Camera surface versus lidar bare earth under forest.
+- [Middleborough case](https://mapzimus.github.io/ground-truth/middleboro.html): Terrain, mapped wetness, access, and conceptual earthwork.
+- [Hopkinton case](https://mapzimus.github.io/ground-truth/hopkinton.html): Three conceptual pad positions with different modeled earthwork.
+- [I-495 corridor case](https://mapzimus.github.io/ground-truth/p04.html): A 54-parcel first-pass screen and 14-parcel shortlist.
+
+## Interpretation rule
+
+The studies support comparison and early diligence. They are not property surveys, wetland delineations, engineering designs, geotechnical investigations, construction quantities, estimates, bids, or findings that land is legally buildable. Costs use illustrative assumptions that require current contractor or estimator input for a real project.
+
+## Contact
+
+- Max Howe: mhowe.gis@gmail.com

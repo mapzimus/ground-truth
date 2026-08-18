@@ -1,0 +1,37 @@
+# Data sources and credits
+
+Source pages were reviewed on **August 18, 2026**. Exact file versions and download dates vary by case. A new engagement should refresh and record them before analysis.
+
+## Elevation and lidar
+
+- [USGS 3D Elevation Program](https://www.usgs.gov/3d-elevation-program)
+- [MassGIS Lidar Terrain Data](https://www.mass.gov/info-details/massgis-data-lidar-terrain-data)
+
+The detailed case studies use the spring 2021 Central-Eastern Massachusetts lidar acquisition. MassGIS describes it as Quality Level 1 and distributes 0.5-meter terrain products. USGS 3DEP products are public data; their source metadata still needs to travel with any analysis.
+
+## Parcels and assessor records
+
+- [MassGIS Property Tax Parcels](https://www.mass.gov/info-details/massgis-data-property-tax-parcels)
+
+Level 3 parcels and assessor extracts support the corridor screen. They are administrative mapping records, not surveyed property boundaries or title evidence. Assessor data has a fiscal-year vintage that should be recorded when the screen is refreshed.
+
+## Wetlands and hydrography
+
+- [MassDEP Wetlands (2005), distributed by MassGIS](https://www.mass.gov/info-details/massgis-data-massdep-wetlands-2005)
+- [MassDEP Hydrography (1:25,000)](https://www.mass.gov/info-details/massgis-data-massdep-hydrography-125000)
+
+These layers are planning screens. MassDEP states that its mapped wetland boundaries are not Wetlands Protection Act delineations. Lidar Site Studies therefore describes buffers as **mapped-buffer screens**, never field-confirmed wetland limits.
+
+## Imagery
+
+- [Esri World Imagery service item and current provider credits](https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9)
+
+Selected context figures use Esri World Imagery. Providers vary by location and scale. The imagery is shown for orientation and visual context; it is not the source of the bare-earth terrain quantities in the demonstrations.
+
+## Operating and professional references
+
+- [FAA Part 107 overview](https://www.faa.gov/newsroom/small-unmanned-aircraft-systems-uas-regulations-part-107)
+- [FAA Part 107 airspace authorizations](https://www.faa.gov/uas/commercial_operators/part_107_airspace_authorizations)
+- [Massachusetts statutes and regulations for engineers and land surveyors](https://www.mass.gov/lists/statutes-and-regulations-for-engineers-and-land-surveyors)
+
+These links are provided to make the operating boundary visible. The governing rules and licensing board—not this repository—determine what a particular commercial scope requires.
