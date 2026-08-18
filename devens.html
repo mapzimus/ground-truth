@@ -83,7 +83,7 @@ ol.method{margin:26px 0 0 20px;max-width:66ch;font-size:16px}
 ol.method li{margin-bottom:12px;padding-left:6px}
 ol.method b{font-family:var(--mono);font-weight:700}
 .note{font-family:var(--mono);font-size:13px;color:#a49f8e;border-left:3px solid var(--amber);padding:10px 14px;margin-top:28px;max-width:70ch}
-.locus{max-width:300px;margin-top:26px;border:1px solid var(--line);display:block}
+.locus{max-width:300px;height:auto;margin-top:26px;border:1px solid var(--line);display:block}
 .whofor{font-family:var(--mono);font-size:14px;color:var(--amber);margin-top:18px;max-width:60ch}
 section.paper .note{color:#6d6753}
 footer{padding:72px 0 96px;border-top:1px solid var(--line)}
@@ -119,7 +119,7 @@ figure img{cursor:zoom-in}
     difference on a real parcel: the Devens site where Commonwealth Fusion Systems built its
     campus. Everything below comes from one public lidar flight, processed start to finish
     by me.</p>
-    <img class="locus" src="assets/devens_locus.png" alt="Site location in Massachusetts">
+    <img class="locus" src="assets/devens_locus.png" alt="Site location in Massachusetts" width="437" height="276">
     <p class="whofor">If you're looking at wooded land in Massachusetts, this is the kind of homework you can do before an offer — happy to walk through any of it. <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
     <div class="bignum">282,158 yd³
       <small>of trees that a photo-based surface counts as dirt on this building pad.
@@ -144,8 +144,8 @@ figure img{cursor:zoom-in}
     week, same points. The yellow rectangle is the building pad analyzed below.</p>
     <div class="swipe" id="swipe" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Surface comparison divider — left of it: treetop surface, right of it: bare ground" style="--focus:51% 49%">
       <div class="stage" id="swipeStage">
-        <img src="assets/hs_dtm.jpg" alt="Bare-earth lidar hillshade">
-        <div class="top" id="swipeTop"><img src="assets/hs_dsm.jpg" alt="Canopy surface hillshade"></div>
+        <img src="assets/hs_dtm.jpg" alt="Bare-earth lidar hillshade" width="1530" height="1230">
+        <div class="top" id="swipeTop"><img src="assets/hs_dsm.jpg" alt="Canopy surface hillshade" width="1530" height="1230"></div>
         <div class="bar" id="swipeBar"></div>
       </div>
       <div class="tag left">WHAT A CAMERA SEES</div>
@@ -186,7 +186,7 @@ figure img{cursor:zoom-in}
     particular parcel sat untouched. Within the same square kilometer, other spots moved as
     much as 7 m over that decade. There's no way to know which kind of parcel you have without measuring again.</p>
     <figure>
-      <img src="assets/cutfill_map.jpg" alt="Cut and fill map of the pad" loading="lazy">
+      <img src="assets/cutfill_map.jpg" alt="Cut and fill map of the pad" loading="lazy" width="1124" height="805">
       <figcaption>Where the dirt moves: cut in red, fill in blue, against the balanced
       design grade.</figcaption>
     </figure>
@@ -200,30 +200,30 @@ figure img{cursor:zoom-in}
     <p class="prose">The earthwork number is the headline, but the same dataset answers a bunch of other early-stage questions:</p>
     <div class="moat">
       <figure>
-        <img src="assets/buildable_map.jpg" alt="Buildable land screen" loading="lazy">
+        <img src="assets/buildable_map.jpg" alt="Buildable land screen" loading="lazy" width="1185" height="985">
         <figcaption><b>Where can you build?</b> Slope over 15% and wetland/stream setback
         screens on the true ground: 283 buildable acres out of 428 in this study area.</figcaption>
       </figure>
       <figure>
-        <img src="assets/road_profile.png" alt="Access road grade profile" loading="lazy">
+        <img src="assets/road_profile.png" alt="Access road grade profile" loading="lazy" width="1517" height="917">
         <figcaption><b>Can you get a road in?</b> The direct route from the existing drive
         crosses a bank at 21% grade — over double the usual 8% limit — so the driveway has
         to contour or the bank gets regraded. Good to know before the site plan gets drawn.</figcaption>
       </figure>
       <figure>
-        <img src="assets/chm_map.jpg" alt="Canopy height model" loading="lazy">
+        <img src="assets/chm_map.jpg" alt="Canopy height model" loading="lazy" width="1119" height="805">
         <figcaption><b>What does clearing cost?</b> Tree heights for every cell. The pad
         carries 3.5 acres of forest — roughly $10–21k to clear at typical rates. Stumpage
         revenue can offset part of that — species- and market-dependent (UMass/DCR Southern
         New England Stumpage Price Survey); not netted here.</figcaption>
       </figure>
       <figure>
-        <img src="assets/flowaccum_map.jpg" alt="Stormwater flow accumulation" loading="lazy">
+        <img src="assets/flowaccum_map.jpg" alt="Stormwater flow accumulation" loading="lazy" width="1600" height="1331">
         <figcaption><b>Where does water go?</b> Runoff concentration paths on the real
         terrain, checked against mapped streams. A first look at where the water wants to go.</figcaption>
       </figure>
       <figure>
-        <img src="assets/viewshed_map.jpg" alt="Viewshed before and after clearing" loading="lazy">
+        <img src="assets/viewshed_map.jpg" alt="Viewshed before and after clearing" loading="lazy" width="1252" height="1007">
         <figcaption><b>Who will see it?</b> From the pad, 0.5% of the surrounding area is
         visible today; after clearing, 6.6% — the map shows exactly which road frontage
         and abutters gain a view. A retained tree buffer on the sensitive edges would soften most of it — easier to plan for now than to argue about later.</figcaption>
@@ -242,7 +242,7 @@ figure img{cursor:zoom-in}
     building actually went. In other words: this is the analysis that could have been on
     the table before a single tree came down.</p>
     <figure>
-      <img src="assets/imagery_aoi.jpg" alt="Aerial imagery of the built campus" loading="lazy">
+      <img src="assets/imagery_aoi.jpg" alt="Aerial imagery of the built campus" loading="lazy" width="1200" height="960">
       <figcaption>The same ground today. Every building in this photo is younger than the
       point cloud used above. (Esri World Imagery)</figcaption>
     </figure>

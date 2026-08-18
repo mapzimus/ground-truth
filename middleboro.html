@@ -83,7 +83,7 @@ ol.method{margin:26px 0 0 20px;max-width:66ch;font-size:16px}
 ol.method li{margin-bottom:12px;padding-left:6px}
 ol.method b{font-family:var(--mono);font-weight:700}
 .note{font-family:var(--mono);font-size:13px;color:#a49f8e;border-left:3px solid var(--amber);padding:10px 14px;margin-top:28px;max-width:70ch}
-.locus{max-width:300px;margin-top:26px;border:1px solid var(--line);display:block}
+.locus{max-width:300px;height:auto;margin-top:26px;border:1px solid var(--line);display:block}
 .whofor{font-family:var(--mono);font-size:14px;color:var(--amber);margin-top:18px;max-width:60ch}
 section.paper .note{color:#6d6753}
 footer{padding:72px 0 96px;border-top:1px solid var(--line)}
@@ -118,7 +118,7 @@ figure img{cursor:zoom-in}
     Route 44 / I-495 interchange. The proposal was withdrawn in 2024; the parcel is still trees.
     This page is that analysis, run from public laser data. Worth noting: no high-resolution public elevation data existed here
     at all before the 2021 flight.</p>
-    <img class="locus" src="assets/middleboro_locus.png" alt="Site location in Massachusetts">
+    <img class="locus" src="assets/middleboro_locus.png" alt="Site location in Massachusetts" width="480" height="276">
     <p class="whofor">If you're looking at wooded land in Massachusetts, this is the kind of homework you can do before an offer — happy to walk through any of it. <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
     <div class="bignum">246 acres
       <small>of this square kilometer sit inside wetland and stream setbacks — over half the land here already carries regulatory constraints.</small>
@@ -142,8 +142,8 @@ figure img{cursor:zoom-in}
     week, same points. The yellow rectangle is the building pad analyzed below.</p>
     <div class="swipe" id="swipe" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Surface comparison divider — left of it: treetop surface, right of it: bare ground" style="--focus:81% 13%">
       <div class="stage" id="swipeStage">
-        <img src="assets/mb_hs_dtm.jpg" alt="Bare-earth lidar hillshade">
-        <div class="top" id="swipeTop"><img src="assets/mb_hs_dsm.jpg" alt="Canopy surface hillshade"></div>
+        <img src="assets/mb_hs_dtm.jpg" alt="Bare-earth lidar hillshade" width="1530" height="1230">
+        <div class="top" id="swipeTop"><img src="assets/mb_hs_dsm.jpg" alt="Canopy surface hillshade" width="1530" height="1230"></div>
         <div class="bar" id="swipeBar"></div>
       </div>
       <div class="tag left">WHAT A CAMERA SEES</div>
@@ -187,7 +187,7 @@ figure img{cursor:zoom-in}
     published 10 cm vertical accuracy over this pad (our verified accuracy here was 2.0 cm,
     so that's conservative). That's the range a grading contingency should cover.</p>
     <figure>
-      <img src="assets/mb_cutfill_map.jpg" alt="Cut and fill map of the pad" loading="lazy">
+      <img src="assets/mb_cutfill_map.jpg" alt="Cut and fill map of the pad" loading="lazy" width="1124" height="805">
       <figcaption>Where the dirt moves: cut in red, fill in blue, against the balanced
       design grade.</figcaption>
     </figure>
@@ -201,37 +201,37 @@ figure img{cursor:zoom-in}
     <p class="prose">The earthwork number is the headline, but the same dataset answers a bunch of other early-stage questions:</p>
     <div class="moat">
       <figure>
-        <img src="assets/mb_wetrisk_map.jpg" alt="Wetland-risk discrepancy map" loading="lazy">
+        <img src="assets/mb_wetrisk_map.jpg" alt="Wetland-risk discrepancy map" loading="lazy" width="1185" height="985">
         <figcaption><b>Where does the map disagree with the terrain?</b> Cells whose
         wetness signature matches the mapped wetlands, but that the state map calls dry:
         112 acres here — including 10 of the pad's 16.3. Sandy ground drains, so this is
         a screening flag, not a delineation; it shows where a wetland scientist should look first.</figcaption>
       </figure>
       <figure>
-        <img src="assets/mb_buildable_map.jpg" alt="Buildable land screen" loading="lazy">
+        <img src="assets/mb_buildable_map.jpg" alt="Buildable land screen" loading="lazy" width="1185" height="985">
         <figcaption><b>Where can you build?</b> Slope and wetland/stream setback screens on
         true ground: only 175 buildable acres out of 441 here — the constraint map is most of the story on this parcel, and it's also how the pad found its spot.</figcaption>
       </figure>
       <figure>
-        <img src="assets/mb_road_profile.png" alt="Access road grade profile" loading="lazy">
+        <img src="assets/mb_road_profile.png" alt="Access road grade profile" loading="lazy" width="1517" height="917">
         <figcaption><b>Can you get a road in?</b> Yes — and that's worth knowing too. The
         route from Route 44 to the pad's far corner runs 333 m, climbs 3.2 m, and never
         exceeds 5.1% grade. Access is one thing this parcel gets for free.</figcaption>
       </figure>
       <figure>
-        <img src="assets/mb_chm_map.jpg" alt="Canopy height model" loading="lazy">
+        <img src="assets/mb_chm_map.jpg" alt="Canopy height model" loading="lazy" width="1119" height="805">
         <figcaption><b>What does clearing cost?</b> Tree heights for every cell. The pad
         carries 11.2 acres of forest — roughly $34–67k to clear at typical rates. Stumpage
         revenue can offset part of that — species- and market-dependent (UMass/DCR Southern
         New England Stumpage Price Survey); not netted here.</figcaption>
       </figure>
       <figure>
-        <img src="assets/mb_flowaccum_map.jpg" alt="Stormwater flow accumulation" loading="lazy">
+        <img src="assets/mb_flowaccum_map.jpg" alt="Stormwater flow accumulation" loading="lazy" width="1600" height="1331">
         <figcaption><b>Where does water go?</b> Runoff concentration paths on the real
         terrain. On a parcel this wet, drainage will be a big part of permitting, and this is a first look at where the water wants to go.</figcaption>
       </figure>
       <figure>
-        <img src="assets/mb_viewshed_map.jpg" alt="Viewshed before and after clearing" loading="lazy">
+        <img src="assets/mb_viewshed_map.jpg" alt="Viewshed before and after clearing" loading="lazy" width="1185" height="985">
         <figcaption><b>Who will see it?</b> From the pad today: nothing — 0.0% of the
         surrounding area is visible through the forest. After clearing: 18.2%, reaching
         the Route 44 frontage and the homes south of the parcel. A retained tree buffer
@@ -252,7 +252,7 @@ figure img{cursor:zoom-in}
     still on the market in practice — which makes it a live case study rather than a
     postmortem.</p>
     <figure>
-      <img src="assets/mb_imagery_aoi.jpg" alt="Aerial imagery of the parcel today" loading="lazy">
+      <img src="assets/mb_imagery_aoi.jpg" alt="Aerial imagery of the parcel today" loading="lazy" width="1600" height="1280">
       <figcaption>The same ground today: still forest, with logistics buildings and trailer yards on both sides — the reason parcels like this keep drawing proposals. (Esri World
       Imagery)</figcaption>
     </figure>
