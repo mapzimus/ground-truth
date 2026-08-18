@@ -16,11 +16,6 @@ The service concept has three levels:
 2. **Fresh flight** — acquire current lidar and imagery with an FAA Part 107 remote pilot when public data is too old or incomplete.
 3. **Decision report** — turn the terrain into a short, visual explanation of the risks, comparisons, and recommended next diligence steps.
 
-<<<<<<< HEAD
-Static site, no build step: one HTML file per page, shared styles and scripts in
-`site.css` / `site.js` (the index page keeps its own inline styles), images in
-`assets/`. Deployed via GitHub Pages (`.nojekyll` disables Jekyll processing).
-=======
 This repository is a portfolio and client-conversation demo by **Max Howe, MS, Geographic Information Science**. It is not yet presented as an operating survey or engineering firm. Work requiring licensed land surveying or professional engineering would be scoped with appropriately licensed partners.
 
 ## Case studies
@@ -62,7 +57,6 @@ node scripts/validate-site.mjs
 ```
 
 This is a static site, so it can also be previewed with any simple local web server.
->>>>>>> cursor/site-audit-fixes-c57e
 
 ## Contact
 
