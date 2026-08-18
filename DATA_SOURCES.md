@@ -20,7 +20,7 @@ Level 3 parcels and assessor extracts support the corridor screen. They are admi
 - [MassDEP Wetlands (2005), distributed by MassGIS](https://www.mass.gov/info-details/massgis-data-massdep-wetlands-2005)
 - [MassDEP Hydrography (1:25,000)](https://www.mass.gov/info-details/massgis-data-massdep-hydrography-125000)
 
-These layers are planning screens. MassDEP states that its mapped wetland boundaries are not Wetlands Protection Act delineations. Ground Truth therefore describes buffers as **mapped-buffer screens**, never field-confirmed wetland limits.
+These layers are planning screens. MassDEP states that its mapped wetland boundaries are not Wetlands Protection Act delineations. Lidar Site Studies therefore describes buffers as **mapped-buffer screens**, never field-confirmed wetland limits.
 
 ## Imagery
 
