@@ -26,7 +26,8 @@ sightlines — with the same pipeline run on every site so results compare direc
 
 ## Structure
 
-Static site, no build step: one self-contained HTML file per page, images in
+Static site, no build step: one HTML file per page, shared styles and scripts in
+`site.css` / `site.js` (the index page keeps its own inline styles), images in
 `assets/`. Deployed via GitHub Pages (`.nojekyll` disables Jekyll processing).
 
 ## Contact
