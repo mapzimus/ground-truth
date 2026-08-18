@@ -1,153 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ground Truth — Lidar Test Projects</title>
-<meta name="description" content="A series of lidar terrain-analysis test projects on real Massachusetts parcels: earthwork, buildable land, drainage, sightlines from public laser data.">
-<meta property="og:title" content="Ground Truth — Lidar Test Projects">
-<meta property="og:description" content="What laser data shows about real development parcels that drone photos cannot.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://mapzimus.github.io/ground-truth/assets/hs_dtm.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#12130f; --ground:#1a1b16; --paper:#f2efe6; --amber:#ffb400; --line:#3a3b33;
-  --mono:'IBM Plex Mono',monospace; --disp:'Archivo Black',sans-serif; --body:'Archivo',sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--ground);color:var(--paper);font-family:var(--body);line-height:1.55;min-height:100vh;
-  background:
-    repeating-linear-gradient(0deg,transparent 0 39px,rgba(255,180,0,.05) 39px 40px),
-    repeating-linear-gradient(90deg,transparent 0 39px,rgba(255,180,0,.05) 39px 40px),
-    var(--ground);}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-header{padding:88px 0 40px}
-.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
-h1{font-family:var(--disp);font-size:clamp(40px,7vw,84px);line-height:1.02;margin:18px 0 22px;text-transform:uppercase}
-h1 span{color:var(--amber)}
-.lede{max-width:56ch;font-size:19px;color:#cfcaba}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;margin:56px 0 80px}
-.card{display:block;border:1px solid var(--line);text-decoration:none;color:var(--paper);
-  background:#20211b;transition:border-color .2s, transform .2s}
-.card:hover{border-color:var(--amber);transform:translateY(-3px)}
-.card img{width:100%;height:230px;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
-.card .body{padding:18px 18px 22px}
-.card .num{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.18em}
-.card h2{font-family:var(--disp);font-size:22px;text-transform:uppercase;margin:8px 0 8px;line-height:1.1}
-.card p{font-size:14.5px;color:#a49f8e}
-.card .stat{font-family:var(--mono);font-size:13px;color:var(--paper);margin-top:12px}
-.card.soon{opacity:.65;pointer-events:none}
-.card.soon .num::after{content:'  ·  IN PROGRESS';color:#a49f8e}
-footer{padding:24px 0 60px;font-family:var(--mono);font-size:14px;color:#a49f8e}
-footer a{color:var(--amber)}
-.whofor{font-family:var(--mono);font-size:14px;color:var(--amber);margin-top:18px;max-width:60ch}
-.compare{margin:0 0 80px}
-.compare h2{font-family:var(--disp);font-size:clamp(22px,3vw,32px);text-transform:uppercase;margin-bottom:8px}
-.compare p{max-width:64ch;color:#cfcaba;margin-bottom:22px}
-.tablewrap{overflow-x:auto}
-.compare table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:640px}
-.compare th,.compare td{padding:11px 13px;text-align:right;border-bottom:1px solid var(--line)}
-.compare th:first-child,.compare td:first-child{text-align:left}
-.compare thead th{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a49f8e}
-.compare td{font-family:var(--mono)}
-.compare td.hot{color:var(--amber);font-weight:700}
-.compare .foot{font-family:var(--mono);font-size:12.5px;color:#a49f8e;margin-top:12px;max-width:80ch}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ground Truth — Terrain Intelligence for Wooded Land</title>
+  <meta name="description" content="Planning-level terrain intelligence for wooded Massachusetts parcels: public-data screening, fresh drone LiDAR, and GIS analysis before a land decision.">
+  <link rel="canonical" href="https://mapzimus.github.io/ground-truth/">
+  <meta property="og:title" content="Know What Wooded Land May Cost Before You Buy It">
+  <meta property="og:description" content="Drone LiDAR, aerial imagery, and GIS analysis for early terrain, drainage, access, clearing, and earthwork decisions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mapzimus.github.io/ground-truth/">
+  <meta property="og:image" content="https://mapzimus.github.io/ground-truth/assets/hs_dtm.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%B0%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Ground Truth",
+    "url": "https://mapzimus.github.io/ground-truth/",
+    "description": "A public-data demonstration of planning-level terrain intelligence for wooded Massachusetts parcels.",
+    "author": {"@type": "Person", "name": "Max Howe"}
+  }
+  </script>
 </head>
-<body>
-<header>
-  <div class="wrap">
-    <div class="kicker">Lidar terrain analysis · test-project series</div>
-    <h1>Ground <span>truth.</span></h1>
-    <p class="lede">Drone photos can't see through trees; laser pulses can. Each project below
-    takes free public lidar over a real Massachusetts development parcel and turns it into the
-    numbers that decide a project: earthwork, buildable land, drainage, road access, clearing,
-    sightlines. The same pipeline runs on every site, so the results compare directly.</p>
-    <p class="whofor">If you're looking at wooded land in Massachusetts, this is the kind of homework you can do before an offer — happy to walk through any of it. <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
-  </div>
-</header>
+<body class="site-home">
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-<main class="wrap">
-  <div class="cards">
-    <a class="card" href="devens.html">
-      <img src="assets/hs_dtm.jpg" alt="Devens bare-earth hillshade">
-      <div class="body">
-        <div class="num">PROJECT 01 · DEVENS, MA</div>
-        <h2>The pad under the forest</h2>
-        <p>Public lidar landed 17 days after a 47-acre campus was announced — catching the
-        parcel in its last weeks as forest. Earthwork priced three ways on the pad where the
-        largest building actually went.</p>
-        <div class="stat">282,158 yd³ of phantom earthwork in the photo surface ≈ $5.6M</div>
+  <nav class="projnav" aria-label="Primary navigation">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-current="page">GROUND TRUTH</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-links">Menu</button>
+      <div class="links" id="primary-links">
+        <a href="#services">Services</a>
+        <a href="#process">How it works</a>
+        <a href="#cases">Case studies</a>
+        <a href="methodology.html">Method &amp; limits</a>
+        <a class="nav-cta" href="mailto:mhowe.gis@gmail.com?subject=Ground%20Truth%20parcel%20screen">Request a parcel screen</a>
       </div>
-    </a>
-    <a class="card" href="middleboro.html">
-      <img src="assets/mb_hs_dtm.jpg" alt="Middleborough bare-earth hillshade">
-      <div class="body">
-        <div class="num">PROJECT 02 · MIDDLEBOROUGH, MA</div>
-        <h2>The warehouse that wasn't</h2>
-        <p>150 wooded acres at the Route 44 / I-495 interchange. A 673,000 sq ft warehouse
-        proposal was withdrawn in 2024 — the parcel is still forest. More than half the
-        surrounding land sits in wetland setbacks, and the pad had to be found, not drawn.</p>
-        <div class="stat">705,016 yd³ of phantom earthwork in the photo surface ≈ $14.1M</div>
-      </div>
-    </a>
-    <a class="card" href="hopkinton.html">
-      <img src="assets/hk_hs_dtm.jpg" alt="Hopkinton bare-earth hillshade">
-      <div class="body">
-        <div class="num">PROJECT 03 · HOPKINTON–MILFORD LINE, MA</div>
-        <h2>Three pads, three price tags</h2>
-        <p>Rolling glacial forest on the I-495 logistics belt. Every possible 16-acre pad
-        position screened and the three best priced — the cheapest dirt sits closest to the
-        wetlands, and the grading bill swings by $2.5M depending on where the building lands.</p>
-        <div class="stat">Same warehouse: $3.96M, $6.34M, or $6.50M of earthwork</div>
-      </div>
-    </a>
-    <a class="card" href="p04.html">
-      <img src="assets/p04_corridor_map.jpg" alt="Corridor screen map">
-      <div class="body">
-        <div class="num">PROJECT 04 · I-495 CORRIDOR, 9 TOWNS</div>
-        <h2>Fifty-four parcels. Fourteen can hold a building.</h2>
-        <p>The question before any single-site study: which sites are worth studying?
-        Every vacant 10+ acre parcel within 1.5 km of 20 km of I-495, Hopkinton through
-        Bellingham, screened and ranked by sitework cost. The affordable dirt turns out
-        to be at the southern end.</p>
-        <div class="stat">Best in corridor: 87 ac in Franklin — $1.94/SF sitework</div>
-      </div>
-    </a>
-  </div>
-
-  <div class="compare">
-    <h2>Three sites, one pipeline</h2>
-    <p>Because every project runs the identical workflow, the results are directly
-    comparable — sitework cost belongs to the parcel, and it varies more than you might expect. Across these three, the same analysis produced a
-    <b>4× spread in sitework cost per square foot of pad</b>.</p>
-    <div class="tablewrap">
-    <table>
-      <thead><tr><th>Site</th><th>Pad</th><th>Earthwork @ $20/yd³</th><th>Clearing (mid)</th><th>Access</th><th>Sitework $/SF of pad</th></tr></thead>
-      <tbody>
-        <tr><td>01 Devens</td><td>5.3 ac / 232,600 SF</td><td>$0.49M ± $57k</td><td>$16k</td><td>regrade a 21% bank</td><td class="hot">$2.2</td></tr>
-        <tr><td>02 Middleborough</td><td>16.3 ac / 710,000 SF</td><td>$1.69M ± $173k</td><td>$50k</td><td>flat, no penalty</td><td class="hot">$2.5</td></tr>
-        <tr><td>03 Hopkinton</td><td>16.3 ac / 710,000 SF</td><td>$6.34M ± $173k</td><td>$68k</td><td>11% grade, must contour</td><td class="hot">$9.0</td></tr>
-      </tbody>
-    </table>
     </div>
-    <p class="foot">± ranges are grading contingencies derived from the lidar's published
-    10 cm vertical accuracy over each pad (conservative — verified accuracy on these sites
-    was 2–7.6 cm). $/SF uses the measured pad area; per-building-SF ≈ 2× these figures at
-    a 50%-coverage single-story assumption. Access penalties are not dollarized.</p>
-  </div>
-</main>
+  </nav>
 
-<footer>
-  <div class="wrap">
-    Max Howe · MS, Geographic Information Science ·
-    <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a> ·
-    all data public (USGS 3DEP / MassGIS)
-  </div>
-</footer>
+  <header class="hero">
+    <div class="wrap">
+      <div class="kicker">Terrain intelligence for wooded land</div>
+      <h1>Know what wooded land may cost <span>before you buy it.</span></h1>
+      <p class="lede">Combine current drone LiDAR, aerial imagery, and GIS analysis to screen terrain, drainage, access, clearing, and earthwork before a development decision is made.</p>
+      <div class="hero-actions">
+        <a class="button" href="mailto:mhowe.gis@gmail.com?subject=Ground%20Truth%20parcel%20screen">Request a parcel screen</a>
+        <a class="button secondary" href="devens.html">View the Devens validation case</a>
+      </div>
+      <p class="status-note"><strong>Current status:</strong> Ground Truth is a service concept and public-data demonstration by Max Howe. Fresh-flight work would be scoped with an FAA Part 107 remote pilot. Survey, boundary, and engineering deliverables require appropriately licensed partners.</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="paper" id="services">
+      <div class="wrap">
+        <div class="kicker">A focused first offer</div>
+        <h2>Start broad. Fly only when the decision needs it.</h2>
+        <p class="section-intro">The service is designed as a sequence. Public data can eliminate weak sites cheaply; fresh acquisition is reserved for the parcels that survive the first screen.</p>
+        <div class="service-grid">
+          <article class="service">
+            <div class="num">01 · DESKTOP SCREEN</div>
+            <h3>Shortlist the land</h3>
+            <p>Use public LiDAR, parcel records, mapped wetlands, streams, and slope to identify terrain constraints and decide which properties deserve deeper work.</p>
+          </article>
+          <article class="service">
+            <div class="num">02 · FRESH FLIGHT</div>
+            <h3>Measure current conditions</h3>
+            <p>Where public elevation data is too old, collect current LiDAR and mapping imagery through an FAA-compliant flight plan with appropriate site access and control.</p>
+          </article>
+          <article class="service">
+            <div class="num">03 · DECISION REPORT</div>
+            <h3>Turn terrain into choices</h3>
+            <p>Compare pad locations, earthwork sensitivity, access grades, drainage paths, clearing, and sightlines in one planning-level report.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="kicker">One project, complementary skills</div>
+        <h2>Flight operations plus GIS analysis</h2>
+        <p class="section-intro">Aerial imagery tells the visual story above the ground. LiDAR measures the terrain beneath vegetation. GIS turns both into a defensible early decision.</p>
+        <div class="team-grid">
+          <article class="panel">
+            <h3>Flight partner</h3>
+            <p>FAA Part 107 operations, site safety, mission planning, LiDAR acquisition, and high-resolution imagery or video.</p>
+          </article>
+          <article class="panel">
+            <h3>Max Howe · GIS</h3>
+            <p>Data processing, quality checks, terrain modeling, constraint screening, comparisons, and the client-facing decision report.</p>
+          </article>
+          <article class="panel">
+            <h3>Licensed partners</h3>
+            <p>Professional survey control, authoritative boundary or topographic products, civil design, and stamped deliverables when the project requires them.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="paper" id="process">
+      <div class="wrap">
+        <div class="kicker">How it works</div>
+        <h2>From parcel question to next decision</h2>
+        <div class="process-grid">
+          <article class="process-step"><div class="num">01</div><h3>Define the decision</h3><p>Parcel, likely use, target pad size, timeline, and the question that could change the deal.</p></article>
+          <article class="process-step"><div class="num">02</div><h3>Screen existing data</h3><p>Check data age and coverage, terrain, mapped constraints, likely access, and whether a fresh flight is warranted.</p></article>
+          <article class="process-step"><div class="num">03</div><h3>Analyze or acquire</h3><p>Run the public-data study or scope a current LiDAR and imagery mission with the required control and professional oversight.</p></article>
+          <article class="process-step"><div class="num">04</div><h3>Deliver the decision brief</h3><p>Maps, assumptions, screening estimates, limitations, and a short list of field, survey, geotechnical, or engineering follow-ups.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="wrap">
+        <div class="kicker">Four real Massachusetts studies</div>
+        <h2>What the same workflow found</h2>
+        <p class="section-intro">These are planning-level demonstrations from public data. They show the decisions the workflow can support—not bids, surveys, wetland delineations, or final designs.</p>
+        <div class="case-grid">
+          <a class="card" href="devens.html">
+            <img src="assets/hs_dtm.jpg" alt="Devens bare-earth hillshade" loading="lazy" width="1530" height="1230">
+            <div class="body"><div class="num">PROJECT 01 · DEVENS, MA</div><h3>The pad under the forest</h3><p>Public LiDAR captured the parcel shortly before construction, allowing a comparison with the building that followed.</p><div class="statline">Camera-surface overstatement: 282,158 yd³ ≈ $5.6M</div></div>
+          </a>
+          <a class="card" href="middleboro.html">
+            <img src="assets/mb_hs_dtm.jpg" alt="Middleborough bare-earth hillshade" loading="lazy" width="1530" height="1230">
+            <div class="body"><div class="num">PROJECT 02 · MIDDLEBOROUGH, MA</div><h3>The warehouse that wasn't</h3><p>A proposed warehouse site where terrain screening finds manageable dirt work but significant mapped and terrain-based wetness questions.</p><div class="statline">Terrain screen: 175 of 441 acres pass slope and mapped-buffer tests</div></div>
+          </a>
+          <a class="card" href="hopkinton.html">
+            <img src="assets/hk_hs_dtm.jpg" alt="Hopkinton bare-earth hillshade" loading="lazy" width="1530" height="1230">
+            <div class="body"><div class="num">PROJECT 03 · HOPKINTON–MILFORD LINE</div><h3>Three pads, three price tags</h3><p>The same conceptual warehouse footprint produces very different screening-level earthwork costs depending on where it sits.</p><div class="statline">Same pad concept: $3.96M, $6.34M, or $6.50M of earthwork</div></div>
+          </a>
+          <a class="card" href="p04.html">
+            <img src="assets/p04_corridor_map.jpg" alt="I-495 parcel-screening corridor map" loading="lazy" width="1044" height="1332">
+            <div class="body"><div class="num">PROJECT 04 · I-495 CORRIDOR</div><h3>Fifty-four parcels. Fourteen pass.</h3><p>A corridor-wide first pass that narrows a long list before detailed studies or fresh flights are commissioned.</p><div class="statline">14 of 54 parcels fit a conceptual pad under the stated terrain screens</div></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="paper">
+      <div class="wrap">
+        <div class="kicker">Comparable screening assumptions</div>
+        <h2>Three deep studies, one workflow</h2>
+        <p class="section-intro">Using the same conceptual grading approach makes terrain risk comparable across sites. These subtotals include modeled earthwork and midpoint clearing only; they are not total sitework budgets.</p>
+        <div class="tablewrap" data-label="Comparison of the three detailed case studies">
+          <table>
+            <caption>Planning-level comparison of the three detailed case studies</caption>
+            <thead><tr><th scope="col">Site</th><th scope="col">Conceptual pad</th><th scope="col">Earthwork @ $20/yd³</th><th scope="col">Clearing midpoint</th><th scope="col">Access flag</th><th scope="col">Terrain subtotal / pad SF</th></tr></thead>
+            <tbody>
+              <tr><td>01 Devens</td><td>5.3 ac / 232,600 SF</td><td>$0.49M ± $57k data sensitivity</td><td>$16k</td><td>21% bank requires redesign</td><td>$2.2</td></tr>
+              <tr><td>02 Middleborough</td><td>16.3 ac / 710,000 SF</td><td>$1.69M ± $173k data sensitivity</td><td>$50k</td><td>screened route peaks at 5.1%</td><td>$2.5</td></tr>
+              <tr><td>03 Hopkinton</td><td>16.3 ac / 710,000 SF</td><td>$6.34M ± $173k data sensitivity</td><td>$68k</td><td>11% route requires redesign</td><td>$9.0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="scope-note"><strong>Not included:</strong> final grading design, topsoil stripping, shrink/swell, unsuitable soils, rock excavation, haul/disposal, retaining walls, utilities, stormwater construction, erosion control, mobilization, permitting, survey, or engineering.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="kicker">Clear professional boundaries</div>
+        <h2>Useful early—not a substitute for final design</h2>
+        <div class="boundary-grid">
+          <article class="boundary"><h3>This work is for</h3><p>Planning, comparison, due diligence, scoping, and deciding where field and professional work should focus next.</p></article>
+          <article class="boundary"><h3>This work is not</h3><p>A boundary survey, wetland delineation, geotechnical investigation, construction quantity, bid, drainage design, or stamped engineering product.</p></article>
+          <article class="boundary"><h3>Ground Truth is a name</h3><p>The project title refers to terrain beneath vegetation. It does not mean the public-data studies have been field-surveyed or certified.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="cta">Have a wooded parcel? <span class="accent">Start with the decision.</span></p>
+      <div class="hero-actions"><a class="button" href="mailto:mhowe.gis@gmail.com?subject=Ground%20Truth%20parcel%20screen">Request a parcel screen</a></div>
+      <p class="contact">Max Howe · MS, Geographic Information Science · <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
+      <div class="footer-links"><a href="methodology.html">Method, sources &amp; limitations</a><a href="https://github.com/mapzimus/ground-truth">GitHub repository</a></div>
+      <p class="footer-meta">Public-agency data: USGS 3DEP and MassGIS. Esri World Imagery appears in selected case-study context images with credits described in the methodology.</p>
+    </div>
+  </footer>
+
+  <script src="site.js" defer></script>
 </body>
 </html>

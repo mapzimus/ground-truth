@@ -3,111 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Three Pads, Three Price Tags — Lidar Demo, Hopkinton MA</title>
-<meta name="description" content="Lidar pad-siting analysis on the I-495 logistics belt: the same warehouse pad costs $4.0M or $6.5M to grade depending on where it lands.">
+<title>Three Pads, Three Price Tags — Planning-Level LiDAR Study, Hopkinton MA</title>
+<meta name="description" content="A planning-level public-LiDAR comparison of three conceptual warehouse-pad positions along the I-495 logistics corridor.">
+<link rel="canonical" href="https://mapzimus.github.io/ground-truth/hopkinton.html">
 <meta property="og:title" content="Three Pads, Three Price Tags">
 <meta property="og:description" content="Rolling forest on the I-495 logistics belt. Same warehouse, three candidate sites — the dirt bill swings by $2.5M.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://mapzimus.github.io/ground-truth/hopkinton.html">
 <meta property="og:image" content="https://mapzimus.github.io/ground-truth/assets/hk_hs_dtm.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%B0%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#12130f; --ground:#1a1b16; --paper:#f2efe6; --paper2:#e8e3d5;
-  --amber:#ffb400; --cut:#c0392b; --fill:#2e6da4; --line:#3a3b33;
-  --mono:'IBM Plex Mono',monospace; --disp:'Archivo Black',sans-serif; --body:'Archivo',sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--ground);color:var(--paper);font-family:var(--body);line-height:1.55}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-header{position:relative;padding:72px 0 56px;overflow:hidden;
-  background:
-    repeating-linear-gradient(0deg,transparent 0 39px,rgba(255,180,0,.05) 39px 40px),
-    repeating-linear-gradient(90deg,transparent 0 39px,rgba(255,180,0,.05) 39px 40px),
-    var(--ground);}
-.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
-h1{font-family:var(--disp);font-size:clamp(38px,6.5vw,74px);line-height:1.02;margin:18px 0 22px;text-transform:uppercase}
-h1 .under{color:var(--amber)}
-.lede{max-width:52ch;font-size:19px;color:#cfcaba}
-.bignum{margin:44px 0 8px;font-family:var(--mono);font-weight:700;
-  font-size:clamp(44px,9vw,104px);color:var(--amber);letter-spacing:-.02em}
-.bignum small{display:block;font-size:clamp(14px,2vw,19px);font-weight:400;color:#cfcaba;letter-spacing:.06em;margin-top:6px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);margin:56px 0 0}
-.stat{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 18px}
-.stat .v{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--paper)}
-.stat .l{font-size:13px;color:#a49f8e;margin-top:4px}
-.stat.hot .v{color:var(--amber)}
-section{padding:72px 0}
-section.paper{background:var(--paper);color:var(--ink)}
-section.paper .kicker{color:#8a6400}
-h2{font-family:var(--disp);font-size:clamp(26px,3.6vw,40px);text-transform:uppercase;line-height:1.08;margin:14px 0 18px}
-.prose{max-width:64ch;font-size:17px}
-.prose+.prose{margin-top:14px}
-.prose b{font-weight:700}
-figure{margin:34px 0 0}
-figure img{width:100%;height:auto;display:block;border:1px solid var(--line)}
-section.paper figure img{border-color:#c9c2ae}
-figcaption{font-family:var(--mono);font-size:13px;color:#a49f8e;padding:10px 2px}
-section.paper figcaption{color:#6d6753}
-.swipe{position:relative;margin:38px 0 0;user-select:none;touch-action:none;cursor:ew-resize;border:1px solid var(--line)}
-.swipe{aspect-ratio:5/4;overflow:hidden}
-.swipe img{pointer-events:none}
-.swipe .stage{position:absolute;inset:0;transform-origin:center}
-.swipe .stage>img,.swipe .top img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%)}
-.fsbtn{position:absolute;bottom:12px;right:12px;z-index:5;font-size:17px;line-height:1;background:rgba(18,19,15,.85);color:#f2efe6;border:1px solid #3a3b33;padding:9px 12px;cursor:pointer;font-family:'IBM Plex Mono',monospace}
-.swipe.fs{position:fixed;inset:0;z-index:98;aspect-ratio:auto;height:100dvh;margin:0;background:#000}
-@media(max-width:640px){.swipe{aspect-ratio:auto;height:64vh}.swipe .bar::after{font-size:15px;padding:13px 15px}}
-.swipe .top{position:absolute;inset:0;overflow:hidden}
-
-.swipe .bar{position:absolute;top:0;bottom:0;width:2px;background:var(--amber);pointer-events:none}
-.swipe .bar::after{content:'◂ ▸';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  background:var(--amber);color:var(--ink);font-size:13px;font-weight:700;padding:7px 9px;border-radius:20px;white-space:nowrap}
-.tag{position:absolute;top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;
-  padding:5px 10px;background:rgba(18,19,15,.82);color:var(--paper);pointer-events:none}
-.tag.left{left:12px}.tag.right{right:12px;background:rgba(255,180,0,.92);color:var(--ink)}
-.tablewrap{overflow-x:auto;margin:30px 0 0}
-table{border-collapse:collapse;width:100%;font-size:15px;min-width:560px}
-th,td{padding:12px 14px;text-align:right;border-bottom:1px solid #c9c2ae}
-th:first-child,td:first-child{text-align:left}
-thead th{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6d6753}
-td{font-family:var(--mono)}
-tr.ours td{background:#fff8e0;font-weight:700}
-tr.delta td{color:var(--cut);font-weight:700}
-.moat{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:36px}
-.moat figure{margin:0}
-ol.method{margin:26px 0 0 20px;max-width:66ch;font-size:16px}
-ol.method li{margin-bottom:12px;padding-left:6px}
-ol.method b{font-family:var(--mono);font-weight:700}
-.note{font-family:var(--mono);font-size:13px;color:#a49f8e;border-left:3px solid var(--amber);padding:10px 14px;margin-top:28px;max-width:70ch}
-.locus{max-width:300px;margin-top:26px;border:1px solid var(--line);display:block}
-.whofor{font-family:var(--mono);font-size:14px;color:var(--amber);margin-top:18px;max-width:60ch}
-section.paper .note{color:#6d6753}
-footer{padding:72px 0 96px;border-top:1px solid var(--line)}
-footer .cta{font-family:var(--disp);font-size:clamp(24px,3.4vw,38px);text-transform:uppercase;max-width:22ch;line-height:1.12}
-footer .cta span{color:var(--amber)}
-.contact{margin-top:26px;font-family:var(--mono);font-size:15px;color:#cfcaba}
-a{color:var(--amber)}
-@media(max-width:640px){section{padding:52px 0}}
-.projnav{position:sticky;top:0;z-index:50;background:rgba(18,19,15,.96);border-bottom:1px solid var(--line)}
-.projnav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
-.projnav .brand{font-family:var(--disp);font-size:15px;color:var(--paper);text-decoration:none;letter-spacing:.08em}
-.projnav .links a{font-family:var(--mono);font-size:13px;color:#a49f8e;text-decoration:none;margin-left:22px;letter-spacing:.06em}
-.projnav .links a.on{color:var(--amber)}
-figure img{cursor:zoom-in}
-.swipe img{cursor:inherit}
-.lightbox{position:fixed;inset:0;background:rgba(10,10,8,.94);display:none;flex-direction:column;
-  align-items:center;justify-content:center;gap:12px;z-index:99;padding:20px;cursor:zoom-out}
-.lightbox.open{display:flex}
-.lightbox img{max-width:96vw;max-height:84vh;border:1px solid var(--line);cursor:grab;touch-action:none}
-.lightbox .cap{font-family:var(--mono);font-size:13px;color:#cfcaba;max-width:90ch;text-align:center}
-.lightbox .hint{font-family:var(--mono);font-size:11px;color:#7a766a}
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
-<nav class="projnav"><div class="wrap"><a class="brand" href="index.html">GROUND TRUTH</a><span class="links"><a href="devens.html">01 · Devens</a><a href="middleboro.html">02 · Middleborough</a><a class="on" href="hopkinton.html">03 · Hopkinton</a><a href="p04.html">04 · Corridor</a></span></div></nav>
+<a class="skip-link" href="#main">Skip to main content</a>
+<nav class="projnav" aria-label="Case-study navigation"><div class="wrap"><a class="brand" href="index.html">GROUND TRUTH</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-links">Menu</button><div class="links" id="case-links"><a href="index.html#cases">All work</a><a href="devens.html">01 · Devens</a><a href="middleboro.html">02 · Middleborough</a><a class="on" aria-current="page" href="hopkinton.html">03 · Hopkinton</a><a href="p04.html">04 · Corridor</a><a class="nav-cta" href="mailto:mhowe.gis@gmail.com?subject=Ground%20Truth%20parcel%20screen">Request a screen</a></div></div></nav>
+<main id="main">
 <header>
   <div class="wrap">
     <div class="kicker">Lidar terrain analysis · Hopkinton–Milford line, Massachusetts</div>
@@ -119,12 +33,14 @@ figure img{cursor:zoom-in}
     best candidates.</p>
     <img class="locus" src="assets/hopkinton_locus.png" alt="Site location in Massachusetts">
     <p class="whofor">If you're looking at wooded land in Massachusetts, this is the kind of homework you can do before an offer — happy to walk through any of it. <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
+    <div class="hero-actions"><a class="button primary" href="mailto:mhowe.gis@gmail.com?subject=Ground%20Truth%20parcel%20screen">Bring us a parcel</a><a class="button secondary" href="methodology.html">See assumptions</a></div>
+    <p class="status-note">Public-data demonstration. A client engagement would confirm current data, scope, control, and licensed-professional needs before relying on quantities.</p>
     <div class="bignum">$2.5M
       <small>is the spread in earthwork cost between the three best pad locations —
       same building, same parcel-sized search area, different dirt.</small>
     </div>
     <div class="stats">
-      <div class="stat hot"><div class="v">316,993 yd³</div><div class="l">actual earthwork at the recommended pad</div></div>
+      <div class="stat hot"><div class="v">316,993 yd³</div><div class="l">planning-level earthwork at the selected conceptual pad</div></div>
       <div class="stat"><div class="v">1,578,538 yd³</div><div class="l">"earthwork" if you use the treetop surface</div></div>
       <div class="stat"><div class="v">7.6 cm</div><div class="l">how closely my model matches the state's published DEM</div></div>
       <div class="stat"><div class="v">41.8M</div><div class="l">laser points processed for this site</div></div>
@@ -136,10 +52,11 @@ figure img{cursor:zoom-in}
   <div class="wrap">
     <div class="kicker">Start here</div>
     <h2>Drag the line</h2>
-    <p class="prose">Left of the line is the <b>treetop surface</b> — the only thing a
-    camera-based drone survey can measure over forest. Right of it is the <b>bare ground</b>,
-    recovered from laser returns that made it through gaps in the canopy. Same flight, same
-    week, same points. The yellow rectangle is the building pad analyzed below.</p>
+    <p class="prose">Left of the line is a <b>treetop surface</b>, similar to what
+    photogrammetry commonly reconstructs when dense leaves hide the ground. Right is a
+    <b>bare-ground model</b>, built from laser returns that reached openings in the canopy.
+    Photography remains valuable for current color imagery and inspection; lidar adds the
+    ground shape needed for this terrain screen. The yellow rectangle is the conceptual pad analyzed below.</p>
     <div class="swipe" id="swipe" style="--focus:58% 18%">
       <div class="stage" id="swipeStage">
         <img src="assets/hk_hs_dtm.jpg" alt="Bare-earth lidar hillshade">
@@ -159,14 +76,15 @@ figure img{cursor:zoom-in}
   <div class="wrap">
     <div class="kicker">What it costs to get this wrong</div>
     <h2>One pad, three surfaces</h2>
-    <p class="prose">The recommended pad (P1 below) is 16.3 acres, 93% forested, chosen by
+    <p class="prose">The selected conceptual pad (P1 below) is 16.3 acres, 93% forested, chosen by
     the same constraint search that priced its rivals. It sits on the cleanest ground in
     the search area — 76% free of wetlands, setbacks and steep slopes — and still needs
     real dirt work, because on glacial till everything does. Grading it to a level
     140.29 m requires:</p>
-    <div class="tablewrap">
+    <div class="tablewrap" data-label="Planning-level earthwork comparison">
     <table>
-      <thead><tr><th>Surface used for the estimate</th><th>Cut</th><th>Fill</th><th>Total moved</th><th>@ $20 / yd³</th></tr></thead>
+      <caption>Modeled quantities for one conceptual level pad. These are screening estimates, not construction quantities or bids.</caption>
+      <thead><tr><th scope="col">Surface used for the estimate</th><th scope="col">Cut</th><th scope="col">Fill</th><th scope="col">Total moved</th><th scope="col">Illustrative cost at $20 / yd³</th></tr></thead>
       <tbody>
         <tr class="ours"><td>Lidar bare earth</td><td>158,621</td><td>158,372</td><td>316,993 yd³</td><td>$6.34M</td></tr>
         <tr><td>Treetop surface (what photos give you)</td><td>1,558,073</td><td>20,465</td><td>1,578,538 yd³</td><td>$31.57M</td></tr>
@@ -181,10 +99,11 @@ figure img{cursor:zoom-in}
     a 66,900 yd³ surplus to haul away from a site that actually balances to within 250 yd³.
     At $20 a yard, that's a $1.3M phantom line item — and the error grows with every hill
     the parcel has.</p>
-    <p class="prose" style="margin-top:14px;font-size:15px">The lidar estimate carries a
-    grading contingency of <b>±8,628 yd³ ≈ ±$173k (±2.7%)</b> — the band implied by the
-    data's published 10 cm vertical accuracy over this pad (our verified accuracy here was
-    7.6 cm). That's the range a grading contingency should cover.</p>
+    <p class="prose" style="margin-top:14px;font-size:15px">A simple <b>±10 cm data-sensitivity
+    test</b> changes the modeled volume by about ±8,628 yd³, or ±$173k at the illustrative
+    unit rate. This shows how vertical uncertainty can move a screening result; it is not a
+    construction contingency and does not cover design changes, soil conditions, haul,
+    mobilization, rock, dewatering, escalation, or contractor pricing.</p>
     <figure>
       <img src="assets/hk_cutfill_map.jpg" alt="Cut and fill map of the pad" loading="lazy">
       <figcaption>Where the dirt moves: cut in red, fill in blue, against the balanced
@@ -216,7 +135,9 @@ figure img{cursor:zoom-in}
       <figure>
         <img src="assets/hk_buildable_map.jpg" alt="Buildable land screen" loading="lazy">
         <figcaption><b>Where can you build?</b> Slope and wetland/stream setback screens on
-        true ground: 176 buildable acres out of 443. Even here, about half the land already carries regulatory constraints.</figcaption>
+        mapped ground: 176 acres pass the stated terrain and mapped-buffer screen out of
+        443. That is a shortlist, not a buildability opinion; zoning, access, utilities,
+        field wetlands, soils, title, and permitting remain outside this screen.</figcaption>
       </figure>
       <figure>
         <img src="assets/hk_road_profile.png" alt="Access road grade profile" loading="lazy">
@@ -234,7 +155,7 @@ figure img{cursor:zoom-in}
       <figure>
         <img src="assets/hk_chm_map.jpg" alt="Canopy height model" loading="lazy">
         <figcaption><b>What does clearing cost?</b> Tree heights for every cell. The
-        recommended pad carries 15.1 acres of forest — roughly $45–91k to clear at
+        selected conceptual pad carries 15.1 acres of forest — roughly $45–91k to clear at
         typical rates. Stumpage revenue can offset part of that — species- and
         market-dependent (UMass/DCR Southern New England Stumpage Price Survey); not
         netted here.</figcaption>
@@ -264,7 +185,8 @@ figure img{cursor:zoom-in}
     <figure>
       <img src="assets/hk_imagery_aoi.jpg" alt="Aerial imagery of the corridor today" loading="lazy">
       <figcaption>The same ground today: subdivision west of I-495, the wooded block east
-      of it where the candidate pads sit. (Esri World Imagery)</figcaption>
+      of it where the candidate pads sit. Esri World Imagery; provider credits and source
+      links are listed in the <a href="methodology.html#sources">methodology</a>.</figcaption>
     </figure>
   </div>
 </section>
@@ -273,18 +195,23 @@ figure img{cursor:zoom-in}
   <div class="wrap">
     <div class="kicker">The bottom line</div>
     <h2>What this means for the deal</h2>
-    <div class="tablewrap">
+    <div class="tablewrap" data-label="Planning-level deal screen">
     <table>
-      <thead><tr><th>Sitework item</th><th>Estimate</th></tr></thead>
+      <caption>Selected screening outputs. Costs are illustrative and exclude professional design, contractor pricing, and the items noted below.</caption>
+      <thead><tr><th scope="col">Screening item</th><th scope="col">Planning-level result</th></tr></thead>
       <tbody>
-        <tr><td>Earthwork at the recommended pad, graded to balance</td><td>$6.34M ± $173k</td></tr>
+        <tr><td>Modeled earthwork at the conceptual pad, graded to balance</td><td>$6.34M; ±$173k data-sensitivity band</td></tr>
         <tr><td>Clearing, 15.1 forested acres</td><td>$45–91k</td></tr>
         <tr><td>Access</td><td>361 m route climbs 16 m, peaks at 11% — contour or regrade</td></tr>
         <tr><td>Stormwater basin land take (pre-design screening)</td><td>a natural low 300 m east stores the first-flush volume at 1 m stage — ~2.3 ac consumed</td></tr>
-        <tr class="ours"><td>Sitework baseline for the pro forma</td><td>≈ $6.41M + access work</td></tr>
+        <tr class="ours"><td>Terrain-screening subtotal</td><td>≈ $6.41M + access work</td></tr>
       </tbody>
     </table>
     </div>
+    <p class="scope-note">Not included: survey/control, engineering, geotechnical work,
+    rock excavation, unsuitable soil, drainage design, erosion control, utilities,
+    pavement, retaining walls, permits, mitigation, mobilization, haul/disposal,
+    escalation, or contractor markup.</p>
     <p class="prose" style="margin-top:20px">On rolling till, earthwork is the biggest lever in the deal. Things a purchase agreement would want to cover:</p>
     <ol class="method">
       <li><b>Siting flexibility</b> — the grading bill swings $2.5M across the three
@@ -310,24 +237,28 @@ figure img{cursor:zoom-in}
       <li><b>Processing</b> — same PDAL pipeline as Projects 01–02, third run: ground model,
         treetop model, canopy heights, plus the lidar's building classification as an
         exclusion mask for the pad search. Same scripts, different coordinates — which is most of what I wanted to prove.</li>
-      <li><b>Verification</b> — my ground model against the state's independently published
-        DEM: 3 mm average difference, 7.6 cm RMSE over open ground (residuals concentrate
-        at pond edges, a known hydro-flattening artifact). Pre-2021 baseline: the archived
-        December 2019 national DEM, not the current one — which has since been rebuilt from
-        this very lidar.</li>
+      <li><b>Processing consistency</b> — my ground model and the state's DEM, both derived
+        from the same flight, differ by 3 mm on average and 7.6 cm RMSE over open ground.
+        That agreement helps check processing, but it is not independent field verification
+        of absolute accuracy. Pre-2021 comparison: the archived December 2019 national DEM,
+        not the current one, which was later rebuilt from this lidar.</li>
       <li><b>Volumes</b> — cell-by-cell raster math, cross-checked against an independent
         QGIS implementation: cut agrees at 158,620.7 vs 158,621 yd³, fill at 158,372.0 vs
-        158,372 — six significant figures. Cost basis $20/yd³ from state DOT
-        weighted-average bids, $10–$40 sensitivity.</li>
+        158,372 — six significant figures. Cost basis is an illustrative $20/yd³
+        screening assumption, with $10–$40 sensitivity; a real project would require
+        current contractor or estimator input.</li>
     </ol>
-    <p class="note">Public lidar ships with published accuracy specs. Commercial work gets
-    tied to survey control before any number is delivered. Screens run for every project:
+    <p class="note">Public lidar ships with published accuracy specifications. A client
+    scope would determine whether professional survey control and licensed oversight are
+    needed before quantities are relied on. Screens run for every project:
     terrain-wetness discrepancy, closed-depression / vernal-pool candidates, surface
     roughness. Also available: intensity analysis, contours to CAD, per-tree inventory.
-    Scripts and pipeline files available on request.</p>
+    Scripts and pipeline files available on request. <a href="methodology.html">Read the
+    full assumptions, sources, and limitations.</a></p>
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <p class="cta">The newest free lidar here was flown in <span>2021.</span><br>
@@ -336,178 +267,12 @@ figure img{cursor:zoom-in}
       Max Howe · MS, Geographic Information Science ·
       <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a>
     </p>
+    <div class="footer-links"><a href="methodology.html">Method, sources &amp; limitations</a><a href="index.html#services">Service concept</a><a href="https://github.com/mapzimus/ground-truth">GitHub repository</a></div>
+    <p class="footer-meta">Planning-level demonstration from public data. Not a survey, wetland delineation, engineering design, construction quantity, or bid.</p>
   </div>
 </footer>
 
-<script>
-(function(){
-  const box = document.getElementById('swipe');
-  const stage = document.getElementById('swipeStage');
-  const top = document.getElementById('swipeTop');
-  const bar = document.getElementById('swipeBar');
-  const fsBtn = document.getElementById('swipeFs');
-  let frac = 0.5, scale = 1, tx = 0, ty = 0;
-  function apply(){
-    top.style.clipPath = 'inset(0 ' + ((1 - frac) * 100) + '% 0 0)';
-    bar.style.left = (frac * 100) + '%';
-    stage.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
-  }
-  apply();
-  function setFrac(e){
-    const r = stage.getBoundingClientRect();
-    frac = Math.max(0.02, Math.min(0.98, (e.clientX - r.left) / r.width));
-  }
-  function zoomAt(cx, cy, factor){
-    const ns = Math.min(6, Math.max(1, scale * factor));
-    const r = box.getBoundingClientRect();
-    const ox = cx - (r.left + r.width / 2), oy = cy - (r.top + r.height / 2);
-    tx -= ox * (ns / scale - 1); ty -= oy * (ns / scale - 1);
-    scale = ns;
-    if (scale === 1){ tx = 0; ty = 0; }
-    apply();
-  }
-  const ptrs = new Map();
-  let pinch = 0, onBar = false, lastTap = 0;
-  box.addEventListener('pointerdown', e => {
-    if (e.target === fsBtn) return;
-    e.preventDefault();
-    ptrs.set(e.pointerId, e);
-    box.setPointerCapture(e.pointerId);
-    if (ptrs.size === 1){
-      const r = stage.getBoundingClientRect();
-      const barX = r.left + frac * r.width;
-      onBar = scale === 1 || Math.abs(e.clientX - barX) < 48;
-      if (onBar){ setFrac(e); apply(); }
-      const now = Date.now();                       // double-tap zoom toggle
-      if (now - lastTap < 300){
-        if (scale > 1){ scale = 1; tx = ty = 0; apply(); }
-        else zoomAt(e.clientX, e.clientY, 2.5);
-        onBar = false;
-      }
-      lastTap = now;
-    } else if (ptrs.size === 2){
-      const [a, b] = [...ptrs.values()];
-      pinch = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-      onBar = false;
-    }
-  });
-  box.addEventListener('pointermove', e => {
-    if (!ptrs.has(e.pointerId)) return;
-    const prev = ptrs.get(e.pointerId);
-    ptrs.set(e.pointerId, e);
-    if (ptrs.size === 1){
-      if (onBar){ setFrac(e); apply(); }
-      else if (scale > 1){ tx += e.clientX - prev.clientX; ty += e.clientY - prev.clientY; apply(); }
-    } else if (ptrs.size === 2){
-      const [a, b] = [...ptrs.values()];
-      const d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-      if (pinch > 0) zoomAt((a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2, d / pinch);
-      pinch = d;
-    }
-  });
-  ['pointerup', 'pointercancel'].forEach(ev => box.addEventListener(ev, e => {
-    ptrs.delete(e.pointerId);
-    pinch = 0;
-  }));
-  box.addEventListener('wheel', e => {
-    e.preventDefault();
-    zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY * 0.0018));
-  }, {passive: false});
-  function setFs(on){
-    box.classList.toggle('fs', on);
-    document.body.style.overflow = on ? 'hidden' : '';
-    fsBtn.textContent = on ? '✕' : '⛶';
-    scale = 1; tx = ty = 0; apply();
-  }
-  fsBtn.addEventListener('click', () => setFs(!box.classList.contains('fs')));
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && box.classList.contains('fs')) setFs(false);
-  });
-})();
-
-
-// click-to-enlarge with zoom + pan for every figure image (except the swipe pair)
-(function(){
-  const lb = document.createElement('div');
-  lb.className = 'lightbox';
-  lb.innerHTML = '<img alt="" draggable="false"><div class="cap"></div>' +
-    '<div class="hint">scroll or pinch to zoom · drag to pan · double-click resets · Esc or click outside closes</div>';
-  document.body.appendChild(lb);
-  const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.cap');
-
-  let scale = 1, tx = 0, ty = 0;
-  function apply(){ lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`; }
-  function reset(){ scale = 1; tx = 0; ty = 0; apply(); }
-  function zoomAt(cx, cy, factor){
-    const ns = Math.min(10, Math.max(1, scale * factor));
-    const r = lbImg.getBoundingClientRect();
-    const ox = cx - (r.left + r.width / 2), oy = cy - (r.top + r.height / 2);
-    tx -= ox * (ns / scale - 1); ty -= oy * (ns / scale - 1);
-    scale = ns;
-    if (scale === 1){ tx = 0; ty = 0; }
-    apply();
-  }
-
-  document.querySelectorAll('figure img').forEach(img => {
-    if (img.closest('.swipe')) return;
-    img.addEventListener('click', () => {
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
-      const fc = img.closest('figure').querySelector('figcaption');
-      lbCap.textContent = fc ? fc.textContent : '';
-      reset();
-      lb.classList.add('open');
-    });
-  });
-
-  lb.addEventListener('wheel', e => {
-    e.preventDefault();
-    zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY * 0.0018));
-  }, {passive: false});
-  lbImg.addEventListener('dblclick', e => {
-    e.stopPropagation();
-    if (scale > 1) reset(); else zoomAt(e.clientX, e.clientY, 3);
-  });
-
-  // drag pan + two-finger pinch
-  const ptrs = new Map();
-  let pinchDist = 0, dragged = false;
-  lbImg.addEventListener('pointerdown', e => {
-    e.preventDefault();
-    ptrs.set(e.pointerId, e);
-    lbImg.setPointerCapture(e.pointerId);
-    dragged = false;
-    if (ptrs.size === 2){
-      const [a, b] = [...ptrs.values()];
-      pinchDist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-    }
-  });
-  lbImg.addEventListener('pointermove', e => {
-    if (!ptrs.has(e.pointerId)) return;
-    const prev = ptrs.get(e.pointerId);
-    ptrs.set(e.pointerId, e);
-    if (ptrs.size === 1){
-      tx += e.clientX - prev.clientX; ty += e.clientY - prev.clientY;
-      if (Math.abs(e.clientX - prev.clientX) + Math.abs(e.clientY - prev.clientY) > 1) dragged = true;
-      apply();
-    } else if (ptrs.size === 2){
-      const [a, b] = [...ptrs.values()];
-      const d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-      if (pinchDist > 0) zoomAt((a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2, d / pinchDist);
-      pinchDist = d;
-      dragged = true;
-    }
-  });
-  ['pointerup', 'pointercancel'].forEach(ev => lbImg.addEventListener(ev, e => {
-    ptrs.delete(e.pointerId);
-    pinchDist = 0;
-  }));
-  lbImg.addEventListener('click', e => e.stopPropagation());   // img clicks never close
-
-  function close(){ lb.classList.remove('open'); ptrs.clear(); }
-  lb.addEventListener('click', close);                          // backdrop click closes
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-})();
-</script>
+<script src="site.js" defer></script>
 </body>
+</html>
 </html>
