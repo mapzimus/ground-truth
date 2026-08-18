@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ground Truth — Lidar Test Projects</title>
+<title>Lidar Site Studies — Massachusetts Test Projects</title>
 <meta name="description" content="A series of lidar terrain-analysis test projects on real Massachusetts parcels: earthwork, buildable land, drainage, sightlines from public laser data.">
-<meta property="og:title" content="Ground Truth — Lidar Test Projects">
+<meta property="og:title" content="Lidar Site Studies — Massachusetts Test Projects">
 <meta property="og:description" content="What laser data shows about real development parcels that drone photos cannot.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mapzimus.github.io/ground-truth/">
@@ -42,8 +42,17 @@ h1 span{color:var(--amber)}
 .card h2{font-family:var(--disp);font-size:22px;text-transform:uppercase;margin:8px 0 8px;line-height:1.1}
 .card p{font-size:14.5px;color:#a49f8e}
 .card .stat{font-family:var(--mono);font-size:13px;color:var(--paper);margin-top:12px}
+.card .go{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.16em;margin-top:16px}
+.card:hover .go{text-decoration:underline}
+.projnav{position:sticky;top:0;z-index:50;background:rgba(18,19,15,.96);border-bottom:1px solid var(--line)}
+.projnav .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:12px;padding-bottom:12px}
+.projnav .brand{font-family:var(--disp);font-size:15px;color:var(--paper);text-decoration:none;letter-spacing:.08em}
+.projnav .links{display:flex;flex-wrap:wrap;gap:8px}
+.projnav .links a{font-family:var(--mono);font-size:13px;color:#a49f8e;text-decoration:none;letter-spacing:.06em;padding:7px 10px;border:1px solid var(--line)}
+.projnav .links a:hover{color:var(--paper);border-color:var(--amber)}
+.projnav .links a.on{color:var(--ink);background:var(--amber);border-color:var(--amber);font-weight:700}
+a{color:var(--amber)}
 footer{padding:24px 0 60px;font-family:var(--mono);font-size:14px;color:#a49f8e}
-footer a{color:var(--amber)}
 .whofor{font-family:var(--mono);font-size:14px;color:var(--amber);margin-top:18px;max-width:60ch}
 .compare{margin:0 0 80px}
 .compare h2{font-family:var(--disp);font-size:clamp(22px,3vw,32px);text-transform:uppercase;margin-bottom:8px}
@@ -59,10 +68,11 @@ footer a{color:var(--amber)}
 </style>
 </head>
 <body>
+<nav class="projnav"><div class="wrap"><a class="brand" href="index.html">LIDAR SITE STUDIES</a><span class="links"><a href="devens.html">01 · Devens</a><a href="middleboro.html">02 · Middleborough</a><a href="hopkinton.html">03 · Hopkinton</a><a href="p04.html">04 · Corridor</a></span></div></nav>
 <header>
   <div class="wrap">
     <div class="kicker">Lidar terrain analysis · test-project series</div>
-    <h1>Ground <span>truth.</span></h1>
+    <h1>Lidar site <span>studies.</span></h1>
     <p class="lede">Drone photos can't see through trees; laser pulses can. Each project below
     takes free public lidar over a real Massachusetts development parcel and turns it into the
     numbers that decide a project: earthwork, buildable land, drainage, road access, clearing,
@@ -82,6 +92,7 @@ footer a{color:var(--amber)}
         parcel in its last weeks as forest. Earthwork priced three ways on the pad where the
         largest building actually went.</p>
         <div class="stat">282,158 yd³ of phantom earthwork in the photo surface ≈ $5.6M</div>
+        <div class="go">VIEW PROJECT →</div>
       </div>
     </a>
     <a class="card" href="middleboro.html">
@@ -93,6 +104,7 @@ footer a{color:var(--amber)}
         proposal was withdrawn in 2024 — the parcel is still forest. More than half the
         surrounding land sits in wetland setbacks, and the pad had to be found, not drawn.</p>
         <div class="stat">705,016 yd³ of phantom earthwork in the photo surface ≈ $14.1M</div>
+        <div class="go">VIEW PROJECT →</div>
       </div>
     </a>
     <a class="card" href="hopkinton.html">
@@ -104,6 +116,7 @@ footer a{color:var(--amber)}
         position screened and the three best priced — the cheapest dirt sits closest to the
         wetlands, and the grading bill swings by $2.5M depending on where the building lands.</p>
         <div class="stat">Same warehouse: $3.96M, $6.34M, or $6.50M of earthwork</div>
+        <div class="go">VIEW PROJECT →</div>
       </div>
     </a>
     <a class="card" href="p04.html">
@@ -116,6 +129,7 @@ footer a{color:var(--amber)}
         Bellingham, screened and ranked by sitework cost. The affordable dirt turns out
         to be at the southern end.</p>
         <div class="stat">Best in corridor: 87 ac in Franklin — $1.94/SF sitework</div>
+        <div class="go">VIEW PROJECT →</div>
       </div>
     </a>
   </div>

@@ -1,4 +1,4 @@
-# Ground Truth — Lidar Test Projects
+# Lidar Site Studies
 
 Live site: **https://mapzimus.github.io/ground-truth/**
 

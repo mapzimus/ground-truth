@@ -77,10 +77,12 @@ footer .cta span{color:var(--amber)}
 a{color:var(--amber)}
 @media(max-width:640px){section{padding:52px 0}}
 .projnav{position:sticky;top:0;z-index:50;background:rgba(18,19,15,.96);border-bottom:1px solid var(--line)}
-.projnav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+.projnav .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:12px;padding-bottom:12px}
 .projnav .brand{font-family:var(--disp);font-size:15px;color:var(--paper);text-decoration:none;letter-spacing:.08em}
-.projnav .links a{font-family:var(--mono);font-size:13px;color:#a49f8e;text-decoration:none;margin-left:22px;letter-spacing:.06em}
-.projnav .links a.on{color:var(--amber)}
+.projnav .links{display:flex;flex-wrap:wrap;gap:8px}
+.projnav .links a{font-family:var(--mono);font-size:13px;color:#a49f8e;text-decoration:none;letter-spacing:.06em;padding:7px 10px;border:1px solid var(--line)}
+.projnav .links a:hover{color:var(--paper);border-color:var(--amber)}
+.projnav .links a.on{color:var(--ink);background:var(--amber);border-color:var(--amber);font-weight:700}
 figure img{cursor:zoom-in}
 .swipe img{cursor:inherit}
 .lightbox{position:fixed;inset:0;background:rgba(10,10,8,.94);display:none;flex-direction:column;
