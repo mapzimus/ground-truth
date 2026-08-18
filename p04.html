@@ -3,26 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fourteen Can Hold a Building — Lidar Corridor Screen, I-495</title>
-<meta name="description" content="Every remaining 10+ acre vacant parcel on 20 km of the I-495 corridor, Hopkinton through Bellingham, screened and ranked by sitework cost from public lidar.">
-<meta property="og:title" content="Fifty-Four Parcels. Fourteen Can Hold a Building.">
-<meta property="og:description" content="A 20 km, nine-town corridor screen: which vacant I-495 parcels can actually take a building, and what the dirt costs.">
+<title>Fourteen Parcels Pass the First Screen — Planning-Level LiDAR Corridor Study</title>
+<meta name="description" content="A planning-level public-data screen of 54 vacant or forested parcels near I-495, ranked under stated terrain and mapped-buffer assumptions.">
+<link rel="canonical" href="https://mapzimus.github.io/ground-truth/p04.html">
+<meta property="og:title" content="Fifty-Four Parcels. Fourteen Pass the First Screen.">
+<meta property="og:description" content="A planning-level I-495 corridor screen using terrain, mapped buffers, and modeled earthwork.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mapzimus.github.io/ground-truth/p04.html">
-<link rel="canonical" href="https://mapzimus.github.io/ground-truth/p04.html">
 <meta property="og:image" content="https://mapzimus.github.io/ground-truth/assets/p04_corridor_map.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%B0%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
-<nav class="projnav"><div class="wrap"><a class="brand" href="index.html">GROUND TRUTH</a><span class="links"><a href="devens.html">01 · Devens</a><a href="middleboro.html">02 · Middleborough</a><a href="hopkinton.html">03 · Hopkinton</a><a class="on" href="p04.html">04 · Corridor</a></span></div></nav>
+<a class="skip-link" href="#main">Skip to main content</a>
+<nav class="projnav" aria-label="Case-study navigation"><div class="wrap"><a class="brand" href="index.html">GROUND TRUTH</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-links">Menu</button><div class="links" id="case-links"><a href="index.html#cases">All work</a><a href="devens.html">01 · Devens</a><a href="middleboro.html">02 · Middleborough</a><a href="hopkinton.html">03 · Hopkinton</a><a class="on" aria-current="page" href="p04.html">04 · Corridor</a><a class="nav-cta" href="mailto:mhowe.gis@gmail.com?subject=Ground%20Truth%20parcel%20screen">Request a screen</a></div></div></nav>
+<main id="main">
 <header>
   <div class="wrap">
     <div class="kicker">Lidar corridor screen · I-495, Hopkinton–Bellingham</div>
-    <h1>Fifty-four parcels left.<br><span class="under">Fourteen can hold a building.</span></h1>
+    <h1>Fifty-four parcels left.<br><span class="under">Fourteen pass the first screen.</span></h1>
     <p class="lede">Projects 01–03 each studied one site in depth. This one asks the
     question that comes first: <i>which sites are even worth studying?</i> I took a
     20&nbsp;km stretch of the I-495 belt, Hopkinton down through Bellingham, pulled every
@@ -31,16 +34,17 @@
     <p class="whofor">If you're looking at wooded land in Massachusetts, this is the kind
     of homework you can do before an offer — happy to walk through any of it.
     <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a></p>
+    <div class="hero-actions"><a class="button primary" href="mailto:mhowe.gis@gmail.com?subject=Ground%20Truth%20corridor%20screen">Talk through a search area</a><a class="button secondary" href="methodology.html">See assumptions</a></div>
+    <p class="status-note">Public-data demonstration. “Pass” means pass the stated terrain and mapped-buffer screen—not approved, permitted, or confirmed buildable.</p>
     <div class="bignum">14 of 54
-      <small>vacant 10+ acre parcels in the corridor can fit a contiguous building pad
-      once wetlands, setbacks and slopes are screened. The other forty are
-      constraint-bound.</small>
+      <small>vacant 10+ acre parcels fit one of the two conceptual pads under the stated
+      terrain and mapped-buffer settings. The other forty did not pass this first screen.</small>
     </div>
     <div class="stats">
       <div class="stat"><div class="v">49,986</div><div class="l">tax parcels examined across nine towns</div></div>
       <div class="stat"><div class="v">20 km</div><div class="l">of I-495, Hopkinton through Bellingham</div></div>
       <div class="stat"><div class="v">54</div><div class="l">vacant or forest parcels of 10+ acres</div></div>
-      <div class="stat hot"><div class="v">$1.94/SF</div><div class="l">best-in-corridor sitework, 87 ac in Franklin</div></div>
+      <div class="stat hot"><div class="v">$1.94/SF</div><div class="l">lowest modeled earthwork per pad SF, 87 ac in Franklin</div></div>
     </div>
   </div>
 </header>
@@ -49,12 +53,12 @@
   <div class="wrap">
     <div class="kicker">The map</div>
     <h2>Everything that's left</h2>
-    <p class="prose">Green parcels passed the screen — a contiguous pad (16.3 or 7.4
-    acres) fits with at least 70% of it clear of wetlands, stream setbacks and steep
-    ground. Brown parcels are vacant but couldn't fit one. The
+    <p class="prose">Green parcels passed the stated screen — a contiguous conceptual pad
+    (16.3 or 7.4 acres) fits with at least 70% of it outside mapped wetland/stream buffers
+    and steep ground. Brown parcels did not fit one under those assumptions. The
     extension south changed the picture: the rolling Hopkinton end is where dirt costs
-    the most, and the flatter Bellingham–Franklin end is where the affordable pads
-    hide — the top five are all south of Milford.</p>
+    the most, and the flatter Bellingham–Franklin end is where the lower modeled
+    earthwork results appear — the top five are all south of Milford.</p>
     <figure>
       <img src="assets/p04_corridor_map.jpg" alt="Corridor map of remaining vacant parcels" loading="lazy" width="1044" height="1332">
       <figcaption>Every remaining 10+ acre vacant parcel within 1.5 km of I-495,
@@ -66,15 +70,26 @@
 <section class="paper">
   <div class="wrap">
     <div class="kicker">The ranking</div>
-    <h2>The whole corridor, one table</h2>
+    <h2>The strongest five, then the full screen</h2>
     <p class="prose">Each parcel got the same treatment: find the best possible pad
-    position inside it (two pad sizes tried), grade it to balance, price the dirt at
-    $20/yd³. "Constrained" is the share of the parcel inside wetland buffers, stream
+    position inside it (two pad sizes tried), grade it to balance, and apply the same
+    illustrative $20/yd³ comparison basis. "Constrained" is the share of the parcel inside wetland buffers, stream
     setbacks, or slopes over 15%. Pad sizes are shown rounded; the $/SF column divides
-    by each pad's exact area.</p>
-    <div class="tablewrap">
+    by each pad's exact area. The first five are easiest to compare below; the complete
+    54-parcel audit remains available for transparency.</p>
+    <div class="ranking-cards" aria-label="Five lowest modeled earthwork results">
+      <article class="rank-card"><div class="rank">01</div><h3>West Central St</h3><p>Franklin · 87.1 acres</p><strong>$1.94 / pad SF</strong><span>7.4-acre pad · 31,047 yd³ modeled</span></article>
+      <article class="rank-card"><div class="rank">02</div><h3>23 R Tulip Way</h3><p>Medway · 24.7 acres</p><strong>$2.24 / pad SF</strong><span>7.4-acre pad · 35,803 yd³ modeled</span></article>
+      <article class="rank-card"><div class="rank">03</div><h3>High St</h3><p>Bellingham · 33.7 acres</p><strong>$3.16 / pad SF</strong><span>7.4-acre pad · 50,468 yd³ modeled</span></article>
+      <article class="rank-card"><div class="rank">04</div><h3>Hartford Ave</h3><p>Bellingham · 20.8 acres</p><strong>$3.58 / pad SF</strong><span>7.4-acre pad · 57,217 yd³ modeled</span></article>
+      <article class="rank-card"><div class="rank">05</div><h3>4 Technology Dr</h3><p>Milford · 18.5 acres</p><strong>$3.86 / pad SF</strong><span>7.4-acre pad · 61,756 yd³ modeled</span></article>
+    </div>
+    <details class="full-ranking">
+    <summary>View all 54 screened parcels</summary>
+    <div class="tablewrap" data-label="Full 54-parcel corridor screen">
     <table>
-      <thead><tr><th>#</th><th>Parcel</th><th>Town</th><th>Acres</th><th>Constrained</th><th>Best pad</th><th>Sitework $/SF</th></tr></thead>
+      <caption>Full public-data screen. “No fit” only describes these pad sizes and stated assumptions.</caption>
+      <thead><tr><th scope="col">#</th><th scope="col">Parcel</th><th scope="col">Town</th><th scope="col">Acres</th><th scope="col">Mapped constraints</th><th scope="col">Best conceptual pad</th><th scope="col">Modeled earthwork / pad SF</th></tr></thead>
       <tbody>
         <tr class="ours"><td>1</td><td>0  West Central St</td><td>Franklin</td><td>87.1</td><td>59%</td><td>7.4 ac pad · 31,047 yd³ ≈ $0.62M</td><td>$1.94</td></tr>
         <tr><td>2</td><td>23 R Tulip Way</td><td>Medway</td><td>24.7</td><td>46%</td><td>7.4 ac pad · 35,803 yd³ ≈ $0.72M</td><td>$2.24</td></tr>
@@ -133,12 +148,15 @@
       </tbody>
     </table>
     </div>
+    </details>
     <p class="prose" style="margin-top:20px">A few things stand out. The 87-acre Franklin parcel at $1.94/SF is a quarter the
-    dirt cost of anything in Hopkinton. Only two parcels in 20 km can take the full
+    modeled earthwork cost of anything in Hopkinton. Only two parcels in this screen can
+    fit the full
     16.3-acre warehouse pad — 48 acres on High Street in Bellingham ($4.06/SF) and Pine
     Island Road in Hopkinton ($6.56/SF); everything else maxes out at the 7.4-acre size.
-    And the forty brown rows aren't worthless — they're just not warehouse sites;
-    several might take a smaller building or stay as mitigation land.</p>
+    The forty brown rows are not a finding that the land is worthless or unusable; they
+    simply did not fit these two pad sizes under this screen. A smaller or differently
+    shaped concept may produce another result.</p>
   </div>
 </section>
 
@@ -153,25 +171,30 @@
         value, within 1.5 km of the MassDOT I-495 centerline. Nine towns: Hopkinton,
         Holliston, Milford, Hopedale, Upton, Mendon, Medway, Bellingham, Franklin.</li>
       <li><b>Terrain</b> — the state's 2021 bare-earth lidar DEM, resampled to 1 m. On
-        Projects 01–03 my own point-cloud models matched this surface to 2.0–7.6 cm
-        RMSE, which is why it's trustworthy enough for screening. Wetlands and streams:
-        DEP layers with 100 ft / 200 ft buffers.</li>
+        Projects 01–03 my point-cloud models and the state's DEM—derived from the same
+        flights—differed by 2.0–7.6 cm RMSE. That supports processing consistency, not
+        independent field verification of absolute accuracy. Wetlands and streams: DEP
+        layers with 100 ft / 200 ft screening buffers.</li>
       <li><b>The pad search</b> — the same optimizer from Project 03, run inside every
         parcel: every possible pad position tested, largest pad kept where at least 70%
-        of the window is buildable and 95% sits inside the parcel.</li>
+        of the window passes the terrain/mapped-buffer screen and 95% sits inside the parcel.</li>
       <li><b>What screening doesn't do</b> — no canopy metrics, no wetness-discrepancy
         or rock screens, no access routes, no zoning. Those belong to the per-parcel
         study (that's Projects 01–03, run on whichever of these parcels matters to
         you). Costs use the same $20/yd³ basis with the same caveats as the other
         projects.</li>
     </ol>
-    <p class="note">Screening-level, from public data. A shortlist this small means the
-    full study is affordable for every parcel on it. Also run per project: terrain-wetness
+    <p class="note">Screening-level, from public data. This does not review current title,
+    ownership, zoning, frontage, legal access, utilities, field wetlands, soils, endangered
+    species, cultural resources, or permitting. A shortlist this small makes a deeper study
+    practical for the parcels that matter. Also run per project: terrain-wetness
     discrepancy, vernal-pool candidates, surface roughness. Scripts and pipeline files
-    available on request.</p>
+    available on request. <a href="methodology.html">Read the full assumptions, sources,
+    and limitations.</a></p>
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <p class="cta">The newest free lidar here was flown in <span>2021.</span><br>
@@ -180,9 +203,11 @@
       Max Howe · MS, Geographic Information Science ·
       <a href="mailto:mhowe.gis@gmail.com">mhowe.gis@gmail.com</a>
     </p>
+    <div class="footer-links"><a href="methodology.html">Method, sources &amp; limitations</a><a href="index.html#services">Service concept</a><a href="https://github.com/mapzimus/ground-truth">GitHub repository</a></div>
+    <p class="footer-meta">Planning-level demonstration from public data. Not a survey, wetland delineation, engineering design, construction quantity, or bid.</p>
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js" defer></script>
 </body>
 </html>
