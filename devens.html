@@ -52,7 +52,8 @@ figure img{width:100%;height:auto;display:block;border:1px solid var(--line)}
 section.paper figure img{border-color:#c9c2ae}
 figcaption{font-family:var(--mono);font-size:13px;color:#a49f8e;padding:10px 2px}
 section.paper figcaption{color:#6d6753}
-.swipe{position:relative;margin:38px 0 0;user-select:none;touch-action:none;cursor:ew-resize;border:1px solid var(--line)}
+.swipe{position:relative;margin:38px 0 0;user-select:none;touch-action:pan-y;cursor:ew-resize;border:1px solid var(--line)}
+.swipe:focus-visible,figure img:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .swipe{aspect-ratio:5/4;overflow:hidden}
 .swipe img{pointer-events:none}
 .swipe .stage{position:absolute;inset:0;transform-origin:center}
@@ -104,6 +105,7 @@ figure img{cursor:zoom-in}
 .lightbox img{max-width:96vw;max-height:84vh;border:1px solid var(--line);cursor:grab;touch-action:none}
 .lightbox .cap{font-family:var(--mono);font-size:13px;color:#cfcaba;max-width:90ch;text-align:center}
 .lightbox .hint{font-family:var(--mono);font-size:11px;color:#7a766a}
+.lightbox .close{position:absolute;top:14px;right:14px;font-size:18px;line-height:1;background:rgba(18,19,15,.85);color:#f2efe6;border:1px solid #3a3b33;padding:9px 12px;cursor:pointer;font-family:var(--mono)}
 </style>
 </head>
 <body>
@@ -140,7 +142,7 @@ figure img{cursor:zoom-in}
     camera-based drone survey can measure over forest. Right of it is the <b>bare ground</b>,
     recovered from laser returns that made it through gaps in the canopy. Same flight, same
     week, same points. The yellow rectangle is the building pad analyzed below.</p>
-    <div class="swipe" id="swipe" style="--focus:51% 49%">
+    <div class="swipe" id="swipe" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Surface comparison divider — left of it: treetop surface, right of it: bare ground" style="--focus:51% 49%">
       <div class="stage" id="swipeStage">
         <img src="assets/hs_dtm.jpg" alt="Bare-earth lidar hillshade">
         <div class="top" id="swipeTop"><img src="assets/hs_dsm.jpg" alt="Canopy surface hillshade"></div>
@@ -324,6 +326,7 @@ figure img{cursor:zoom-in}
   function apply(){
     top.style.clipPath = 'inset(0 ' + ((1 - frac) * 100) + '% 0 0)';
     bar.style.left = (frac * 100) + '%';
+    box.setAttribute('aria-valuenow', Math.round(frac * 100));
     stage.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
   }
   apply();
@@ -387,6 +390,16 @@ figure img{cursor:zoom-in}
     e.preventDefault();
     zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY * 0.0018));
   }, {passive: false});
+  box.addEventListener('keydown', e => {
+    const step = e.shiftKey ? 0.1 : 0.03;
+    if (e.key === 'ArrowLeft') frac = Math.max(0.02, frac - step);
+    else if (e.key === 'ArrowRight') frac = Math.min(0.98, frac + step);
+    else if (e.key === 'Home') frac = 0.02;
+    else if (e.key === 'End') frac = 0.98;
+    else return;
+    e.preventDefault();
+    apply();
+  });
   function setFs(on){
     box.classList.toggle('fs', on);
     document.body.style.overflow = on ? 'hidden' : '';
@@ -404,10 +417,14 @@ figure img{cursor:zoom-in}
 (function(){
   const lb = document.createElement('div');
   lb.className = 'lightbox';
-  lb.innerHTML = '<img alt="" draggable="false"><div class="cap"></div>' +
+  lb.innerHTML = '<button class="close" aria-label="Close enlarged image">✕</button>' +
+    '<img alt="" draggable="false"><div class="cap"></div>' +
     '<div class="hint">scroll or pinch to zoom · drag to pan · double-click resets · Esc or click outside closes</div>';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.setAttribute('aria-label', 'Enlarged image');
   document.body.appendChild(lb);
-  const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.cap');
+  const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.cap'), lbClose = lb.querySelector('.close');
 
   let scale = 1, tx = 0, ty = 0;
   function apply(){ lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`; }
@@ -422,15 +439,24 @@ figure img{cursor:zoom-in}
     apply();
   }
 
+  let lastTrigger = null;
+  function openFor(img){
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    const fc = img.closest('figure').querySelector('figcaption');
+    lbCap.textContent = fc ? fc.textContent : '';
+    reset();
+    lastTrigger = img;
+    lb.classList.add('open');
+    lbClose.focus();
+  }
   document.querySelectorAll('figure img').forEach(img => {
     if (img.closest('.swipe')) return;
-    img.addEventListener('click', () => {
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
-      const fc = img.closest('figure').querySelector('figcaption');
-      lbCap.textContent = fc ? fc.textContent : '';
-      reset();
-      lb.classList.add('open');
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.addEventListener('click', () => openFor(img));
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openFor(img); }
     });
   });
 
@@ -478,8 +504,15 @@ figure img{cursor:zoom-in}
   }));
   lbImg.addEventListener('click', e => e.stopPropagation());   // img clicks never close
 
-  function close(){ lb.classList.remove('open'); ptrs.clear(); }
+  function close(){
+    lb.classList.remove('open');
+    ptrs.clear();
+    if (lastTrigger){ lastTrigger.focus(); lastTrigger = null; }
+  }
   lb.addEventListener('click', close);                          // backdrop click closes
+  lb.addEventListener('keydown', e => {                         // minimal focus trap
+    if (e.key === 'Tab'){ e.preventDefault(); lbClose.focus(); }
+  });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
 </script>

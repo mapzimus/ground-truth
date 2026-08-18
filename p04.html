@@ -104,6 +104,7 @@ figure img{cursor:zoom-in}
 .lightbox img{max-width:96vw;max-height:84vh;border:1px solid var(--line);cursor:grab;touch-action:none}
 .lightbox .cap{font-family:var(--mono);font-size:13px;color:#cfcaba;max-width:90ch;text-align:center}
 .lightbox .hint{font-family:var(--mono);font-size:11px;color:#7a766a}
+.lightbox .close{position:absolute;top:14px;right:14px;font-size:18px;line-height:1;background:rgba(18,19,15,.85);color:#f2efe6;border:1px solid #3a3b33;padding:9px 12px;cursor:pointer;font-family:var(--mono)}
 </style>
 </head>
 <body>
@@ -276,10 +277,14 @@ figure img{cursor:zoom-in}
 (function(){
   const lb = document.createElement('div');
   lb.className = 'lightbox';
-  lb.innerHTML = '<img alt="" draggable="false"><div class="cap"></div>' +
+  lb.innerHTML = '<button class="close" aria-label="Close enlarged image">✕</button>' +
+    '<img alt="" draggable="false"><div class="cap"></div>' +
     '<div class="hint">scroll or pinch to zoom · drag to pan · double-click resets · Esc or click outside closes</div>';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.setAttribute('aria-label', 'Enlarged image');
   document.body.appendChild(lb);
-  const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.cap');
+  const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.cap'), lbClose = lb.querySelector('.close');
 
   let scale = 1, tx = 0, ty = 0;
   function apply(){ lbImg.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')'; }
@@ -293,14 +298,23 @@ figure img{cursor:zoom-in}
     if (scale === 1){ tx = 0; ty = 0; }
     apply();
   }
+  let lastTrigger = null;
+  function openFor(img){
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    const fc = img.closest('figure').querySelector('figcaption');
+    lbCap.textContent = fc ? fc.textContent : '';
+    reset();
+    lastTrigger = img;
+    lb.classList.add('open');
+    lbClose.focus();
+  }
   document.querySelectorAll('figure img').forEach(img => {
-    img.addEventListener('click', () => {
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
-      const fc = img.closest('figure').querySelector('figcaption');
-      lbCap.textContent = fc ? fc.textContent : '';
-      reset();
-      lb.classList.add('open');
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.addEventListener('click', () => openFor(img));
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openFor(img); }
     });
   });
   lb.addEventListener('wheel', e => {
@@ -341,8 +355,15 @@ figure img{cursor:zoom-in}
     pinchDist = 0;
   }));
   lbImg.addEventListener('click', e => e.stopPropagation());
-  function close(){ lb.classList.remove('open'); ptrs.clear(); }
+  function close(){
+    lb.classList.remove('open');
+    ptrs.clear();
+    if (lastTrigger){ lastTrigger.focus(); lastTrigger = null; }
+  }
   lb.addEventListener('click', close);
+  lb.addEventListener('keydown', e => {
+    if (e.key === 'Tab'){ e.preventDefault(); lbClose.focus(); }
+  });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
 </script>
