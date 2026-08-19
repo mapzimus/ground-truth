@@ -28,7 +28,12 @@
     const pane = map.getPane("lidarPane");
     if (!pane) return;
     const percent = Math.round(fraction * 100);
-    pane.style.clipPath = `inset(0 0 0 ${percent}%)`;
+    // The pane is a zero-size box that Leaflet translates as you pan/zoom, so a
+    // percentage clip-path collapses. Clip with pixel insets in pane coordinates.
+    const size = map.getSize();
+    const pos = L.DomUtil.getPosition(map.getPane("mapPane"));
+    const splitX = fraction * size.x;
+    pane.style.clipPath = `inset(${-pos.y}px ${pos.x - size.x}px ${pos.y - size.y}px ${splitX - pos.x}px)`;
     if (bar) bar.style.left = `${percent}%`;
     frame.setAttribute("aria-valuenow", String(percent));
     frame.setAttribute("aria-valuetext", `${percent}% aerial imagery, ${100 - percent}% LiDAR hillshade`);
