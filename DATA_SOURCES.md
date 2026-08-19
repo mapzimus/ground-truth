@@ -9,6 +9,8 @@ Source pages were reviewed on **August 18, 2026**. Exact file versions and downl
 
 The detailed case studies use the spring 2021 Central-Eastern Massachusetts lidar acquisition. MassGIS describes it as Quality Level 1 and distributes 0.5-meter terrain products. USGS 3DEP products are public data; their source metadata still needs to travel with any analysis.
 
+The I-495 corridor page displays MassGIS's public [2021 lidar shaded-relief tiles](https://www.mass.gov/info-details/massgis-data-lidar-terrain-data) generated from that half-meter bare-earth DEM, with MassGIS Level 3 parcel outlines for all 54 screened sites.
+
 ## Parcels and assessor records
 
 - [MassGIS Property Tax Parcels](https://www.mass.gov/info-details/massgis-data-property-tax-parcels)

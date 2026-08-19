@@ -34,6 +34,7 @@
     const top = box.querySelector(".top");
     const bar = box.querySelector(".bar");
     const fullScreenButton = box.querySelector(".fsbtn");
+    if (!stage || !top || !bar) return;
     let fraction = 0.5;
     let dragging = false;
 
@@ -109,7 +110,7 @@
   });
 
   const lightboxImages = [...document.querySelectorAll("figure img")]
-    .filter(image => !image.closest(".swipe"));
+    .filter(image => !image.closest(".swipe, .map-swipe, [data-p04-id]"));
   if (!lightboxImages.length) return;
 
   const lightbox = document.createElement("div");

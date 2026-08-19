@@ -665,6 +665,191 @@ section.paper figcaption {
   background: #000;
 }
 
+.site-picks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.site-picks button {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.site-picks button.on,
+.rank-card.on {
+  border-color: var(--amber);
+  background: rgba(255, 180, 0, 0.12);
+}
+
+.rank-card {
+  cursor: pointer;
+}
+
+.rank-card img {
+  display: block;
+  width: 100%;
+  height: 88px;
+  margin-bottom: 12px;
+  border: 1px solid var(--paper-line);
+  object-fit: cover;
+}
+
+.map-swipe {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 5 / 4;
+  margin-top: 22px;
+  border: 1px solid var(--line);
+  background: #111;
+}
+
+.map-swipe.fs {
+  position: fixed;
+  inset: 0;
+  z-index: 98;
+  height: 100dvh;
+  margin: 0;
+  border: 0;
+  aspect-ratio: auto;
+  background: #000;
+}
+
+.map-swipe .p04-map,
+.map-swipe .map-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-swipe .map-fallback {
+  object-fit: cover;
+}
+
+.map-swipe .p04-map {
+  z-index: 1;
+}
+
+.map-swipe .tag,
+.map-swipe .fsbtn {
+  z-index: 7;
+}
+
+.map-swipe .bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 6;
+  width: 2px;
+  background: var(--amber);
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.map-swipe .bar::before {
+  position: absolute;
+  inset: 0 -16px;
+  content: "";
+}
+
+.map-swipe .bar::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 9px 11px;
+  transform: translate(-50%, -50%);
+  border-radius: 24px;
+  background: var(--amber);
+  color: var(--ink);
+  content: "◂ ▸";
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.map-swipe .leaflet-container {
+  font-family: var(--body);
+  background: #111;
+}
+
+.map-swipe .leaflet-top {
+  top: 46px;
+}
+
+.map-swipe .leaflet-control-attribution {
+  max-width: min(100%, 52ch);
+  background: rgba(18, 19, 15, 0.82);
+  color: #cfcaba;
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.map-swipe .leaflet-control-attribution a {
+  color: var(--amber);
+}
+
+.map-status {
+  margin-top: 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.fail-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  margin-top: 16px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.fail-jump select {
+  min-height: 40px;
+  min-width: min(100%, 280px);
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  background: var(--ground-2);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.fail-card {
+  cursor: pointer;
+}
+
+.fail-card img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+}
+
+.fail-card h3 {
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.fail-card p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+tr[data-p04-id] {
+  cursor: pointer;
+}
+
 .tablewrap {
   max-width: 100%;
   margin-top: 30px;
@@ -1032,9 +1217,15 @@ footer .contact,
     font-size: clamp(42px, 15vw, 64px);
   }
 
-  .swipe {
+  .swipe,
+  .map-swipe {
     height: min(62vh, 520px);
     aspect-ratio: auto;
+  }
+
+  .map-swipe.fs,
+  .swipe.fs {
+    height: 100dvh;
   }
 
   .tag {
