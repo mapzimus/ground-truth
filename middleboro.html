@@ -38,7 +38,7 @@
     </div>
     <div class="stats">
       <div class="stat hot"><div class="v">84,437 yd³</div><div class="l">LiDAR-based screening estimate for the conceptual 16-acre pad</div></div>
-      <div class="stat"><div class="v">789,453 yd³</div><div class="l">"earthwork" if you use the treetop surface</div></div>
+      <div class="stat"><div class="v">789,453 yd³</div><div class="l">apparent earthwork if graded to the treetop surface</div></div>
       <div class="stat"><div class="v">2.0 cm</div><div class="l">how closely my model matches the state's published DEM</div></div>
       <div class="stat"><div class="v">49.5M</div><div class="l">laser points processed for this site</div></div>
     </div>
@@ -83,14 +83,14 @@
       <thead><tr><th scope="col">Surface used for the estimate</th><th scope="col">Cut</th><th scope="col">Fill</th><th scope="col">Total moved</th><th scope="col">@ $20 / yd³</th></tr></thead>
       <tbody>
         <tr class="ours"><td>Lidar bare earth</td><td>42,273</td><td>42,164</td><td>84,437 yd³</td><td>$1.69M</td></tr>
-        <tr><td>Treetop surface (what photos give you)</td><td>775,626</td><td>13,827</td><td>789,453 yd³</td><td>$15.79M</td></tr>
+        <tr><td>Treetop surface (canopy counted as ground)</td><td>775,626</td><td>13,827</td><td>789,453 yd³</td><td>$15.79M</td></tr>
         <tr><td>10 m national DEM (all you had before 2021)</td><td>52,177</td><td>34,461</td><td>86,638 yd³</td><td>$1.73M</td></tr>
-        <tr class="delta"><td>Error carried by the photo surface</td><td colspan="2"></td><td>705,016 yd³</td><td>≈ $14.10M</td></tr>
+        <tr class="delta"><td>Canopy error hiding in the treetop surface</td><td colspan="2"></td><td>705,016 yd³</td><td>≈ $14.10M</td></tr>
       </tbody>
     </table>
     </div>
     <p class="prose" style="margin-top:22px">The old 10-meter data is a sneakier failure than
-    the photo surface. Its total looks fine — but it calls the site 17,700 yd³ cut-heavy when
+    the treetop surface. Its total looks fine — but it calls the site 17,700 yd³ cut-heavy when
     the site actually balances, mislabels cut vs fill on 7% of the pad, and is locally off by
     up to 2.9 m. A grading plan based on it would include a haul-off that doesn't exist.
     (Also a data-diligence note: the "current" national DEM has quietly been rebuilt from the
