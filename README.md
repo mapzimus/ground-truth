@@ -43,10 +43,11 @@ The modeled costs use an illustrative unit rate for comparison. A real project n
 ## Repository guide
 
 - `index.html` — service-focused homepage
-- `devens.html`, `middleboro.html`, `hopkinton.html`, `p04.html` — case studies
+- `devens.html`, `middleboro.html`, `hopkinton.html`, `p04.html` — case studies (`p04.html` includes an interactive 2021 lidar hillshade of all 54 screened parcels)
 - `methodology.html` — public-facing method, sources, and limitations
-- `site.css`, `site.js` — shared responsive design and accessible interactions
+- `site.css`, `site.js`, `p04-map.js` — shared responsive design, accessible interactions, and the corridor map
 - `assets/` — maps and imagery used by the demonstrations
+- `data/p04-parcels.geojson` — MassGIS Level 3 outlines for the corridor screen
 - `METHODOLOGY.md`, `DATA_SOURCES.md` — repository documentation
 - `scripts/validate-site.mjs` — dependency-free local site check
 
