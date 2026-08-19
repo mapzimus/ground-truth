@@ -16,8 +16,11 @@
   const filterButtons = [...document.querySelectorAll("[data-p04-filter]")];
   const jump = document.getElementById("p04-fail-jump");
   const outlinesButton = document.getElementById("p04-outlines");
+  const highwayButton = document.getElementById("p04-highway");
   const siteButtons = [...document.querySelectorAll("[data-p04-id]")];
   let outlinesOn = true;
+  let highwayOn = true;
+  let highwayLayer;
   let fraction = 0.5;
   let featuresById = new Map();
   let passedLayer;
@@ -122,6 +125,8 @@
   map.getPane("imageryPane").style.zIndex = 200;
   map.createPane("lidarPane");
   map.getPane("lidarPane").style.zIndex = 350;
+  map.createPane("highwayPane");
+  map.getPane("highwayPane").style.zIndex = 400;
   map.createPane("parcelPane");
   map.getPane("parcelPane").style.zIndex = 450;
 
@@ -230,6 +235,37 @@
   if (outlinesButton) {
     outlinesButton.addEventListener("click", () => setOutlines(!outlinesOn));
   }
+
+  const setHighway = on => {
+    highwayOn = on;
+    if (highwayButton) {
+      highwayButton.classList.toggle("on", on);
+      highwayButton.setAttribute("aria-pressed", String(on));
+      highwayButton.textContent = on ? "I-495 on" : "I-495 off";
+    }
+    if (!highwayLayer) return;
+    if (on) highwayLayer.addTo(map);
+    else map.removeLayer(highwayLayer);
+  };
+
+  if (highwayButton) {
+    highwayButton.addEventListener("click", () => setHighway(!highwayOn));
+  }
+
+  fetch("data/p04-i495.geojson")
+    .then(response => (response.ok ? response.json() : Promise.reject(new Error("highway missing"))))
+    .then(collection => {
+      highwayLayer = L.geoJSON(collection, {
+        pane: "highwayPane",
+        interactive: false,
+        style: { color: "#ffb400", weight: 2.4, opacity: 0.9 }
+      });
+      if (highwayOn) highwayLayer.addTo(map);
+      map.attributionControl.addAttribution("I-495 © OpenStreetMap contributors");
+    })
+    .catch(() => {
+      if (highwayButton) highwayButton.hidden = true;
+    });
 
   const bindLayer = feature => {
     featuresById.set(feature.properties.id, feature);

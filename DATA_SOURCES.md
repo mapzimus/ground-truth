@@ -30,6 +30,10 @@ These layers are planning screens. MassDEP states that its mapped wetland bounda
 
 Selected context figures use Esri World Imagery. Providers vary by location and scale. The imagery is shown for orientation and visual context; it is not the source of the bare-earth terrain quantities in the demonstrations.
 
+## Road centerlines
+
+- [OpenStreetMap](https://www.openstreetmap.org/copyright) — I-495 mainline centerline on the corridor map, © OpenStreetMap contributors, licensed [ODbL](https://opendatacommons.org/licenses/odbl/). Drawn for orientation only; it is not a right-of-way, easement, or survey boundary.
+
 ## Operating and professional references
 
 - [FAA Part 107 overview](https://www.faa.gov/newsroom/small-unmanned-aircraft-systems-uas-regulations-part-107)
