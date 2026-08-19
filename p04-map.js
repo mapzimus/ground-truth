@@ -15,7 +15,9 @@
   const fullScreenButton = frame.querySelector(".fsbtn");
   const filterButtons = [...document.querySelectorAll("[data-p04-filter]")];
   const jump = document.getElementById("p04-fail-jump");
+  const outlinesButton = document.getElementById("p04-outlines");
   const siteButtons = [...document.querySelectorAll("[data-p04-id]")];
+  let outlinesOn = true;
   let fraction = 0.5;
   let featuresById = new Map();
   let passedLayer;
@@ -52,19 +54,19 @@
     siteButtons.forEach(node => node.classList.toggle("on", node.dataset.p04Id === activeId));
   };
 
-  const setFilter = next => {
+  const setFilter = (next, fit = true) => {
     filter = next;
     filterButtons.forEach(button => button.classList.toggle("on", button.dataset.p04Filter === next));
     if (passedLayer) {
-      if (next === "failed") map.removeLayer(passedLayer);
+      if (next === "failed" || !outlinesOn) map.removeLayer(passedLayer);
       else if (!map.hasLayer(passedLayer)) passedLayer.addTo(map);
     }
     if (failedLayer) {
-      if (next === "passed") map.removeLayer(failedLayer);
+      if (next === "passed" || !outlinesOn) map.removeLayer(failedLayer);
       else if (!map.hasLayer(failedLayer)) failedLayer.addTo(map);
     }
     const visible = next === "passed" ? passedLayer : next === "failed" ? failedLayer : L.featureGroup([passedLayer, failedLayer].filter(Boolean));
-    if (visible && visible.getLayers().length) {
+    if (fit && visible && visible.getLayers().length) {
       map.fitBounds(visible.getBounds(), { padding: [28, 28], maxZoom: next === "all" ? 13 : 14 });
     }
     if (!activeId && status) {
@@ -84,10 +86,21 @@
     return `${p.label}, ${p.town} · ${p.acres} ac · ${p.constrained}% mapped constraints · no contiguous pad fit`;
   };
 
+  const setOutlines = on => {
+    outlinesOn = on;
+    if (outlinesButton) {
+      outlinesButton.classList.toggle("on", on);
+      outlinesButton.setAttribute("aria-pressed", String(on));
+      outlinesButton.textContent = on ? "Outlines on" : "Outlines off";
+    }
+    setFilter(filter, false);
+  };
+
   const showSite = id => {
     const feature = featuresById.get(id);
     if (!feature) return;
     activeId = id;
+    if (!outlinesOn) setOutlines(true);
     if (feature.properties.passed && filter === "failed") setFilter("all");
     if (!feature.properties.passed && filter === "passed") setFilter("all");
     const layer = L.geoJSON(feature);
@@ -212,6 +225,10 @@
     jump.addEventListener("change", () => {
       if (jump.value) goTo(jump.value);
     });
+  }
+
+  if (outlinesButton) {
+    outlinesButton.addEventListener("click", () => setOutlines(!outlinesOn));
   }
 
   const bindLayer = feature => {
