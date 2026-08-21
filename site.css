@@ -323,6 +323,11 @@ section.paper .scope-note strong {
 
 .bignum {
   margin: 42px 0 8px;
+  /* Under a section heading it needs far less air than it did in the hero. */
+}
+
+section .bignum {
+  margin-top: 24px;
   color: var(--amber);
   font-family: var(--mono);
   font-size: clamp(44px, 8vw, 96px);
