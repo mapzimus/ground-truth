@@ -221,7 +221,9 @@ h3 {
 }
 
 h1 {
-  max-width: 20ch;
+  /* Headlines set their own breaks with <br>; this is only a safety net, so it
+     has to clear the longest authored line or it re-wraps and orphans a word. */
+  max-width: 25ch;
   margin: 18px 0 22px;
   font-size: clamp(36px, 4.9vw, 60px);
 }
