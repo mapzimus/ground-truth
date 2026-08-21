@@ -1,16 +1,25 @@
 :root {
-  --ink: #12130f;
-  --ground: #1a1b16;
-  --ground-2: #20211b;
+  /* Surfaces. Elevation by subtle lift, not by flipping light/dark. */
+  --ink: #0e0f0c;
+  --ground: #16170f;
+  --ground-2: #1e1f18;
+  --ground-3: #262720;
+
+  /* Text on dark, in descending importance. */
   --paper: #f2efe6;
   --paper-2: #e8e3d5;
+  --muted: #9d9989;
+  --meta: #6f6d61;
+
+  /* Amber is reserved for interaction and a single hero emphasis.
+     Labels and section headings must not use it. */
   --amber: #ffb400;
   --amber-dark: #765600;
-  --muted: #aaa593;
-  --line: #3a3b33;
+
+  --line: #32332b;
   --paper-line: #c9c2ae;
-  --cut: #a72c21;
-  --fill: #2e6da4;
+  --cut: #b8402c;
+  --fill: #3d7fb8;
   --mono: "IBM Plex Mono", monospace;
   --display: "Archivo Black", sans-serif;
   --body: "Archivo", sans-serif;
@@ -185,32 +194,41 @@ header,
   padding: 88px 0 64px;
 }
 
+/* Labels sit quietly above their heading. They are wayfinding, not accent. */
 .kicker,
 .eyebrow {
-  color: var(--amber);
+  color: var(--meta);
   font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 0.2em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: var(--display);
   line-height: 1.06;
   text-transform: uppercase;
 }
 
+/* h3 drops out of the display face entirely — card titles were competing
+   with page titles for attention and flattening the hierarchy. */
+h3 {
+  font-family: var(--body);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
 h1 {
-  max-width: 15ch;
+  max-width: 20ch;
   margin: 18px 0 22px;
-  font-size: clamp(42px, 6vw, 72px);
+  font-size: clamp(36px, 4.9vw, 60px);
 }
 
 .site-home h1 {
-  max-width: 16ch;
-  font-size: clamp(44px, 6.8vw, 82px);
+  max-width: none;
+  font-size: clamp(38px, 5.6vw, 70px);
 }
 
 h1 .under,
@@ -220,13 +238,14 @@ h1 span,
 }
 
 h2 {
-  margin: 14px 0 18px;
-  font-size: clamp(28px, 3.5vw, 40px);
+  margin: 12px 0 18px;
+  max-width: 22ch;
+  font-size: clamp(24px, 2.7vw, 33px);
 }
 
 h3 {
-  margin-bottom: 10px;
-  font-size: 19px;
+  margin-bottom: 9px;
+  font-size: 17px;
 }
 
 .lede {
@@ -356,6 +375,8 @@ section {
   padding: 72px 0;
 }
 
+/* Reserved for the one "here are the receipts" moment. Flipping to light
+   more than once per page destroys the sense of what is primary. */
 section.paper {
   background: var(--paper);
   color: var(--ink);
@@ -363,13 +384,40 @@ section.paper {
 
 section.paper .kicker,
 section.paper .eyebrow {
-  color: var(--amber-dark);
+  color: #8a8472;
+}
+
+/* Rhythm without a hard flip: a barely-there lift plus hairline rules. */
+section.raised {
+  background: var(--ground-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .section-intro {
   max-width: 65ch;
   color: #cfcaba;
   font-size: 17px;
+}
+
+/* On the homepage the swipe is an explainer, not the main subject — keep it
+   inside one screen so the studies below stay discoverable. */
+#proof .swipe {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.proof-caption {
+  max-width: 68ch;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.proof-caption a {
+  color: var(--amber);
+  white-space: nowrap;
 }
 
 section.paper .section-intro {
@@ -469,6 +517,12 @@ section.paper .process-step .num {
   border-color: var(--amber);
 }
 
+/* The four hillshades read as near-identical grey at thumbnail size, so the
+   numeral — not the image — is what makes a card recognisable at a glance. */
+.card .thumb {
+  position: relative;
+}
+
 .card img {
   display: block;
   width: 100%;
@@ -477,15 +531,34 @@ section.paper .process-step .num {
   object-fit: cover;
 }
 
+.card .plate {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  padding: 6px 16px 4px;
+  background: var(--ground-2);
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.card:hover .plate {
+  color: var(--amber);
+}
+
 .card .body {
   padding: 20px 20px 24px;
 }
 
 .card .num {
-  color: var(--amber);
+  color: var(--meta);
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .card h3 {
@@ -500,9 +573,17 @@ section.paper .process-step .num {
 
 .card .statline {
   margin-top: 14px;
-  color: var(--paper);
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 13px;
+  line-height: 1.5;
+}
+
+.card .statline b {
+  color: var(--paper);
+  font-weight: 400;
 }
 
 .card .go {
