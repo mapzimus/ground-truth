@@ -40,6 +40,10 @@ The study-page locus maps are drawn from the 2022 Census state boundaries by `sc
 
 - [OpenStreetMap](https://www.openstreetmap.org/copyright) — I-495 mainline centerline on the corridor map, © OpenStreetMap contributors, licensed [ODbL](https://opendatacommons.org/licenses/odbl/). Drawn for orientation only; it is not a right-of-way, easement, or survey boundary.
 
+## Reference figures
+
+- Interstate 495 length in Massachusetts, 121.56 miles (195.63 km), used only to scale the corridor screen's candidate rate on the corridor page. See [Interstate 495 (Massachusetts)](https://en.wikipedia.org/wiki/Interstate_495_(Massachusetts)) and [AARoads](https://www.aaroads.com/guides/i-495-ma). The extrapolation built on it is arithmetic from one studied stretch, not a statewide survey, and the corridor page says so.
+
 ## Operating and professional references
 
 - [FAA Part 107 overview](https://www.faa.gov/newsroom/small-unmanned-aircraft-systems-uas-regulations-part-107)
