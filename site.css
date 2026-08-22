@@ -1286,7 +1286,7 @@ footer .contact,
   inset: 0;
   z-index: 100;
   display: none;
-  padding: 64px 20px 24px;
+  padding: 56px 12px 16px;
   align-items: center;
   justify-content: center;
   background: var(--scrim);
@@ -1303,14 +1303,74 @@ footer .contact,
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+/* The stage owns the gestures. Putting touch-action on the image instead means the
+   browser swallows the pinch before the handler sees it, which is what previously
+   left these maps stuck at fit-to-screen on a phone. */
+.lb-stage {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  cursor: zoom-in;
+}
+
+.lb-stage.zoomed {
+  cursor: grab;
+}
+
+.lb-stage.zoomed:active {
+  cursor: grabbing;
 }
 
 .lightbox img {
-  max-width: 96vw;
-  max-height: 78vh;
+  max-width: 100%;
+  max-height: 100%;
   border: 1px solid rgba(249, 245, 236, 0.25);
-  touch-action: none;
+  object-fit: contain;
+  transform-origin: center center;
+  transition: transform 0.12s ease-out;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lb-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.lb-bar button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid rgba(249, 245, 236, 0.35);
+  background: transparent;
+  color: var(--on-accent);
+  font-family: var(--mono);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.lb-bar button:hover {
+  border-color: var(--on-accent);
+}
+
+.lb-level {
+  min-width: 5ch;
+  color: #ddd5c4;
+  font-family: var(--mono);
+  font-size: 13px;
+  text-align: center;
 }
 
 .lightbox .cap {
@@ -1480,6 +1540,10 @@ footer .contact,
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    transition: none !important;
+  }
+
+  .lightbox img {
     transition: none !important;
   }
 }
