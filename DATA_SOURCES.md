@@ -30,6 +30,12 @@ These layers are planning screens. MassDEP states that its mapped wetland bounda
 
 Selected context figures use Esri World Imagery. Providers vary by location and scale. The imagery is shown for orientation and visual context; it is not the source of the bare-earth terrain quantities in the demonstrations.
 
+## State boundaries
+
+- [US Census Bureau cartographic boundary files, 1:5,000,000 states](https://www2.census.gov/geo/tiger/GENZ2022/shp/cb_2022_us_state_5m.zip)
+
+The study-page locus maps are drawn from the 2022 Census state boundaries by `scripts/build-locus-maps.py`. They are orientation graphics: generalized outlines at roughly 750 m per pixel, with site markers placed at town scale.
+
 ## Road centerlines
 
 - [OpenStreetMap](https://www.openstreetmap.org/copyright) — I-495 mainline centerline on the corridor map, © OpenStreetMap contributors, licensed [ODbL](https://opendatacommons.org/licenses/odbl/). Drawn for orientation only; it is not a right-of-way, easement, or survey boundary.

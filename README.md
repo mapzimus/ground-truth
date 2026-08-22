@@ -50,6 +50,7 @@ The modeled costs use an illustrative unit rate for comparison. A real project n
 - `data/p04-parcels.geojson` — MassGIS Level 3 outlines for the corridor screen
 - `METHODOLOGY.md`, `DATA_SOURCES.md` — repository documentation
 - `scripts/validate-site.mjs` — dependency-free local site check
+- `scripts/build-locus-maps.py` — regenerates the study-page locus maps from Census state boundaries (needs `pyshp`)
 
 Run the validation locally with Node.js:
 
