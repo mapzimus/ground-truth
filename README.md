@@ -42,7 +42,7 @@ The modeled costs use an illustrative unit rate for comparison. A real project n
 
 ## Repository guide
 
-- `index.html` — service-focused homepage
+- `index.html` — homepage: the comparison slider, the four studies, the cross-study cost table, the workflow, and scope
 - `devens.html`, `middleboro.html`, `hopkinton.html`, `p04.html` — case studies (`p04.html` includes an interactive 2021 lidar hillshade of all 54 screened parcels)
 - `methodology.html` — public-facing method, sources, and limitations
 - `site.css`, `site.js`, `p04-map.js` — shared responsive design, accessible interactions, and the corridor map

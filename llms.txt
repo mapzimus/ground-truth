@@ -6,7 +6,7 @@ Lidar Site Studies is a service concept and public-data portfolio demonstration 
 
 ## Primary pages
 
-- [Home and service concept](https://maxwellhowegis.com/lidar-test/): Offer, team model, workflow, cases, and professional boundaries.
+- [Home and service concept](https://maxwellhowegis.com/lidar-test/): The camera-versus-lidar comparison, the four case studies, a cross-study cost table, the three-step workflow, and scope boundaries.
 - [Method, sources, and limitations](https://maxwellhowegis.com/lidar-test/methodology.html): How to interpret the data, quantities, costs, and licensing boundaries.
 - [Devens case](https://maxwellhowegis.com/lidar-test/devens.html): Camera surface versus lidar bare earth under forest.
 - [Middleborough case](https://maxwellhowegis.com/lidar-test/middleboro.html): Terrain, mapped wetness, access, and conceptual earthwork.

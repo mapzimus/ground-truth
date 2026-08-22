@@ -6,6 +6,7 @@
 <title>The Ground Under the Trees — Planning-Level LiDAR Study, Devens MA</title>
 <meta name="description" content="A planning-level terrain and earthwork study from public LiDAR on the Devens, Massachusetts parcel where a major campus was later built.">
 <link rel="canonical" href="https://maxwellhowegis.com/lidar-test/devens.html">
+<meta name="theme-color" content="#f4f0e6">
 <meta property="og:title" content="The Ground Under the Trees">
 <meta property="og:description" content="Public lidar measured this Devens forest two years before a campus was built on it — a terrain model you can check against the finished building.">
 <meta property="og:type" content="website">
@@ -15,24 +16,20 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%B0%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<nav class="projnav" aria-label="Case-study navigation"><div class="wrap"><a class="brand" href="index.html">LIDAR SITE STUDIES</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-links">Menu</button><div class="links" id="case-links"><a href="index.html#cases">All work</a><a class="on" aria-current="page" href="devens.html">01 · Devens</a><a href="middleboro.html">02 · Middleborough</a><a href="hopkinton.html">03 · Hopkinton</a><a href="p04.html">04 · Corridor</a><a class="nav-cta" href="mailto:mhowe.gis@gmail.com?subject=Lidar%20Site%20Studies%20parcel%20screen">Request a screen</a></div></div></nav>
+<nav class="projnav" aria-label="Case-study navigation"><div class="wrap"><a class="brand" href="index.html">Lidar Site Studies</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-links">Menu</button><div class="links" id="case-links"><a href="index.html#cases">All work</a><a class="on" aria-current="page" href="devens.html">01 · Devens</a><a href="middleboro.html">02 · Middleborough</a><a href="hopkinton.html">03 · Hopkinton</a><a href="p04.html">04 · Corridor</a><a class="nav-cta" href="mailto:mhowe.gis@gmail.com?subject=Lidar%20Site%20Studies%20parcel%20screen">Request a screen</a></div></div></nav>
 <main id="main">
 <header>
   <div class="wrap">
     <div class="kicker">Lidar terrain analysis · Devens, Massachusetts</div>
     <h1>Lidar saw this land<br><span class="under">before anyone broke ground.</span></h1>
-    <p class="lede">In spring 2021 a public lidar flight passed over 5.3 acres of forest in
-    Devens. Two years later Commonwealth Fusion Systems finished a campus on that exact
-    ground. That makes this a rare thing to have: a terrain model you can check against the
-    building that actually got built. Everything below comes from that one free flight.</p>
+    <p class="lede">In spring 2021 a public lidar flight passed over 5.3 acres of forest in Devens. Two years later Commonwealth Fusion Systems finished a campus on that exact ground — which makes this a rare thing to have: a terrain model you can check against the building that got built.</p>
     <img class="locus" src="assets/devens_locus.png" alt="Site location in Massachusetts" width="437" height="276">
     <div class="hero-actions"><a class="button" href="mailto:mhowe.gis@gmail.com?subject=Lidar%20Site%20Studies%20parcel%20screen">Request a parcel screen</a><a class="button secondary" href="index.html#services">See the service concept</a></div>
-    <p class="status-note"><strong>Scope:</strong> public-data demonstration for planning and comparison. It is not a survey, construction quantity, bid, or final grading design.</p>
   </div>
 </header>
 
@@ -40,10 +37,10 @@
   <div class="wrap">
     <div class="kicker">Start here</div>
     <h2>Drag the line</h2>
-    <p class="prose">Left of the line is the <b>treetop surface</b> — roughly what a
-    camera reconstructs when leaves hide the ground. Right of it is the <b>bare
-    earth</b>, rebuilt from the laser pulses that found gaps in the canopy. Same
-    flight, same week, same points. The yellow rectangle is the building pad analyzed below.</p>
+    <p class="prose">Left of the line is the <b>treetop surface</b> — roughly what a camera
+    reconstructs when leaves hide the ground. Right of it is the <b>bare earth</b>, rebuilt
+    from the laser pulses that found gaps in the canopy. Same flight, same week, same points.
+    The yellow rectangle is the building pad measured below.</p>
     <div class="swipe" id="swipe" style="--focus:51% 49%">
       <div class="stage" id="swipeStage">
         <img src="assets/hs_dtm.jpg" alt="Bare-earth lidar hillshade" width="1530" height="1230">
@@ -54,19 +51,37 @@
       <div class="tag right">BARE EARTH (LIDAR)</div>
       <button class="fsbtn" id="swipeFs" aria-label="Toggle fullscreen">⛶</button>
     </div>
-    <figure><figcaption>USGS/MassGIS lidar, flown spring 2021 · 1.5 × 1.2 km area ·
-    0.5 m resolution</figcaption></figure>
+    <figure><figcaption>USGS/MassGIS lidar, flown spring 2021 · 1.5 × 1.2 km area · 0.5 m resolution</figcaption></figure>
   </div>
 </section>
 
 <section class="raised">
   <div class="wrap">
+    <div class="kicker">Why this parcel</div>
+    <h2>The data landed 17 days after the project was announced</h2>
+    <p class="prose">Commonwealth Fusion Systems announced its 47-acre Devens campus on
+    March 3, 2021. The state lidar was flown March 20 – April 24, so the point cloud catches
+    the parcel in its last weeks as forest, and the pad measured below is where their largest
+    building actually went. This is the analysis that could have been on the table before a
+    single tree came down — which also means every number here can be checked against a
+    building that now exists.</p>
+    <figure>
+      <img src="assets/imagery_aoi.jpg" alt="Aerial imagery of the built campus" loading="lazy" width="1200" height="960">
+      <figcaption>The same ground today. Every building in this image is younger than the
+      point cloud used below. Basemap: Esri World Imagery; provider credits are listed in
+      <a href="methodology.html#imagery">methodology and sources</a>.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <div class="kicker">By the numbers</div>
     <h2>Putting a number on the gap</h2>
     <div class="bignum">282,158 yd³
     <small>of canopy separates the treetop surface from the ground on this building pad —
-    a $5.6M phantom at $20 a cubic yard. Nobody would price a canopy model on purpose;
-    this is the scale of error camera-only mapping hides over closed forest.</small>
+    a $5.6M phantom at $20 a cubic yard. Nobody would price a canopy model on purpose; this
+    is the scale of error that camera-only mapping hides over closed forest.</small>
     </div>
     <div class="stats">
     <div class="stat hot"><div class="v">24,532 yd³</div><div class="l">LiDAR-based screening estimate for the conceptual level pad</div></div>
@@ -77,13 +92,13 @@
   </div>
 </section>
 
-<section class="paper">
+<section class="raised">
   <div class="wrap">
     <div class="kicker">What it costs to get this wrong</div>
     <h2>One pad, three surfaces</h2>
     <p class="prose">The pad is 5.3 acres, matching the footprint of the building that now
-    stands there. It was 65% forest when the lidar was flown, with trees up to 23 m.
-    Grading it to a level 86.63 m requires:</p>
+    stands there. It was 65% forest when the lidar was flown, with trees up to 23 m. Grading
+    it to a level 86.63 m requires:</p>
     <div class="tablewrap" data-label="Comparison of conceptual Devens earthwork surfaces">
     <table>
       <caption>Conceptual level-pad earthwork sensitivity by input surface</caption>
@@ -96,20 +111,19 @@
       </tbody>
     </table>
     </div>
-    <p class="prose" style="margin-top:14px;font-size:15px">A uniform ±10 cm vertical shift
-    changes the modeled volume by <b>±2,827 yd³ ≈ ±$57k</b>. This is a data-accuracy
-    sensitivity—not a full construction contingency. Design, soils, rock, material handling,
-    and field conditions can create larger changes.</p>
+    <p class="table-foot">A uniform ±10 cm vertical shift changes the modeled volume by
+    ±2,827 yd³ ≈ ±$57k. That is a data-accuracy sensitivity, not a construction contingency —
+    design, soils, rock and field conditions can move it much further.</p>
     <p class="prose" style="margin-top:22px">To be fair about both comparisons: nobody would
     bid $6M off a treetop surface. The real problem is that on wooded land a camera-only model
-    may not provide a <b>reliable bare-earth surface</b> — the estimate would have to come
-    from another source, a site walk, or judgment instead. The old 2011 DEM happened to remain close here because this
-    particular parcel sat untouched. Within the same study area, other spots moved as
-    much as 7 m over that decade. There's no way to know which kind of parcel you have without measuring again.</p>
+    may not give a <b>reliable bare-earth surface at all</b>, so the estimate has to come from
+    another source, a site walk, or judgment. And the 2011 DEM only stayed close because this
+    parcel sat untouched — elsewhere in the same study area the ground moved as much as 7 m
+    over that decade. There is no way to know which kind of parcel you have without measuring
+    again.</p>
     <figure>
       <img src="assets/cutfill_map.jpg" alt="Cut and fill map of the pad" loading="lazy" width="1124" height="805">
-      <figcaption>Where the dirt moves: cut in red, fill in blue, against the balanced
-      design grade.</figcaption>
+      <figcaption>Where the dirt moves: cut in red, fill in blue, against the balanced design grade.</figcaption>
     </figure>
   </div>
 </section>
@@ -118,61 +132,44 @@
   <div class="wrap">
     <div class="kicker">Site analysis from the same data</div>
     <h2>More answers from the same flight</h2>
-    <p class="prose">The earthwork number is the headline, but the same dataset answers a bunch of other early-stage questions:</p>
+    <p class="prose">The earthwork number is the headline, but one dataset answers a stack of
+    other early-stage questions:</p>
     <div class="moat">
       <figure>
         <img src="assets/buildable_map.jpg" alt="Buildable land screen" loading="lazy" width="1185" height="985">
         <figcaption><b>Where does the terrain screen pass?</b> Of 428 study-area acres, 283
-        remain after excluding slopes over 15% and the stated mapped wetland/stream buffers.
-        Zoning, access, utilities, habitat, soils, and field delineation are not included.</figcaption>
+        remain after excluding slopes over 15% and the mapped wetland and stream buffers.
+        Zoning, access, utilities, habitat, soils and field delineation are not included.</figcaption>
       </figure>
       <figure>
         <img src="assets/road_profile.png" alt="Access road grade profile" loading="lazy" width="1517" height="917">
         <figcaption><b>Can you get a road in?</b> The direct route from the existing drive
-        crosses a bank at 21% grade — over double the usual 8% limit — so the driveway has
-        to contour or the bank gets regraded. Good to know before the site plan gets drawn.</figcaption>
+        crosses a bank at 21% grade — over double the usual 8% limit — so the driveway has to
+        contour or the bank gets regraded. Better known before the site plan is drawn.</figcaption>
       </figure>
       <figure>
         <img src="assets/chm_map.jpg" alt="Canopy height model" loading="lazy" width="1119" height="805">
         <figcaption><b>What does clearing cost?</b> Tree heights for every cell. The pad
         carries 3.5 acres of forest — roughly $10–21k to clear at typical rates. Stumpage
-        revenue can offset part of that — species- and market-dependent (UMass/DCR Southern
-        New England Stumpage Price Survey); not netted here.</figcaption>
+        revenue can offset part of that; species- and market-dependent, and not netted here.</figcaption>
       </figure>
       <figure>
         <img src="assets/flowaccum_map.jpg" alt="Stormwater flow accumulation" loading="lazy" width="1600" height="1331">
-        <figcaption><b>Where does water go?</b> Runoff concentration paths on the real
-        terrain, checked against mapped streams. A first look at where the water wants to go.</figcaption>
+        <figcaption><b>Where does water go?</b> Runoff concentration paths on the real terrain,
+        checked against mapped streams — a first look at where the water wants to run.</figcaption>
       </figure>
       <figure>
         <img src="assets/viewshed_map.jpg" alt="Viewshed before and after clearing" loading="lazy" width="1252" height="1007">
         <figcaption><b>Who will see it?</b> From the pad, 0.5% of the surrounding area is
-        visible today; after clearing, 6.6% — the map shows exactly which road frontage
-        and abutters gain a view. A retained tree buffer on the sensitive edges would soften most of it — easier to plan for now than to argue about later.</figcaption>
+        visible today; after clearing, 6.6% — the map shows which road frontage and abutters
+        gain a view. A retained tree buffer on the sensitive edges is easier to plan for now
+        than to argue about later.</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
 <section class="raised">
-  <div class="wrap">
-    <div class="kicker">Why this parcel</div>
-    <h2>The data landed 17 days after the project was announced</h2>
-    <p class="prose">Commonwealth Fusion Systems announced its 47-acre Devens campus on
-    March 3, 2021. The state lidar was flown March 20 – April 24, 2021, so the point cloud
-    catches the parcel in its last weeks as forest. The pad above is where their largest
-    building actually went. In other words: this is the analysis that could have been on
-    the table before a single tree came down.</p>
-    <figure>
-      <img src="assets/imagery_aoi.jpg" alt="Aerial imagery of the built campus" loading="lazy" width="1200" height="960">
-      <figcaption>The same ground today. Every building in this image is younger than the
-      point cloud used above. Basemap: Esri World Imagery; provider credits are listed in
-      <a href="methodology.html#imagery">methodology and sources</a>.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section>
   <div class="wrap">
     <div class="kicker">The bottom line</div>
     <h2>What this means for the deal</h2>
@@ -188,51 +185,46 @@
       </tbody>
     </table>
     </div>
-    <p class="scope-note"><strong>Not included:</strong> final grading design, topsoil,
-    shrink/swell, unsuitable soils, rock, haul/disposal, retaining walls, utilities,
-    stormwater construction, erosion control, mobilization, permitting, survey, or engineering.</p>
-    <p class="prose" style="margin-top:20px">This site is the validation case — the
-    building is already there, so these are the numbers a buyer <i>could have had</i>
-    before closing. The diligence items a purchase agreement would have wanted to cover:</p>
+    <p class="prose" style="margin-top:22px">The building is already there, so these are the
+    numbers a buyer <i>could have had</i> before closing. Three diligence items a purchase
+    agreement would still have wanted to cover:</p>
     <ol class="method">
       <li><b>Wetland edge</b> — the pad clears the mapped wetlands, but setback areas sit
         within the parcel; confirm buffers on the site plan.</li>
-      <li><b>Vernal pools</b> — depression screen found no candidates in or near the pad
-        (3 state-mapped potential pools elsewhere in the study area); "screened, clear"
-        with field confirmation at permitting.</li>
-      <li><b>Professional control</b> — any authoritative topographic, boundary, or
-        construction quantity would require the appropriate licensed survey control,
-        professional oversight, and project-specific specifications.</li>
+      <li><b>Vernal pools</b> — the depression screen found no candidates in or near the pad
+        (three state-mapped potential pools sit elsewhere in the study area). Screened clear,
+        pending field confirmation at permitting.</li>
+      <li><b>Professional control</b> — any authoritative topographic, boundary or
+        construction quantity needs licensed survey control and professional oversight.</li>
     </ol>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="kicker">Methodology</div>
+    <div class="kicker">Method &amp; limits</div>
     <h2>The numbers are checkable</h2>
     <ol class="method">
       <li><b>Data</b> — USGS 3DEP lidar (2021 Central-Eastern Massachusetts, ~14–20 points/m²,
         published accuracy 10 cm RMSE). 35.6 million points for this site.</li>
       <li><b>Processing</b> — PDAL pipeline: ground/vegetation separation, 0.5 m ground model,
-        treetop model, canopy heights. I also re-ran ground classification from scratch to
+        treetop model, canopy heights. Ground classification was also re-run from scratch to
         confirm the workflow on raw, unclassified point clouds.</li>
-      <li><b>Processing consistency</b> — my ground model compared with the state-published
-        DEM derived from the same flight: 5 mm average difference and 5.6 cm RMSE over open
-        ground. That checks processing agreement, not independent field accuracy. One grid
-        and one vertical datum (NAVD88, meters) were used across every surface.</li>
-      <li><b>Volumes</b> — cell-by-cell raster math, cross-checked with a second, independent
-        implementation in QGIS. The two agree to 0.003%. Cost basis is an illustrative
-        $20/yd³ screening assumption, shown with a $10–$40 sensitivity range; a real
-        project would require current contractor or estimator input.</li>
+      <li><b>Consistency</b> — my ground model against the state-published DEM from the same
+        flight: 5 mm average difference, 5.6 cm RMSE over open ground. That checks processing
+        agreement, not independent field accuracy. One grid and one vertical datum (NAVD88,
+        meters) across every surface.</li>
+      <li><b>Volumes</b> — cell-by-cell raster math, cross-checked against a second independent
+        implementation in QGIS. The two agree to 0.003%. Cost basis is an illustrative $20/yd³
+        screening assumption shown with a $10–$40 sensitivity range.</li>
     </ol>
-    <p class="note">Public LiDAR includes published accuracy specifications, but these case-study
-    values remain planning-level. Survey-grade or construction-facing work requires licensed
-    control and project-specific professional oversight. Screens run for every project:
-    terrain-wetness discrepancy, closed-depression / vernal-pool candidates, surface
-    roughness. Also available: intensity analysis, contours to CAD, per-tree inventory.
-    Scripts and pipeline files available on request. See the shared
-    <a href="methodology.html">method, sources, assumptions, and limitations</a>.</p>
+    <p class="scope-note"><strong>Scope:</strong> a public-data demonstration for planning and
+    comparison. Not a survey, wetland delineation, geotechnical investigation, construction
+    quantity, bid, or final grading design. Public lidar carries published accuracy
+    specifications, but these values stay planning-level; survey-grade or construction-facing
+    work requires licensed control and project-specific oversight. Scripts and pipeline files
+    are available on request — see the shared
+    <a href="methodology.html">method, sources, assumptions and limitations</a>.</p>
   </div>
 </section>
 
