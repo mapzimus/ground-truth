@@ -1244,8 +1244,11 @@ footer {
   background: var(--paper-2);
 }
 
+/* Like h1, this is a safety net, not the break: the lines are authored with
+   <br>. It has to clear the longest of them ("The newest free lidar here was
+   flown in 2021.", 45ch) or it re-wraps and orphans a word. */
 footer .cta {
-  max-width: 24ch;
+  max-width: 46ch;
   font-family: var(--display);
   font-size: clamp(25px, 3.4vw, 37px);
   font-weight: 700;
