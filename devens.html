@@ -27,7 +27,7 @@
   <div class="wrap">
     <div class="kicker">Lidar terrain analysis · Devens, Massachusetts</div>
     <h1>Lidar saw this land<br><span class="under">before anyone broke ground.</span></h1>
-    <p class="lede">In spring 2021 a public lidar flight passed over 5.3 acres of forest in Devens, and two years later Commonwealth Fusion Systems finished a campus on that exact ground. That makes this a rare thing to have, a terrain model you can check against the building that was actually put up.</p>
+    <p class="lede">In spring 2021 a public lidar flight passed over 5.3 acres of forest in Devens, and two years later Commonwealth Fusion Systems finished a campus on that exact ground. That makes this a rare thing to have, a terrain model of ground that was built on immediately afterwards, which is the setup you would want in order to test a screening estimate against a finished project.</p>
     <img class="locus" src="assets/devens_locus.svg" alt="Location of the Devens study area within Massachusetts" width="480" height="300">
     <div class="hero-actions"><a class="button" href="mailto:mhowe.gis@gmail.com?subject=Lidar%20Site%20Studies%20parcel%20screen">Request a parcel screen</a><a class="button secondary" href="index.html#services">See the service concept</a></div>
   </div>
@@ -63,8 +63,7 @@
     and the state lidar was flown between March 20 and April 24, so the point cloud catches
     the parcel in its last weeks as forest. The pad measured below is where their largest
     building actually went, which means this is the analysis that could have been on the table
-    before a single tree came down, and it also means every number here can be checked against
-    a building that now exists.</p>
+    before a single tree came down.</p>
     <figure>
       <img src="assets/imagery_aoi.jpg" alt="Aerial imagery of the built campus" loading="lazy" width="1200" height="960">
       <figcaption>The same ground today. Every building in this image is younger than the
@@ -218,6 +217,22 @@
         implementation in QGIS, with the two agreeing to 0.003%. The cost basis is an
         illustrative $20/yd³ screening assumption, shown with a $10–$40 sensitivity range.</li>
     </ol>
+    <h3 style="margin-top:34px">What has been checked, and what has not</h3>
+    <p class="prose">Two things here are verified. The ground model agrees with the
+    state-published DEM to 5 mm on average and 5.6 cm RMSE over open ground, and the volume math
+    agrees with an independent QGIS implementation to 0.003%.</p>
+    <p class="prose">Neither of those is an accuracy check. The state DEM is derived from the
+    same 2021 flight as my model, so agreement between them tests whether two processing chains
+    treat one point cloud the same way. It cannot detect an error the two share, and no figure on
+    this page has been compared against ground survey or against the campus as built.</p>
+    <p class="prose">What would close that gap is the permitted grading plan for the campus,
+    which would carry a finished floor elevation and earthwork quantities to set against the
+    86.63 m balance grade and 24,532 yd³ modeled here. The Devens Enterprise Commission publishes
+    its decisions on the project but not the civil drawing set, and USGS 3DEP holds no lidar over
+    Devens newer than the 2021 acquisition, so neither route is open from public sources today.
+    Until one is, treat this page as a demonstration that the workflow produces checkable
+    numbers, not as evidence that these particular numbers were right.</p>
+
     <p class="scope-note"><strong>Scope:</strong> a public-data demonstration for planning and
     comparison. Not a survey, wetland delineation, geotechnical investigation, construction
     quantity, bid, or final grading design. Public lidar carries published accuracy
