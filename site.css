@@ -1,28 +1,47 @@
+/* ---------------------------------------------------------------------------
+   Lidar Site Studies — "Quad Sheet"
+
+   The palette is lifted from a USGS quadrangle rather than invented: map paper
+   for the ground, contour brown for rules and numerals, vegetation green and
+   hydrography blue as the only other chroma. Cut-red appears where the analysis
+   produces it and nowhere else.
+
+   Rule of thumb throughout: brown carries interaction and data, black carries
+   language, and the maps carry the colour.
+   --------------------------------------------------------------------------- */
+
 :root {
-  /* Surfaces. Elevation by subtle lift, not by flipping light/dark. */
-  --ink: #0e0f0c;
-  --ground: #16170f;
-  --ground-2: #1e1f18;
-  --ground-3: #262720;
+  /* Surfaces, lightest to deepest. Elevation is a tint, never a border alone. */
+  --paper: #f4f0e6;
+  --paper-2: #eae4d5;
+  --paper-3: #e2dac6;
+  --highlight: #f7ecc9;
 
-  /* Text on dark, in descending importance. */
-  --paper: #f2efe6;
-  --paper-2: #e8e3d5;
-  --muted: #9d9989;
-  --meta: #6f6d61;
+  /* Text, in descending importance. */
+  --ink: #1c1a15;
+  --muted: #5d584a;
+  --faint: #6b6555;
 
-  /* Amber is reserved for interaction and a single hero emphasis.
-     Labels and section headings must not use it. */
-  --amber: #ffb400;
-  --amber-dark: #765600;
+  /* Rules. The hairline does most of the structural work on a light ground. */
+  --rule: #cdc3ab;
+  --rule-2: #b3a68a;
 
-  --line: #32332b;
-  --paper-line: #c9c2ae;
-  --cut: #b8402c;
-  --fill: #3d7fb8;
-  --mono: "IBM Plex Mono", monospace;
-  --display: "Archivo Black", sans-serif;
-  --body: "Archivo", sans-serif;
+  /* Contour brown is the interaction colour: links, buttons, numerals, focus.
+     Headings and body copy stay black so the brown keeps its meaning. */
+  --contour: #7a5327;
+  --contour-deep: #5e3f1d;
+
+  /* Analysis colours. Only ever used for what they mean on the maps. */
+  --cut: #9c4a2f;
+  --fill: #2e6e8e;
+  --veg: #3f6b45;
+
+  --on-accent: #f9f5ec;
+  --scrim: rgba(24, 21, 16, 0.94);
+
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display: "Bitter", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 * {
@@ -37,20 +56,23 @@ html {
 
 body {
   min-height: 100vh;
-  background: var(--ground);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--body);
   font-size: 16px;
-  line-height: 1.55;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* The faint grid is the sheet's UTM ticks. It has to stay below the threshold
+   where it reads as a texture, or it fights every hairline rule on the page. */
 body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
   background:
-    repeating-linear-gradient(0deg, transparent 0 39px, rgba(255, 180, 0, 0.045) 39px 40px),
-    repeating-linear-gradient(90deg, transparent 0 39px, rgba(255, 180, 0, 0.045) 39px 40px);
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(122, 83, 39, 0.038) 39px 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(122, 83, 39, 0.038) 39px 40px);
   content: "";
   pointer-events: none;
 }
@@ -61,21 +83,17 @@ img {
 }
 
 a {
-  color: var(--amber);
+  color: var(--contour);
   text-underline-offset: 0.18em;
 }
 
-section.paper a:not(.button) {
-  color: var(--amber-dark);
-  font-weight: 600;
-}
-
 a:hover {
+  color: var(--contour-deep);
   text-decoration-thickness: 2px;
 }
 
 :focus-visible {
-  outline: 3px solid var(--amber);
+  outline: 3px solid var(--contour);
   outline-offset: 4px;
 }
 
@@ -86,10 +104,10 @@ a:hover {
   z-index: 200;
   padding: 10px 14px;
   transform: translateY(-160%);
-  background: var(--amber);
-  color: var(--ink);
+  background: var(--contour);
+  color: var(--on-accent);
   font-family: var(--mono);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .skip-link:focus {
@@ -97,38 +115,41 @@ a:hover {
 }
 
 .wrap {
-  width: min(100%, 1128px);
+  width: min(100%, 1080px);
   margin: 0 auto;
-  padding-inline: 24px;
+  padding-inline: 28px;
 }
 
 .narrow {
   max-width: 760px;
 }
 
+/* --- navigation ----------------------------------------------------------- */
+
 .projnav {
   position: sticky;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid var(--line);
-  background: rgba(18, 19, 15, 0.97);
+  border-bottom: 1px solid var(--rule);
+  background: rgba(244, 240, 230, 0.96);
   backdrop-filter: blur(10px);
 }
 
 .projnav .wrap {
   position: relative;
   display: flex;
-  min-height: 64px;
+  min-height: 62px;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
 
 .projnav .brand {
-  color: var(--paper);
+  color: var(--ink);
   font-family: var(--display);
-  font-size: 15px;
-  letter-spacing: 0.08em;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.005em;
   line-height: 1.05;
   text-decoration: none;
 }
@@ -143,51 +164,56 @@ a:hover {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
+  border-bottom: 2px solid transparent;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
+  font-size: 12.5px;
   text-decoration: none;
-  padding: 0 10px;
-  border: 1px solid var(--line);
 }
 
 .projnav .links a:hover {
-  color: var(--paper);
-  border-color: var(--amber);
+  color: var(--ink);
+  border-bottom-color: var(--rule-2);
 }
 
+/* The current page is marked, not filled — a filled chip on paper reads as a
+   button and invites a click the reader has already made. */
 .projnav .links a.on {
   color: var(--ink);
-  background: var(--amber);
-  border-color: var(--amber);
-  font-weight: 700;
+  border-bottom-color: var(--contour);
+  font-weight: 500;
 }
 
 .projnav .links .nav-cta {
   min-height: 40px;
-  padding: 0 13px;
-  border: 1px solid var(--amber);
-  color: var(--amber);
+  padding: 0 14px;
+  border: 1px solid var(--contour);
+  color: var(--contour);
+}
+
+.projnav .links .nav-cta:hover {
+  background: var(--contour);
+  color: var(--on-accent);
 }
 
 .nav-toggle {
   display: none;
   min-width: 44px;
   min-height: 44px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--rule-2);
   background: transparent;
-  color: var(--paper);
+  color: var(--ink);
   font-family: var(--mono);
   font-size: 13px;
   cursor: pointer;
 }
 
+/* --- type ----------------------------------------------------------------- */
+
 header,
 .hero {
   position: relative;
-  overflow: hidden;
-  padding: 72px 0 56px;
+  padding: 76px 0 58px;
 }
 
 .site-home .hero {
@@ -197,63 +223,68 @@ header,
 /* Labels sit quietly above their heading. They are wayfinding, not accent. */
 .kicker,
 .eyebrow {
-  color: var(--meta);
+  color: var(--faint);
   font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 h1,
 h2 {
   font-family: var(--display);
-  line-height: 1.06;
-  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.14;
+  text-wrap: balance;
 }
 
-/* h3 drops out of the display face entirely — card titles were competing
-   with page titles for attention and flattening the hierarchy. */
+/* h3 stays in the body face. Card titles in the display face were competing
+   with page titles and flattening the hierarchy. */
 h3 {
   font-family: var(--body);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 h1 {
-  /* Headlines set their own breaks with <br>; this is only a safety net, so it
+  /* Headlines set their own breaks with <br>; this is a safety net only, so it
      has to clear the longest authored line or it re-wraps and orphans a word. */
-  max-width: 25ch;
-  margin: 18px 0 22px;
-  font-size: clamp(36px, 4.9vw, 60px);
+  max-width: 26ch;
+  margin: 16px 0 22px;
+  font-size: clamp(34px, 4.6vw, 55px);
 }
 
+/* Must clear the longest authored line ("A camera sees treetops.", 23ch) or
+   the safety net re-wraps the headline and orphans a word. */
 .site-home h1 {
-  max-width: none;
-  font-size: clamp(38px, 5.6vw, 70px);
+  max-width: 25ch;
+  font-size: clamp(37px, 5.2vw, 62px);
 }
 
 h1 .under,
 h1 span,
 .accent {
-  color: var(--amber);
+  color: var(--contour);
 }
 
 h2 {
-  margin: 12px 0 18px;
-  max-width: 22ch;
-  font-size: clamp(24px, 2.7vw, 33px);
+  margin: 12px 0 16px;
+  max-width: 26ch;
+  font-size: clamp(24px, 2.8vw, 33px);
 }
 
 h3 {
   margin-bottom: 9px;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .lede {
   max-width: 58ch;
-  color: #d3cebf;
-  font-size: clamp(18px, 2vw, 21px);
+  color: var(--muted);
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.5;
 }
 
 .hero-actions {
@@ -268,149 +299,161 @@ h3 {
   min-height: 48px;
   align-items: center;
   justify-content: center;
-  padding: 0 18px;
-  border: 1px solid var(--amber);
-  background: var(--amber);
-  color: var(--ink);
+  padding: 0 19px;
+  border: 1px solid var(--contour);
+  background: var(--contour);
+  color: var(--on-accent);
   font-family: var(--mono);
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-decoration: none;
 }
 
 .button.secondary {
   background: transparent;
-  color: var(--amber);
+  border-color: var(--rule-2);
+  color: var(--ink);
 }
 
 .button:hover {
+  background: var(--contour-deep);
+  border-color: var(--contour-deep);
+  color: var(--on-accent);
   transform: translateY(-1px);
 }
 
+.button.secondary:hover {
+  border-color: var(--contour);
+  background: transparent;
+  color: var(--contour);
+}
+
+/* --- notes and qualifiers ------------------------------------------------- */
+
 .status-note,
 .scope-note {
-  max-width: 78ch;
+  max-width: 80ch;
   margin-top: 24px;
-  padding: 14px 16px;
-  border-left: 3px solid var(--amber);
-  background: rgba(255, 180, 0, 0.07);
-  color: #cfcaba;
+  padding: 15px 18px;
+  border-left: 3px solid var(--rule-2);
+  background: var(--paper-3);
+  color: var(--muted);
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12.5px;
+  line-height: 1.65;
 }
 
 .status-note strong,
 .scope-note strong {
-  color: var(--paper);
-}
-
-section.paper .scope-note {
-  border-left-color: var(--amber-dark);
-  background: #e3dcc9;
-  color: #4f4a3c;
-}
-
-section.paper .scope-note strong {
   color: var(--ink);
+  font-weight: 600;
 }
 
-.whofor {
-  max-width: 62ch;
-  margin-top: 20px;
-  color: var(--amber);
-  font-family: var(--mono);
-  font-size: 14px;
-}
+/* --- headline numbers ----------------------------------------------------- */
 
 .bignum {
-  margin: 42px 0 8px;
-  /* Under a section heading it needs far less air than it did in the hero. */
+  margin: 32px 0 8px;
 }
 
 section .bignum {
   margin-top: 24px;
-  color: var(--amber);
+  color: var(--contour);
   font-family: var(--mono);
-  font-size: clamp(44px, 8vw, 96px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: clamp(40px, 7vw, 84px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 .bignum small {
   display: block;
-  max-width: 60ch;
-  margin-top: 6px;
-  color: #cfcaba;
-  font-size: clamp(14px, 2vw, 18px);
+  max-width: 62ch;
+  margin-top: 12px;
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: clamp(15px, 2vw, 18px);
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
+  line-height: 1.55;
 }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
-  margin-top: 52px;
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  margin-top: 44px;
+  border-top: 1px solid var(--rule-2);
+  border-left: 1px solid var(--rule);
 }
 
 .stat {
   padding: 20px 18px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
 
 .stat .v {
-  color: var(--paper);
+  color: var(--ink);
   font-family: var(--mono);
-  font-size: 25px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat .l {
-  margin-top: 4px;
+  margin-top: 5px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.stat.hot {
+  background: var(--highlight);
 }
 
 .stat.hot .v {
-  color: var(--amber);
+  color: var(--contour);
 }
+
+/* --- sections ------------------------------------------------------------- */
 
 section {
-  padding: 72px 0;
+  padding: 68px 0;
 }
 
-/* Reserved for the one "here are the receipts" moment. Flipping to light
-   more than once per page destroys the sense of what is primary. */
-section.paper {
-  background: var(--paper);
-  color: var(--ink);
-}
-
-section.paper .kicker,
-section.paper .eyebrow {
-  color: #8a8472;
-}
-
-/* Rhythm without a hard flip: a barely-there lift plus hairline rules. */
+/* Two tinted variants exist for historical reasons and are deliberately the
+   same surface: alternating tint is the only rhythm this page needs. */
+section.paper,
 section.raised {
-  background: var(--ground-2);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  background: var(--paper-2);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+section.paper + section.raised,
+section.raised + section.paper,
+section.raised + section.raised,
+section.paper + section.paper {
+  border-top: 0;
+}
+
+section.paper .status-note,
+section.raised .status-note,
+section.paper .scope-note,
+section.raised .scope-note {
+  background: var(--paper-3);
 }
 
 .section-intro {
-  max-width: 65ch;
-  color: #cfcaba;
-  font-size: 17px;
+  max-width: 64ch;
+  color: var(--muted);
+  font-size: 16.5px;
 }
 
 /* On the homepage the swipe is an explainer, not the main subject — keep it
    inside one screen so the studies below stay discoverable. */
 #proof .swipe {
-  max-width: 860px;
+  max-width: 880px;
   margin-inline: auto;
 }
 
@@ -419,109 +462,140 @@ section.raised {
   margin-top: 16px;
   color: var(--muted);
   font-size: 15px;
-  line-height: 1.6;
 }
 
 .proof-caption a {
-  color: var(--amber);
+  font-weight: 500;
   white-space: nowrap;
 }
 
-section.paper .section-intro {
-  color: #554f40;
-}
-
 .prose {
-  max-width: 66ch;
-  font-size: 17px;
+  max-width: 68ch;
+  font-size: 16.5px;
 }
 
 .prose + .prose {
-  margin-top: 14px;
+  margin-top: 16px;
 }
+
+/* --- panel grids ---------------------------------------------------------- */
 
 .grid-3,
 .service-grid,
-.process-grid,
 .boundary-grid,
-.team-grid {
+.scope-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 34px;
+  gap: 20px;
+  margin-top: 32px;
 }
 
-.process-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+.scope-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .panel,
 .service,
-.process-step,
 .boundary {
   padding: 24px;
-  border: 1px solid var(--line);
-  background: var(--ground-2);
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
 }
 
 section.paper .panel,
+section.raised .panel,
 section.paper .service,
-section.paper .process-step,
-section.paper .boundary {
-  border-color: var(--paper-line);
-  background: #ebe7dc;
+section.raised .service,
+section.paper .boundary,
+section.raised .boundary {
+  background: var(--paper);
 }
 
 .panel p,
 .service p,
-.process-step p,
 .boundary p {
   color: var(--muted);
   font-size: 15px;
 }
 
-section.paper .panel p,
-section.paper .service p,
-section.paper .process-step p,
-section.paper .boundary p {
-  color: #625c4b;
-}
-
-.service .num,
-.process-step .num {
-  margin-bottom: 16px;
-  color: var(--amber);
+/* Numbering is only used where the content genuinely is a sequence. */
+.service .num {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--contour);
   font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.15em;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
 }
 
-section.paper .service .num,
-section.paper .process-step .num {
-  color: var(--amber-dark);
+/* A scope column is a claim about what the work is, so the rule above it is
+   coloured by the claim: blue for what it covers, red for what it does not. */
+.scope-col {
+  padding: 22px 22px 24px;
+  border-top: 2px solid var(--rule-2);
+  background: var(--paper);
 }
 
-.case-grid,
-.cards {
+section:not(.paper):not(.raised) .scope-col {
+  background: var(--paper-2);
+}
+
+.scope-col.yes {
+  border-top-color: var(--fill);
+}
+
+.scope-col.no {
+  border-top-color: var(--cut);
+}
+
+.scope-col h3 {
+  font-size: 15px;
+}
+
+.scope-col ul {
+  margin-top: 12px;
+  list-style: none;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.scope-col li {
+  position: relative;
+  padding: 6px 0 6px 18px;
+}
+
+.scope-col li::before {
+  position: absolute;
+  left: 0;
+  color: var(--rule-2);
+  content: "\2014";
+}
+
+/* --- study cards ---------------------------------------------------------- */
+
+.case-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;
-  margin-top: 38px;
+  gap: 24px;
+  margin-top: 36px;
 }
 
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--ground-2);
-  color: var(--paper);
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+  color: var(--ink);
   text-decoration: none;
   transition: border-color 0.2s, transform 0.2s;
 }
 
 .card:hover {
   transform: translateY(-3px);
-  border-color: var(--amber);
+  border-color: var(--contour);
 }
 
 /* The four hillshades read as near-identical grey at thumbnail size, so the
@@ -534,7 +608,7 @@ section.paper .process-step .num {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--rule);
   object-fit: cover;
 }
 
@@ -542,35 +616,37 @@ section.paper .process-step .num {
   position: absolute;
   bottom: -1px;
   left: 0;
-  padding: 6px 16px 4px;
-  background: var(--ground-2);
-  border-top: 1px solid var(--line);
-  border-right: 1px solid var(--line);
-  color: var(--paper);
-  font-family: var(--display);
-  font-size: 30px;
-  line-height: 1;
-}
-
-.card:hover .plate {
-  color: var(--amber);
+  padding: 5px 14px 4px;
+  background: var(--paper-2);
+  border-top: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  color: var(--contour);
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .card .body {
-  padding: 20px 20px 24px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 20px 22px;
 }
 
 .card .num {
-  color: var(--meta);
+  color: var(--faint);
   font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.14em;
+  font-size: 11.5px;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
 }
 
 .card h3 {
-  margin: 9px 0;
-  font-size: 23px;
+  margin: 9px 0 8px;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .card p {
@@ -579,45 +655,43 @@ section.paper .process-step .num {
 }
 
 .card .statline {
-  margin-top: 14px;
-  padding-top: 13px;
-  border-top: 1px solid var(--line);
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 12.5px;
+  line-height: 1.55;
 }
 
 .card .statline b {
-  color: var(--paper);
-  font-weight: 400;
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .card .go {
-  margin-top: 16px;
+  margin-top: 14px;
+  color: var(--contour);
   font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  color: var(--amber);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
 }
 
 .card:hover .go {
   text-decoration: underline;
 }
 
+/* --- figures -------------------------------------------------------------- */
+
 figure {
-  margin-top: 34px;
+  margin-top: 32px;
 }
 
 figure img {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--line);
-}
-
-section.paper figure img {
-  border-color: var(--paper-line);
+  border: 1px solid var(--rule-2);
 }
 
 figure img[data-lightbox] {
@@ -625,40 +699,44 @@ figure img[data-lightbox] {
 }
 
 figcaption {
+  max-width: 78ch;
   padding: 10px 2px;
   color: var(--muted);
-  font-family: var(--mono);
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-section.paper figcaption {
-  color: #6d6753;
+figcaption b {
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .locus {
   display: block;
   width: min(100%, 300px);
   margin-top: 26px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--rule-2);
 }
 
 .moat {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 28px;
-  margin-top: 36px;
+  margin-top: 34px;
 }
 
 .moat figure {
   margin: 0;
 }
 
+/* --- swipe comparison ----------------------------------------------------- */
+
 .swipe {
   position: relative;
   overflow: hidden;
   aspect-ratio: 5 / 4;
-  margin-top: 38px;
-  border: 1px solid var(--line);
+  margin-top: 34px;
+  border: 1px solid var(--rule-2);
   cursor: ew-resize;
   touch-action: pan-y;
   user-select: none;
@@ -686,12 +764,15 @@ section.paper figcaption {
   overflow: hidden;
 }
 
+/* Paper-coloured, not brown: the divider sits on greyscale hillshade and needs
+   to separate two near-identical images, which luminance does and hue doesn't. */
 .swipe .bar {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--amber);
+  background: var(--paper);
+  box-shadow: 0 0 0 1px rgba(24, 21, 16, 0.45);
   pointer-events: none;
 }
 
@@ -701,12 +782,14 @@ section.paper figcaption {
   left: 50%;
   padding: 9px 11px;
   transform: translate(-50%, -50%);
-  border-radius: 24px;
-  background: var(--amber);
+  border-radius: 2px;
+  background: var(--paper);
+  box-shadow: 0 1px 4px rgba(24, 21, 16, 0.4);
   color: var(--ink);
-  content: "◂ ▸";
+  content: "\25C2 \25B8";
+  font-family: var(--mono);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   white-space: nowrap;
 }
 
@@ -714,19 +797,20 @@ section.paper figcaption {
   position: absolute;
   top: 12px;
   padding: 5px 10px;
-  background: rgba(18, 19, 15, 0.86);
-  color: var(--paper);
+  background: rgba(24, 21, 16, 0.82);
+  color: var(--on-accent);
   font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.12em;
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
   pointer-events: none;
 }
 
 .tag.left { left: 12px; }
+
 .tag.right {
   right: 12px;
-  background: rgba(255, 180, 0, 0.94);
-  color: var(--ink);
+  background: rgba(122, 83, 39, 0.92);
+  color: var(--on-accent);
 }
 
 .fsbtn {
@@ -736,9 +820,9 @@ section.paper figcaption {
   z-index: 5;
   min-width: 46px;
   min-height: 46px;
-  border: 1px solid #5b5c51;
-  background: rgba(18, 19, 15, 0.9);
-  color: var(--paper);
+  border: 1px solid rgba(249, 245, 236, 0.5);
+  background: rgba(24, 21, 16, 0.86);
+  color: var(--on-accent);
   font-family: var(--mono);
   font-size: 18px;
   cursor: pointer;
@@ -751,8 +835,10 @@ section.paper figcaption {
   height: 100dvh;
   margin: 0;
   border: 0;
-  background: #000;
+  background: #14120e;
 }
+
+/* --- corridor map --------------------------------------------------------- */
 
 .site-picks {
   display: flex;
@@ -764,31 +850,22 @@ section.paper figcaption {
 .site-picks button {
   min-height: 40px;
   padding: 0 12px;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--paper);
+  border: 1px solid var(--rule-2);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
   cursor: pointer;
 }
 
+.site-picks button:hover {
+  border-color: var(--contour);
+}
+
 .site-picks button.on,
 .rank-card.on {
-  border-color: var(--amber);
-  background: rgba(255, 180, 0, 0.12);
-}
-
-.rank-card {
-  cursor: pointer;
-}
-
-.rank-card img {
-  display: block;
-  width: 100%;
-  height: 88px;
-  margin-bottom: 12px;
-  border: 1px solid var(--paper-line);
-  object-fit: cover;
+  border-color: var(--contour);
+  background: var(--highlight);
 }
 
 .map-swipe {
@@ -796,8 +873,8 @@ section.paper figcaption {
   overflow: hidden;
   aspect-ratio: 5 / 4;
   margin-top: 22px;
-  border: 1px solid var(--line);
-  background: #111;
+  border: 1px solid var(--rule-2);
+  background: #241f18;
 }
 
 .map-swipe.fs {
@@ -808,7 +885,7 @@ section.paper figcaption {
   margin: 0;
   border: 0;
   aspect-ratio: auto;
-  background: #000;
+  background: #14120e;
 }
 
 .map-swipe .p04-map,
@@ -838,7 +915,8 @@ section.paper figcaption {
   bottom: 0;
   z-index: 6;
   width: 2px;
-  background: var(--amber);
+  background: var(--paper);
+  box-shadow: 0 0 0 1px rgba(24, 21, 16, 0.45);
   cursor: ew-resize;
   touch-action: none;
 }
@@ -855,19 +933,21 @@ section.paper figcaption {
   left: 50%;
   padding: 9px 11px;
   transform: translate(-50%, -50%);
-  border-radius: 24px;
-  background: var(--amber);
+  border-radius: 2px;
+  background: var(--paper);
+  box-shadow: 0 1px 4px rgba(24, 21, 16, 0.4);
   color: var(--ink);
-  content: "◂ ▸";
+  content: "\25C2 \25B8";
+  font-family: var(--mono);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   white-space: nowrap;
   pointer-events: none;
 }
 
 .map-swipe .leaflet-container {
   font-family: var(--body);
-  background: #111;
+  background: #241f18;
 }
 
 .map-swipe .leaflet-top {
@@ -876,14 +956,14 @@ section.paper figcaption {
 
 .map-swipe .leaflet-control-attribution {
   max-width: min(100%, 52ch);
-  background: rgba(18, 19, 15, 0.82);
-  color: #cfcaba;
+  background: rgba(24, 21, 16, 0.82);
+  color: #ddd5c4;
   font-family: var(--mono);
   font-size: 10px;
 }
 
 .map-swipe .leaflet-control-attribution a {
-  color: var(--amber);
+  color: #e8b66a;
 }
 
 .map-status {
@@ -908,9 +988,9 @@ section.paper figcaption {
   min-height: 40px;
   min-width: min(100%, 280px);
   padding: 0 10px;
-  border: 1px solid var(--line);
-  background: var(--ground-2);
-  color: var(--paper);
+  border: 1px solid var(--rule-2);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--mono);
   font-size: 13px;
 }
@@ -922,7 +1002,7 @@ section.paper figcaption {
 .fail-card img {
   display: block;
   width: 100%;
-  border: 1px solid var(--line);
+  border: 1px solid var(--rule-2);
 }
 
 .fail-card h3 {
@@ -939,15 +1019,17 @@ tr[data-p04-id] {
   cursor: pointer;
 }
 
+/* --- tables --------------------------------------------------------------- */
+
 .tablewrap {
   max-width: 100%;
-  margin-top: 30px;
+  margin-top: 28px;
   overflow-x: auto;
   border: 1px solid transparent;
 }
 
 .tablewrap:focus-visible {
-  border-color: var(--amber);
+  border-color: var(--contour);
 }
 
 table {
@@ -955,18 +1037,21 @@ table {
   min-width: 580px;
   border-collapse: collapse;
   font-size: 15px;
+  font-variant-numeric: tabular-nums;
 }
 
 caption {
   padding: 0 0 12px;
-  font-weight: 700;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12.5px;
   text-align: left;
 }
 
 th,
 td {
   padding: 12px 14px;
-  border-bottom: 1px solid var(--paper-line);
+  border-bottom: 1px solid var(--rule);
   text-align: right;
 }
 
@@ -976,9 +1061,11 @@ td:first-child {
 }
 
 thead th {
-  color: #6d6753;
+  border-bottom: 1px solid var(--rule-2);
+  color: var(--faint);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11.5px;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -987,23 +1074,20 @@ td {
   font-family: var(--mono);
 }
 
+tbody tr:last-child td {
+  border-bottom: 1px solid var(--rule-2);
+}
+
+/* The row that carries the finding, and the row that carries the error. */
 tr.ours td {
-  background: #fff8e0;
-  font-weight: 700;
+  background: var(--highlight);
+  color: var(--ink);
+  font-weight: 600;
 }
 
 tr.delta td {
   color: var(--cut);
-  font-weight: 700;
-}
-
-.dark-table th,
-.dark-table td {
-  border-color: var(--line);
-}
-
-.dark-table thead th {
-  color: var(--muted);
+  font-weight: 600;
 }
 
 .table-foot {
@@ -1012,7 +1096,10 @@ tr.delta td {
   color: var(--muted);
   font-family: var(--mono);
   font-size: 12px;
+  line-height: 1.6;
 }
+
+/* --- corridor ranking ----------------------------------------------------- */
 
 .ranking-cards {
   display: grid;
@@ -1023,28 +1110,38 @@ tr.delta td {
 
 .rank-card {
   padding: 18px;
-  border: 1px solid var(--paper-line);
-  background: #ebe7dc;
+  border: 1px solid var(--rule);
+  background: var(--paper);
 }
 
 .rank-card:first-child {
-  background: #fff8e0;
+  background: var(--highlight);
+}
+
+.rank-card img {
+  display: block;
+  width: 100%;
+  height: 88px;
+  margin-bottom: 12px;
+  border: 1px solid var(--rule-2);
+  object-fit: cover;
 }
 
 .rank-card .rank {
-  color: var(--amber-dark);
+  color: var(--contour);
   font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
 }
 
 .rank-card h3 {
   margin: 10px 0 6px;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .rank-card p {
-  color: #625c4b;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 12px;
 }
@@ -1059,11 +1156,12 @@ tr.delta td {
   color: var(--ink);
   font-family: var(--display);
   font-size: 18px;
+  font-weight: 700;
 }
 
 .rank-card span {
   margin-top: 5px;
-  color: #625c4b;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 11px;
   line-height: 1.45;
@@ -1078,17 +1176,24 @@ tr.delta td {
   min-height: 46px;
   align-items: center;
   padding: 0 16px;
-  border: 1px solid #8d846d;
+  border: 1px solid var(--rule-2);
   color: var(--ink);
   font-family: var(--mono);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
 }
 
+.full-ranking > summary:hover {
+  border-color: var(--contour);
+  color: var(--contour);
+}
+
+/* --- method lists --------------------------------------------------------- */
+
 ol.method {
-  max-width: 68ch;
-  margin: 26px 0 0 20px;
+  max-width: 70ch;
+  margin: 24px 0 0 20px;
   font-size: 16px;
 }
 
@@ -1097,22 +1202,26 @@ ol.method li {
   padding-left: 6px;
 }
 
+ol.method li::marker {
+  color: var(--contour);
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
 ol.method b {
   font-family: var(--mono);
+  font-size: 15px;
 }
 
 .note {
-  max-width: 72ch;
-  margin-top: 28px;
-  padding: 10px 14px;
-  border-left: 3px solid var(--amber);
+  max-width: 74ch;
+  margin-top: 26px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--rule-2);
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 13px;
-}
-
-section.paper .note {
-  color: #6d6753;
+  font-size: 12.5px;
+  line-height: 1.7;
 }
 
 .citation-list {
@@ -1127,29 +1236,38 @@ section.paper .note {
   padding-left: 4px;
 }
 
+/* --- footer --------------------------------------------------------------- */
+
 footer {
-  padding: 64px 0 84px;
-  border-top: 1px solid var(--line);
+  padding: 62px 0 80px;
+  border-top: 1px solid var(--rule-2);
+  background: var(--paper-2);
 }
 
+/* Like h1, this is a safety net, not the break: the lines are authored with
+   <br>. It has to clear the longest of them ("The newest free lidar here was
+   flown in 2021.", 45ch) or it re-wraps and orphans a word. */
 footer .cta {
-  max-width: 24ch;
+  max-width: 46ch;
   font-family: var(--display);
-  font-size: clamp(25px, 3.4vw, 38px);
-  line-height: 1.12;
-  text-transform: uppercase;
+  font-size: clamp(25px, 3.4vw, 37px);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.16;
 }
 
 footer .cta span {
-  color: var(--amber);
+  color: var(--contour);
 }
 
 footer .contact,
 .footer-meta {
-  margin-top: 24px;
-  color: #cfcaba;
+  max-width: 82ch;
+  margin-top: 22px;
+  color: var(--muted);
   font-family: var(--mono);
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.65;
 }
 
 .footer-links {
@@ -1158,8 +1276,10 @@ footer .contact,
   gap: 8px 18px;
   margin-top: 18px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12.5px;
 }
+
+/* --- lightbox ------------------------------------------------------------- */
 
 .lightbox {
   position: fixed;
@@ -1169,7 +1289,7 @@ footer .contact,
   padding: 64px 20px 24px;
   align-items: center;
   justify-content: center;
-  background: rgba(10, 10, 8, 0.96);
+  background: var(--scrim);
 }
 
 .lightbox.open {
@@ -1189,13 +1309,13 @@ footer .contact,
 .lightbox img {
   max-width: 96vw;
   max-height: 78vh;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(249, 245, 236, 0.25);
   touch-action: none;
 }
 
 .lightbox .cap {
   max-width: 88ch;
-  color: #cfcaba;
+  color: #ddd5c4;
   font-family: var(--mono);
   font-size: 13px;
   text-align: center;
@@ -1207,19 +1327,20 @@ footer .contact,
   right: 12px;
   min-width: 48px;
   min-height: 48px;
-  border: 1px solid var(--line);
-  background: var(--ground);
-  color: var(--paper);
+  border: 1px solid rgba(249, 245, 236, 0.35);
+  background: transparent;
+  color: var(--on-accent);
   font-size: 20px;
   cursor: pointer;
 }
 
+/* --- responsive ----------------------------------------------------------- */
+
 @media (max-width: 900px) {
   .grid-3,
   .service-grid,
-  .process-grid,
   .boundary-grid,
-  .team-grid {
+  .scope-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1249,8 +1370,8 @@ footer .contact,
     flex-direction: column;
     align-items: stretch;
     gap: 2px;
-    border-bottom: 1px solid var(--line);
-    background: rgba(18, 19, 15, 0.99);
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
   }
 
   .projnav .links.open {
@@ -1259,14 +1380,17 @@ footer .contact,
 
   .projnav .links a {
     min-height: 46px;
-    border: none;
-    border-bottom: 1px solid rgba(58, 59, 51, 0.6);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .projnav .links a.on {
+    border-bottom-color: var(--contour);
   }
 
   .projnav .links .nav-cta {
     justify-content: center;
-    margin-top: 8px;
-    border: 1px solid var(--amber);
+    margin-top: 10px;
+    border: 1px solid var(--contour);
   }
 
   header,
@@ -1278,11 +1402,11 @@ footer .contact,
   h1,
   .site-home h1 {
     max-width: 100%;
-    font-size: clamp(36px, 10.5vw, 50px);
+    font-size: clamp(32px, 9vw, 44px);
   }
 
   h2 {
-    font-size: clamp(27px, 8vw, 35px);
+    font-size: clamp(25px, 7vw, 31px);
   }
 
   .lede {
@@ -1293,17 +1417,16 @@ footer .contact,
     padding: 52px 0;
   }
 
-  .case-grid,
-  .cards {
+  .case-grid {
     grid-template-columns: 1fr;
   }
 
   .card h3 {
-    font-size: 21px;
+    font-size: 20px;
   }
 
-  .bignum {
-    font-size: clamp(42px, 15vw, 64px);
+  section .bignum {
+    font-size: clamp(38px, 13vw, 58px);
   }
 
   .swipe,
@@ -1320,7 +1443,7 @@ footer .contact,
   .tag {
     max-width: 45%;
     font-size: 10px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
   }
 
   .tablewrap::before {
@@ -1329,7 +1452,7 @@ footer .contact,
     left: 0;
     width: max-content;
     margin: 0 0 10px;
-    color: #6d6753;
+    color: var(--faint);
     content: attr(data-scroll-hint);
     font-family: var(--mono);
     font-size: 11px;
